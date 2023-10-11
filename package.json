@@ -9,9 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@types/styled-components": "^5.1.28",
     "next": "13.5.4",
     "react": "^18",
     "react-dom": "^18",
+    "react-icons": "^4.11.0",
     "styled-components": "^6.0.8"
   },
   "devDependencies": {
