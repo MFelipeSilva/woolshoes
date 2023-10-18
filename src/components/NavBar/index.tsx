@@ -2,7 +2,12 @@
 
 import Link from "next/link";
 
-import { IoPersonCircle, IoCart } from "react-icons/io5";
+import {
+  IoPersonCircleOutline,
+  IoCart,
+  IoSearch,
+  IoMenuSharp,
+} from "react-icons/io5";
 
 import { NavBar, Ul, Li, Logo } from "./styles";
 
@@ -25,15 +30,16 @@ export const Navbar = () => {
         <Li>
           <Link href={"/"}>
             <IoCart fontSize="18px" />
-            Carrinho
+            <p>Carrinho</p>
           </Link>
         </Li>
         <Li>
           <Link href={"/"}>
-            <IoPersonCircle fontSize="18px" />
-            Login
+            <IoPersonCircleOutline fontSize="18px" />
+            <p>Login</p>
           </Link>
         </Li>
+        <IoMenuSharp fontSize="18px" />
       </Ul>
     </NavBar>
   );
