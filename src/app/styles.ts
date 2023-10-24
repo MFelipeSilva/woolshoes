@@ -203,6 +203,8 @@ export const MetaProducts = styled(Meta)`
   }
 `;
 
+export const Image = styled.img``;
+
 export const AdvantageContainer = styled.div`
   display: flex;
   width: 70%;

@@ -22,6 +22,7 @@ import {
   AdvantageTitle,
   AdvantageDescription,
   CardProducts,
+  Image,
   CarouselContent,
   MetaProducts,
   CarouselContainer,
@@ -77,7 +78,10 @@ export default function Home() {
           <CarouselContent>
             <CardCarousel ref={carouselRef} {...settings}>
               {products.map((product) => (
-                <CardProducts cover={<img alt="example" src={product.src} />}>
+                <CardProducts
+                  key={product.id}
+                  cover={<Image src={product.src} alt="product images"/>}
+                >
                   <MetaProducts
                     title={product.title}
                     description={product.description}
@@ -111,7 +115,7 @@ export default function Home() {
           <Title>Vantagens de comprar no nosso site</Title>
           <AdvantageContent>
             {purchase_advantage.map((advantage) => (
-              <Advantage>
+              <Advantage key={advantage.id}>
                 <AdvantageIcon>
                   <Icon src={advantage.icon} />
                 </AdvantageIcon>
