@@ -16,8 +16,6 @@ import {
   OtherAnnouncement,
   Section,
   Title,
-  AdvantageRow,
-  AdvantageCol,
   Advantage,
   AdvantageIcon,
   AdvantageContent,
@@ -30,6 +28,14 @@ import {
   CardCarousel,
   CarouselButton,
   ButtonContent,
+  Banner,
+  ContentSecondaryBanner,
+  Categories,
+  CategoriesTitle,
+  Category,
+  AdvantageTexts,
+  AdvantageContainer,
+  Icon,
 } from "./styles";
 
 export default function Home() {
@@ -55,11 +61,17 @@ export default function Home() {
     <Layout>
       <Content>
         <ContentBanner>
-          <MainAnnouncement src="https://i.pinimg.com/originals/79/ab/59/79ab596ef07577afa1ec05a05b1f804c.jpg" />
-          <OtherAnnouncement src="https://cdn.shopify.com/s/files/1/0050/1750/1809/products/M51SM_5.jpg?v=1668000280" />
+          <MainAnnouncement src="https://www.travelandleisure.com/thmb/jwKXCYzMmJWNaM2zOdPQW0F26c0=/fit-in/1500x2365/filters:no_upscale():max_bytes(150000):strip_icc()/tal-mens-travel-shoes-test-allbirds-tree-dasher-2-ivy-ford-03-344ca65ad63540ff9c4cd9a16d1ae962.jpg" />
+          <Categories>
+            <CategoriesTitle>CATEGORIAS</CategoriesTitle>
+            <Category>Calçados Femininos</Category>
+            <Category>Calçados Masculinos</Category>
+            <Category>Calçados Infantis</Category>
+          </Categories>
+          <OtherAnnouncement src="https://i5.walmartimages.com/asr/9e444317-e0d6-4719-a3b0-bb693bce266b.5396b002879f4167c1f93a7710fa259d.jpeg?odnHeight=768&odnWidth=768&odnBg=FFFFFF" />
         </ContentBanner>
       </Content>
-      <Section>
+      <Section page={1}>
         <CarouselContainer>
           <Title>Nossos lançamentos</Title>
           <CarouselContent>
@@ -88,23 +100,31 @@ export default function Home() {
           </ButtonContent>
         </CarouselContainer>
       </Section>
-      <Section>
-        <Title>Vantagens de comprar no nosso site</Title>
-        <AdvantageRow gutter={[50, 50]}>
-          {purchase_advantage.map((advantage) => (
-            <AdvantageCol span={12}>
+      <Section page={2}>
+        <Title>Produtos relevantes</Title>
+        <ContentSecondaryBanner>
+          <Banner src="https://cdn.allbirds.com/image/upload/f_auto,q_auto,w_2048/cms/5fpkfzYQ5cQnhuIz1VFU67/1266845421d7e9876b6375fbf91a4280/23Q4-ZombiePack-Secondary-Hero-Desktop.jpg" />
+        </ContentSecondaryBanner>
+      </Section>
+      <Section page={3}>
+        <AdvantageContainer>
+          <Title>Vantagens de comprar no nosso site</Title>
+          <AdvantageContent>
+            {purchase_advantage.map((advantage) => (
               <Advantage>
-                <AdvantageIcon></AdvantageIcon>
-                <AdvantageContent>
+                <AdvantageIcon>
+                  <Icon src={advantage.icon} />
+                </AdvantageIcon>
+                <AdvantageTexts>
                   <AdvantageTitle>{advantage.title}</AdvantageTitle>
                   <AdvantageDescription>
                     {advantage.description}
                   </AdvantageDescription>
-                </AdvantageContent>
+                </AdvantageTexts>
               </Advantage>
-            </AdvantageCol>
-          ))}
-        </AdvantageRow>
+            ))}
+          </AdvantageContent>
+        </AdvantageContainer>
       </Section>
     </Layout>
   );

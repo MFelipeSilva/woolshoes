@@ -9,38 +9,38 @@ import {
   IoMenuSharp,
 } from "react-icons/io5";
 
-import { NavBar, Ul, Li, Logo } from "./styles";
+import { NavBar, Logo, Pages, Page, CartAndLogin } from "./styles";
 
 export const Navbar = () => {
   return (
     <NavBar>
-      <Logo>dev-ecommerce</Logo>
-      <Ul>
-        <Li>
+      <Logo>Woolshoes</Logo>
+      <Pages>
+        <Page>
           <Link href={"/"}>Produtos</Link>
-        </Li>
-        <Li>
+        </Page>
+        <Page>
           <Link href={"/"}>Sobre</Link>
-        </Li>
-        <Li>
+        </Page>
+        <Page>
           <Link href={"/"}>Contato</Link>
-        </Li>
-      </Ul>
-      <Ul>
-        <Li>
+        </Page>
+      </Pages>
+      <CartAndLogin>
+        <Page>
           <Link href={"/"}>
-            <IoCart fontSize="18px" />
+            <IoCart />
             <p>Carrinho</p>
           </Link>
-        </Li>
-        <Li>
+        </Page>
+        <Page>
           <Link href={"/"}>
-            <IoPersonCircleOutline fontSize="18px" />
+            <IoPersonCircleOutline />
             <p>Login</p>
           </Link>
-        </Li>
-        <IoMenuSharp fontSize="18px" />
-      </Ul>
+        </Page>
+        <IoMenuSharp />
+      </CartAndLogin>
     </NavBar>
   );
 };

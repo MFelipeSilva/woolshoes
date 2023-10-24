@@ -1,25 +1,60 @@
 import styled from "styled-components";
 
-import { Button, Card, Carousel, Col, Row } from "antd";
+import { Button, Card, Carousel } from "antd";
 
 const { Meta } = Card;
+
+interface SectionProps {
+  page: number;
+}
 
 export const Content = styled.section`
   display: flex;
   width: 100%;
-  height: 100%;
+  height: 90%;
+  margin-top: 10em;
   align-items: start;
   justify-content: center;
 `;
 
 export const ContentBanner = styled.section`
   display: flex;
+  position: relative;
   width: 90%;
-  height: 70%;
+  height: 70vh;
   gap: 2.5em;
-  margin-top: 5em;
   align-items: center;
   justify-content: center;
+`;
+
+export const Categories = styled.div`
+  display: flex;
+  position: absolute;
+  right: 0;
+  width: 15em;
+  height: 17em;
+  gap: 0.7em;
+  padding: 0 1em;
+  margin-top: 5em;
+  margin-right: 32em;
+  border: 1px solid black;
+  border-left: 0;
+  background-color: #ffffff;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+`;
+
+export const CategoriesTitle = styled.h4`
+  margin-bottom: 1em;
+  letter-spacing: 1px;
+`;
+
+export const Category = styled.li`
+  font-size: 10pt;
+  font-weight: 300;
+  list-style: circle;
+  letter-spacing: 1px;
 `;
 
 export const MainAnnouncement = styled.img`
@@ -30,7 +65,7 @@ export const MainAnnouncement = styled.img`
   border-radius: 5px;
   background-color: #f2f4f5;
   object-fit: cover;
-  object-position: bottom;
+  object-position: center;
 `;
 
 export const OtherAnnouncement = styled.img`
@@ -41,14 +76,33 @@ export const OtherAnnouncement = styled.img`
   object-fit: cover;
 `;
 
-export const Section = styled.section`
+export const Section = styled.section<SectionProps>`
   display: flex;
   width: 100vw;
-  height: 100%;
+  height: ${(props) =>
+    props.page === 1 ? "80%" : "100%" && props.page === 3 ? "40%" : "100%"};
   gap: 3em;
   align-items: center;
   justify-content: start;
   flex-direction: column;
+`;
+
+export const ContentSecondaryBanner = styled.section`
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  align-items: start;
+  justify-content: start;
+`;
+
+export const Banner = styled.img`
+  max-width: 100%;
+  max-height: 100%;
+  width: 90%;
+  height: 80%;
+  border-radius: 0px 5px 5px 0;
+  object-fit: cover;
+  object-position: center;
 `;
 
 export const Title = styled.h1`
@@ -56,7 +110,6 @@ export const Title = styled.h1`
   z-index: 1;
   font-weight: 700;
   text-align: start;
-  margin-left: 0.7em;
 `;
 
 export const CarouselContainer = styled.div`
@@ -68,6 +121,10 @@ export const CarouselContainer = styled.div`
 
   @media (max-width: 1200px) {
     margin-left: 0;
+  }
+
+  & > h1 {
+    margin-left: 0.7em;
   }
 `;
 
@@ -146,14 +203,20 @@ export const MetaProducts = styled(Meta)`
   }
 `;
 
-export const AdvantageRow = styled(Row)`
+export const AdvantageContainer = styled.div`
   display: flex;
-  width: 100vh;
+  width: 70%;
+  height: 100%;
+  gap: 3em;
+  text-align: start;
+  flex-direction: column;
+`;
+
+export const AdvantageContent = styled.div`
+  display: flex;
   align-items: center;
   justify-content: center;
 `;
-
-export const AdvantageCol = styled(Col)``;
 
 export const Advantage = styled.div`
   display: flex;
@@ -162,18 +225,33 @@ export const Advantage = styled.div`
 `;
 
 export const AdvantageIcon = styled.div`
-  width: 4.5em;
-  height: 4.5em;
+  display: flex;
+  width: 4.7em;
+  height: 4.7em;
+  border-radius: 5px;
+  align-items: center;
+  justify-content: center;
   background-color: #f2f4f5;
 `;
 
-export const AdvantageContent = styled.div`
-  width: 30em;
+export const Icon = styled.img`
+  width: 45px;
+  height: 45px;
+`;
+
+export const AdvantageTexts = styled.div`
+  display: flex;
+  width: 20em;
+  gap: 0.5em;
+  flex-direction: column;
 `;
 
 export const AdvantageTitle = styled.h2`
-  font-size: 14pt;
-  font-weight: 500;
+  font-size: 13pt;
+  font-weight: 600;
 `;
 
-export const AdvantageDescription = styled.p``;
+export const AdvantageDescription = styled.p`
+  font-size: 11pt;
+  width: 16vw;
+`;
