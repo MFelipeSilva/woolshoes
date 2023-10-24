@@ -2,7 +2,7 @@ import React from "react";
 
 import GlobalStyle from "@/styles/global";
 
-import { Navbar } from "@/components/Navbar";
+import { Navbar } from "@/components/NavBar";
 import { Footer } from "@/components/Footer";
 
 import { Container } from "./styles";
