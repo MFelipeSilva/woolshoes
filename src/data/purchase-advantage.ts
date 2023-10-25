@@ -4,7 +4,7 @@ export const purchase_advantage = [
     icon: "https://img.icons8.com/ios/50/truck-with-trailer.png",
     title: "Frete grátis",
     description:
-      "Todas as compras acima de R$ 100 são elegíveis para frete grátis.",
+      "Todas as compras acima de R$299 são elegíveis para frete grátis.",
   },
   {
     id: "3",

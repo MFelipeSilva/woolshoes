@@ -2,17 +2,21 @@
 
 import { useRef } from "react";
 
+import Link from "next/link";
+
 import { IoArrowBackOutline, IoArrowForward } from "react-icons/io5";
+
+import { Layout } from "@/layout";
 
 import { products } from "@/data/products";
 import { purchase_advantage } from "@/data/purchase-advantage";
 
-import { Layout } from "@/layout";
+import { PrimaryButton } from "@/components/Buttons/PrimaryButton";
 
 import {
   MainAnnouncement,
   Content,
-  ContentBanner,
+  BannerContent,
   OtherAnnouncement,
   Section,
   Title,
@@ -30,13 +34,15 @@ import {
   CarouselButton,
   ButtonContent,
   Banner,
-  ContentSecondaryBanner,
+  SecondaryBannerContent,
   Categories,
   CategoriesTitle,
   Category,
   AdvantageTexts,
   AdvantageContainer,
   Icon,
+  BannerHeader,
+  BannerTitle,
 } from "./styles";
 
 export default function Home() {
@@ -61,16 +67,28 @@ export default function Home() {
   return (
     <Layout>
       <Content>
-        <ContentBanner>
-          <MainAnnouncement src="https://www.travelandleisure.com/thmb/jwKXCYzMmJWNaM2zOdPQW0F26c0=/fit-in/1500x2365/filters:no_upscale():max_bytes(150000):strip_icc()/tal-mens-travel-shoes-test-allbirds-tree-dasher-2-ivy-ford-03-344ca65ad63540ff9c4cd9a16d1ae962.jpg" />
+        <BannerContent>
+          <BannerHeader>
+            <BannerTitle>Tênis confortaveis e de alta qualidade.</BannerTitle>
+            <PrimaryButton type="primary" size="large">
+              Conferir produtos
+            </PrimaryButton>
+          </BannerHeader>
+          <MainAnnouncement src="https://uploaddeimagens.com.br/images/004/647/123/full/1d461901-923e-462c-a9e9-b4166e76e1b1.jpg?1698244824" />
           <Categories>
             <CategoriesTitle>CATEGORIAS</CategoriesTitle>
-            <Category>Calçados Femininos</Category>
-            <Category>Calçados Masculinos</Category>
-            <Category>Calçados Infantis</Category>
+            <Category>
+              <Link href={"/"}>Calçados Femininos</Link>
+            </Category>
+            <Category>
+              <Link href={"/"}>Calçados Masculinos</Link>
+            </Category>
+            <Category>
+              <Link href={"/"}>Calçados Infantis</Link>
+            </Category>
           </Categories>
           <OtherAnnouncement src="https://i5.walmartimages.com/asr/9e444317-e0d6-4719-a3b0-bb693bce266b.5396b002879f4167c1f93a7710fa259d.jpeg?odnHeight=768&odnWidth=768&odnBg=FFFFFF" />
-        </ContentBanner>
+        </BannerContent>
       </Content>
       <Section page={1}>
         <CarouselContainer>
@@ -80,7 +98,7 @@ export default function Home() {
               {products.map((product) => (
                 <CardProducts
                   key={product.id}
-                  cover={<Image src={product.src} alt="product images"/>}
+                  cover={<Image src={product.src} alt="product images" />}
                 >
                   <MetaProducts
                     title={product.title}
@@ -106,9 +124,9 @@ export default function Home() {
       </Section>
       <Section page={2}>
         <Title>Produtos relevantes</Title>
-        <ContentSecondaryBanner>
+        <SecondaryBannerContent>
           <Banner src="https://cdn.allbirds.com/image/upload/f_auto,q_auto,w_2048/cms/5fpkfzYQ5cQnhuIz1VFU67/1266845421d7e9876b6375fbf91a4280/23Q4-ZombiePack-Secondary-Hero-Desktop.jpg" />
-        </ContentSecondaryBanner>
+        </SecondaryBannerContent>
       </Section>
       <Section page={3}>
         <AdvantageContainer>

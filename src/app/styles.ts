@@ -17,7 +17,7 @@ export const Content = styled.section`
   justify-content: center;
 `;
 
-export const ContentBanner = styled.section`
+export const BannerContent = styled.section`
   display: flex;
   position: relative;
   width: 90%;
@@ -25,6 +25,28 @@ export const ContentBanner = styled.section`
   gap: 2.5em;
   align-items: center;
   justify-content: center;
+`;
+
+export const BannerHeader = styled.div`
+  display: flex;
+  position: absolute;
+  left: 0;
+  gap: 2em;
+  margin-left: 5em;
+  flex-direction: column;
+
+  button {
+    width: 50% !important;
+    font-size: 12pt !important;
+    font-weight: 600 !important;
+  }
+`;
+
+export const BannerTitle = styled.h1`
+  color: #ffffff;
+  font-size: 34pt;
+  width: 11em;
+  text-transform: uppercase;
 `;
 
 export const Categories = styled.div`
@@ -35,7 +57,7 @@ export const Categories = styled.div`
   height: 17em;
   gap: 0.7em;
   padding: 0 1em;
-  margin-top: 5em;
+  margin-top: 10em;
   margin-right: 32em;
   border: 1px solid black;
   border-left: 0;
@@ -51,10 +73,19 @@ export const CategoriesTitle = styled.h4`
 `;
 
 export const Category = styled.li`
-  font-size: 10pt;
-  font-weight: 300;
   list-style: circle;
-  letter-spacing: 1px;
+
+  a {
+    color: #000000;
+    font-size: 10pt;
+    font-weight: 300;
+    letter-spacing: 1px;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 `;
 
 export const MainAnnouncement = styled.img`
@@ -63,7 +94,6 @@ export const MainAnnouncement = styled.img`
   width: 70%;
   height: 100%;
   border-radius: 5px;
-  background-color: #f2f4f5;
   object-fit: cover;
   object-position: center;
 `;
@@ -85,9 +115,19 @@ export const Section = styled.section<SectionProps>`
   align-items: center;
   justify-content: start;
   flex-direction: column;
+
+  @media (max-width: 1200px) {
+    height: ${(props) =>
+      props.page === 1 ? "80%" : "100%" && props.page === 3 && "60%"};
+  }
+
+  @media (max-width: 768px) {
+    height: ${(props) =>
+      props.page === 1 ? "80%" : "100%" && props.page === 3 && "70%"};
+  }
 `;
 
-export const ContentSecondaryBanner = styled.section`
+export const SecondaryBannerContent = styled.section`
   display: flex;
   width: 100%;
   height: 100vh;
@@ -134,6 +174,8 @@ export const CarouselContent = styled.div`
 `;
 
 export const CardCarousel = styled(Carousel)`
+  cursor: pointer;
+
   & > div > div {
     display: flex !important;
     margin-left: 9em;
@@ -207,22 +249,34 @@ export const Image = styled.img``;
 
 export const AdvantageContainer = styled.div`
   display: flex;
-  width: 70%;
+  width: 80%;
   height: 100%;
   gap: 3em;
-  text-align: start;
   flex-direction: column;
+
+  h1 {
+    align-self: flex-start;
+    text-align: start;
+  }
+
+  @media (max-width: 1350px) {
+    width: 80%;
+  }
+
+  @media (max-width: 768px) {
+    height: 80%;
+  }
 `;
 
 export const AdvantageContent = styled.div`
   display: flex;
+  gap: clamp(2em, 2vw, 3em);
+  flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
 `;
 
 export const Advantage = styled.div`
   display: flex;
-  width: 100vw;
   gap: 1em;
 `;
 
@@ -243,9 +297,13 @@ export const Icon = styled.img`
 
 export const AdvantageTexts = styled.div`
   display: flex;
-  width: 20em;
+  width: clamp(10em, 17vw, 24em);
   gap: 0.5em;
   flex-direction: column;
+
+  @media (max-width: 1200px) {
+    width: clamp(20em, 17vw, 24em);
+  }
 `;
 
 export const AdvantageTitle = styled.h2`
@@ -255,5 +313,12 @@ export const AdvantageTitle = styled.h2`
 
 export const AdvantageDescription = styled.p`
   font-size: 11pt;
-  width: 16vw;
+
+  @media (max-width: 1200px) {
+    width: 100%;
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
