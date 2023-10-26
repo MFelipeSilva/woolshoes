@@ -1,6 +1,10 @@
 "use client";
 
+import { useState } from "react";
+
 import Link from "next/link";
+
+import { Drawer } from "antd";
 
 import {
   IoPersonCircleOutline,
@@ -12,6 +16,8 @@ import {
 import { NavBar, Logo, Pages, Page, CartAndLogin } from "./styles";
 
 export const Navbar = () => {
+  const [open, setOpen] = useState(false);
+
   return (
     <NavBar>
       <Logo>Woolshoes</Logo>
@@ -28,7 +34,7 @@ export const Navbar = () => {
       </Pages>
       <CartAndLogin>
         <Page>
-          <Link href={"/"}>
+          <Link href={"/"} onClick={() => setOpen(true)}>
             <IoCart />
             <p>Carrinho</p>
           </Link>
@@ -41,6 +47,9 @@ export const Navbar = () => {
         </Page>
         <IoMenuSharp />
       </CartAndLogin>
+      <Drawer title="Seu carrinho de compras" placement="right" onClose={() => setOpen(false)} open={open}>
+        <p>Vazio</p>
+      </Drawer>
     </NavBar>
   );
 };

@@ -1,15 +1,13 @@
 "use client";
 
-import { useRef } from "react";
-
 import Link from "next/link";
-
-import { IoArrowBackOutline, IoArrowForward } from "react-icons/io5";
 
 import { Layout } from "@/layout";
 
 import { products } from "@/data/products";
 import { purchase_advantage } from "@/data/purchase-advantage";
+
+import { Carousel } from "@/components/Carousel";
 
 import { PrimaryButton } from "@/components/Buttons/PrimaryButton";
 
@@ -30,9 +28,6 @@ import {
   CarouselContent,
   MetaProducts,
   CarouselContainer,
-  CardCarousel,
-  CarouselButton,
-  ButtonContent,
   Banner,
   SecondaryBannerContent,
   Categories,
@@ -46,24 +41,6 @@ import {
 } from "./styles";
 
 export default function Home() {
-  const carouselRef = useRef<any>(null);
-
-  const next = () => {
-    carouselRef.current.next();
-  };
-
-  const prev = () => {
-    carouselRef.current.prev();
-  };
-
-  const settings = {
-    dots: false,
-    infinite: true,
-    slidesToShow: 2,
-    slidesToScroll: 2,
-    arrows: true,
-  };
-
   return (
     <Layout>
       <Content>
@@ -94,7 +71,7 @@ export default function Home() {
         <CarouselContainer>
           <Title>Nossos lançamentos</Title>
           <CarouselContent>
-            <CardCarousel ref={carouselRef} {...settings}>
+            <Carousel>
               {products.map((product) => (
                 <CardProducts
                   key={product.id}
@@ -106,20 +83,8 @@ export default function Home() {
                   />
                 </CardProducts>
               ))}
-            </CardCarousel>
+            </Carousel>
           </CarouselContent>
-          <ButtonContent>
-            <CarouselButton
-              onClick={prev}
-              shape="circle"
-              icon={<IoArrowBackOutline fontSize="16pt" />}
-            />
-            <CarouselButton
-              onClick={next}
-              shape="circle"
-              icon={<IoArrowForward fontSize="16pt" />}
-            />
-          </ButtonContent>
         </CarouselContainer>
       </Section>
       <Section page={2}>

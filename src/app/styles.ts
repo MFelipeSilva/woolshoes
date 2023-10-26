@@ -32,19 +32,17 @@ export const BannerHeader = styled.div`
   position: absolute;
   left: 0;
   gap: 2em;
-  margin-left: 5em;
+  margin-left: clamp(1vw, 5vw, 5em);
   flex-direction: column;
 
   button {
-    width: 50% !important;
-    font-size: 12pt !important;
     font-weight: 600 !important;
   }
 `;
 
 export const BannerTitle = styled.h1`
   color: #ffffff;
-  font-size: 34pt;
+  font-size: clamp(20pt, 3vw, 34pt);
   width: 11em;
   text-transform: uppercase;
 `;
@@ -57,14 +55,22 @@ export const Categories = styled.div`
   height: 17em;
   gap: 0.7em;
   padding: 0 1em;
-  margin-top: 10em;
-  margin-right: 32em;
   border: 1px solid black;
   border-left: 0;
   background-color: #ffffff;
   flex-direction: column;
   align-items: start;
   justify-content: center;
+  margin-top: 10vh;
+  margin-right: 26.8vw;
+
+  @media (max-width: 1650px) {
+    margin-right: 25vw;
+  }
+
+  @media (max-width: 1000px) {
+    display: none;
+  }
 `;
 
 export const CategoriesTitle = styled.h4`
@@ -96,6 +102,10 @@ export const MainAnnouncement = styled.img`
   border-radius: 5px;
   object-fit: cover;
   object-position: center;
+
+  @media (max-width: 1000px) {
+    width: 100%;
+  }
 `;
 
 export const OtherAnnouncement = styled.img`
@@ -104,6 +114,10 @@ export const OtherAnnouncement = styled.img`
   border-radius: 5px;
   background-color: #f2f4f5;
   object-fit: cover;
+
+  @media (max-width: 1000px) {
+    display: none;
+  }
 `;
 
 export const Section = styled.section<SectionProps>`
@@ -153,7 +167,6 @@ export const Title = styled.h1`
 `;
 
 export const CarouselContainer = styled.div`
-  position: relative;
   display: flex;
   gap: 3em;
   flex-direction: column;
@@ -164,73 +177,13 @@ export const CarouselContainer = styled.div`
   }
 
   & > h1 {
-    margin-left: 0.7em;
+    margin-left: 1em;
   }
 `;
 
 export const CarouselContent = styled.div`
   z-index: 1;
   width: 80vw;
-`;
-
-export const CardCarousel = styled(Carousel)`
-  cursor: pointer;
-
-  & > div > div {
-    display: flex !important;
-    margin-left: 9em;
-    gap: 3em !important;
-  }
-
-  .slick-slide > div {
-    min-height: 38em;
-  }
-
-  @media (min-width: 1200px) {
-    .slick-slide {
-      width: 5.5% !important;
-    }
-  }
-
-  @media (max-width: 1199px) and (min-width: 992px) {
-    .slick-slide {
-      width: 3.5% !important;
-    }
-  }
-
-  @media (max-width: 991px) and (min-width: 768px) {
-    .slick-slide {
-      width: 50% !important;
-    }
-  }
-
-  @media (max-width: 767px) {
-    .slick-slide {
-      width: 100% !important;
-    }
-  }
-`;
-
-export const ButtonContent = styled.div`
-  position: absolute;
-  display: flex;
-  width: 100%;
-  height: 100%;
-  align-items: center;
-  justify-content: space-between;
-
-  button:nth-child(1) {
-    opacity: 0;
-  }
-`;
-
-export const CarouselButton = styled(Button)`
-  display: flex;
-  z-index: 2;
-  width: 48px !important;
-  height: 48px !important;
-  align-items: center;
-  justify-content: center;
 `;
 
 export const CardProducts = styled(Card)`

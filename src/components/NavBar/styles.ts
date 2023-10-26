@@ -46,6 +46,8 @@ export const CartAndLogin = styled.ul`
   display: flex;
   gap: 2em;
   list-style: none;
+  align-items: center;
+  justify-content: center;
 
   &:nth-child(3) {
     & > svg {
@@ -86,11 +88,11 @@ export const Page = styled.li`
         display: none;
       }
     }
-  }
 
-  @media (max-width: 1000px) {
-    & > svg {
-      font-size: 18pt;
+    @media (max-width: 1000px) {
+      & > svg {
+        font-size: 18pt;
+      }
     }
   }
 `;
