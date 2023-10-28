@@ -2,7 +2,7 @@ import React, { ReactNode, useRef, useState } from "react";
 
 import { IoArrowBackOutline, IoArrowForward } from "react-icons/io5";
 
-import { CardCarousel, CarouselButton } from "./styles";
+import { CardCarousel, CarouselButton, CarouselButtonDisabled } from "./styles";
 
 interface CarouselProps {
   children: ReactNode;
@@ -24,8 +24,8 @@ export const Carousel: React.FC<CarouselProps> = ({ children }) => {
     carouselRef.current.prev();
   };
 
-  const handleCarouselChange = (current: number) => {
-    if (current === numberOfSlides - 1) {
+  const handleCarouselSlide = (current: number) => {
+    if (current === numberOfSlides - 2) {
       setShowNextButton(false);
       setShowPrevButton(true);
     } else if (current === 0) {
@@ -40,8 +40,8 @@ export const Carousel: React.FC<CarouselProps> = ({ children }) => {
   const settings = {
     dots: false,
     infinite: false,
-    afterChange: handleCarouselChange,
-    slidesToShow: 1.6,
+    afterChange: handleCarouselSlide,
+    slidesToShow: 1.5,
     slidesToScroll: 1,
     arrows: true,
     nextArrow: showNextButton ? (
@@ -50,14 +50,18 @@ export const Carousel: React.FC<CarouselProps> = ({ children }) => {
         shape="circle"
         icon={<IoArrowForward fontSize="16pt" />}
       />
-    ) : undefined,
+    ) : (
+      <CarouselButtonDisabled />
+    ),
     prevArrow: showPrevButton ? (
       <CarouselButton
         onClick={prev}
         shape="circle"
         icon={<IoArrowBackOutline fontSize="16pt" />}
       />
-    ) : undefined,
+    ) : (
+      <CarouselButtonDisabled />
+    ),
   };
 
   return (

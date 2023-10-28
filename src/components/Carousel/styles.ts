@@ -5,7 +5,11 @@ import { Button, Carousel } from "antd";
 export const CardCarousel = styled(Carousel)`
   & > .slick-list > .slick-track {
     display: flex !important;
-    gap: 3em !important;
+    margin-left: 0.9em;
+  }
+
+  & > button {
+    margin: -50px 30px 0 30px !important;
   }
 
   .slick-slide > div {
@@ -49,4 +53,11 @@ export const CarouselButton = styled(Button)`
   & > span {
     color: #000000;
   }
+`;
+
+export const CarouselButtonDisabled = styled(Button)`
+  display: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 125ms ease 0s;
 `;

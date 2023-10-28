@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { Button, Card, Carousel } from "antd";
+import { Card } from "antd";
 
 const { Meta } = Card;
 
@@ -10,8 +10,8 @@ interface SectionProps {
 
 export const Content = styled.section`
   display: flex;
-  width: 100%;
-  height: 90%;
+  width: 100vw;
+  height: 90vh;
   margin-top: 10em;
   align-items: start;
   justify-content: center;
@@ -25,6 +25,12 @@ export const BannerContent = styled.section`
   gap: 2.5em;
   align-items: center;
   justify-content: center;
+
+  @media (max-width: 768px) {
+    display: flex;
+    width: 80vw;
+    justify-content: center;
+  }
 `;
 
 export const BannerHeader = styled.div`
@@ -160,7 +166,7 @@ export const Banner = styled.img`
 `;
 
 export const Title = styled.h1`
-  font-size: 25pt;
+  font-size: clamp(22pt, 2vw, 25pt);
   z-index: 1;
   font-weight: 700;
   text-align: start;
@@ -169,15 +175,11 @@ export const Title = styled.h1`
 export const CarouselContainer = styled.div`
   display: flex;
   gap: 3em;
-  flex-direction: column;
   margin-left: 15em;
+  flex-direction: column;
 
   @media (max-width: 1200px) {
     margin-left: 0;
-  }
-
-  & > h1 {
-    margin-left: 1em;
   }
 `;
 
