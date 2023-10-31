@@ -20,10 +20,12 @@ export const Navbar = () => {
 
   return (
     <NavBar>
-      <Logo>Woolshoes</Logo>
+      <Logo>
+        <Link href={"/"}>Woolshoes</Link>
+      </Logo>
       <Pages>
         <Page>
-          <Link href={"/"}>Produtos</Link>
+          <Link href={"/products/1"}>Produtos</Link>
         </Page>
         <Page>
           <Link href={"/"}>Sobre</Link>
@@ -47,7 +49,12 @@ export const Navbar = () => {
         </Page>
         <IoMenuSharp />
       </CartAndLogin>
-      <Drawer title="Seu carrinho de compras" placement="right" onClose={() => setOpen(false)} open={open}>
+      <Drawer
+        title="Seu carrinho de compras"
+        placement="right"
+        onClose={() => setOpen(false)}
+        open={open}
+      >
         <p>Vazio</p>
       </Drawer>
     </NavBar>

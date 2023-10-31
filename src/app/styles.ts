@@ -12,8 +12,7 @@ export const Content = styled.section`
   display: flex;
   width: 100vw;
   height: 90vh;
-  margin-top: 10em;
-  align-items: start;
+  align-items: center;
   justify-content: center;
 `;
 
@@ -63,6 +62,7 @@ export const Categories = styled.div`
   padding: 0 1em;
   border: 1px solid black;
   border-left: 0;
+  border-radius: 5px !important;
   background-color: #ffffff;
   flex-direction: column;
   align-items: start;
@@ -143,7 +143,7 @@ export const Section = styled.section<SectionProps>`
 
   @media (max-width: 768px) {
     height: ${(props) =>
-      props.page === 1 ? "80%" : "100%" && props.page === 3 && "70%"};
+      props.page === 1 ? "100%" : "100%" && props.page === 3 && "70%"};
   }
 `;
 

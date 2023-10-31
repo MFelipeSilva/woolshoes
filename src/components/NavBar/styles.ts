@@ -2,20 +2,24 @@ import styled from "styled-components";
 
 export const NavBar = styled.nav`
   display: flex;
-  position: fixed;
-  left: 0;
+  position: relative;
+  top: 0;
   z-index: 4;
   width: 100%;
   height: 3.8em;
   padding: 0 3em;
-  background-color: #2d3142;
-  box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 24px 0px;
   align-items: center;
   justify-content: space-between;
+  background-color: #2d3142;
+  transition: transform 100ms ease-out 0s;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 24px 0px;
 `;
 
 export const Logo = styled.h2`
-  color: #ffffff;
+  a {
+    color: #ffffff;
+    text-decoration: none;
+  }
 `;
 
 export const Pages = styled.ul`
