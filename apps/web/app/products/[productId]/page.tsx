@@ -6,7 +6,9 @@ import { Col, Row } from "antd";
 
 import { Layout } from "@/layout";
 
-import { products } from "@/data/products";
+import { getProducts } from "@/data/getProducts";
+
+import { formatPrice } from "@/utils/formatPrice";
 
 import {
   CardProducts,
@@ -17,7 +19,9 @@ import {
   Image,
 } from "./styles";
 
-export default function Products() {
+export default async function Products() {
+  const products = await getProducts();
+
   return (
     <Layout>
       <Container>
@@ -27,11 +31,11 @@ export default function Products() {
             {products.map((product) => (
               <Col span={8} key={product.id}>
                 <CardProducts
-                  cover={<Image src={product.src} alt="product images" />}
+                  cover={<Image src={product.image} alt="product images" />}
                 >
                   <MetaProducts
-                    title={product.title}
-                    description={`R$${product.price}`}
+                    title={product.name}
+                    description={formatPrice(product.price)}
                   />
                 </CardProducts>
               </Col>

@@ -12,7 +12,7 @@
     "tsconfig": "*",
     "turbo": "latest"
   },
-  "name": "my-turborepo",
+  "name": "woolshoes",
   "packageManager": "npm@9.3.1",
   "workspaces": [
     "apps/*",

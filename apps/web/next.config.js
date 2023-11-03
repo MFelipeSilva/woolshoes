@@ -9,7 +9,6 @@ function getCurrentDirname(importMetaUrl) {
 export default {
   webpack: (config) => {
     const currentDir = getCurrentDirname(import.meta.url);
-
     config.resolve.alias["@"] = currentDir;
 
     return config;

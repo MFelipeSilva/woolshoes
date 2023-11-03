@@ -4,8 +4,8 @@ import Link from "next/link";
 
 import { Layout } from "@/layout";
 
-import { products } from "@/data/products";
-import { purchase_advantage } from "@/data/purchase-advantage";
+import { getProducts } from "@/data/getProducts";
+import { purchaseAdvantage } from "@/data/purchaseAdvantage";
 
 import { Carousel } from "@/components/Carousel";
 
@@ -40,7 +40,9 @@ import {
   BannerTitle,
 } from "./styles";
 
-export default function Home() {
+export default async function Home() {
+  const products = await getProducts();
+
   return (
     <Layout>
       <Content>
@@ -75,10 +77,10 @@ export default function Home() {
               {products.map((product) => (
                 <CardProducts
                   key={product.id}
-                  cover={<Image src={product.src} alt="product images" />}
+                  cover={<Image src={product.image} alt="product images" />}
                 >
                   <MetaProducts
-                    title={product.title}
+                    title={product.name}
                     description={product.description}
                   />
                 </CardProducts>
@@ -97,7 +99,7 @@ export default function Home() {
         <AdvantageContainer>
           <Title>Vantagens de comprar no nosso site</Title>
           <AdvantageContent>
-            {purchase_advantage.map((advantage) => (
+            {purchaseAdvantage.map((advantage) => (
               <Advantage key={advantage.id}>
                 <AdvantageIcon>
                   <Icon src={advantage.icon} />

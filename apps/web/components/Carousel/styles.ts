@@ -5,6 +5,7 @@ import { Button, Carousel } from "antd";
 export const CardCarousel = styled(Carousel)`
   & > .slick-list > .slick-track {
     display: flex !important;
+    height: 600px;
     margin-left: 0.9em;
   }
 

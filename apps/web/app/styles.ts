@@ -190,6 +190,7 @@ export const CarouselContent = styled.div`
 
 export const CardProducts = styled(Card)`
   width: 400px !important;
+  height: 530px !important;
   box-shadow: rgba(68, 68, 68, 0.2) 0px 8px 20px 2px;
 `;
 
@@ -197,6 +198,10 @@ export const MetaProducts = styled(Meta)`
   & > div > div:nth-child(1) {
     font-size: 16pt !important;
     font-weight: 700;
+  }
+
+  & > div > div:nth-child(2) {
+    font-size: 11pt !important;
   }
 `;
 
