@@ -14,7 +14,9 @@ export const CardCarousel = styled(Carousel)`
   }
 
   .slick-slide > div {
+    width: 90%;
     min-height: 38em;
+    pointer-events: auto;
   }
 
   @media (min-width: 1200px) {

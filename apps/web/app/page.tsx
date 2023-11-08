@@ -75,9 +75,8 @@ export default async function Home() {
           <CarouselContent>
             <Carousel>
               {products.map((product) => (
-                <Link href={`products/${product.id}`}>
+                <Link key={product.id} href={`products/${product.id}`}>
                   <CardProducts
-                    key={product.id}
                     cover={<Image src={product.image} alt="product images" />}
                   >
                     <MetaProducts
