@@ -66,7 +66,9 @@ export const Carousel: React.FC<CarouselProps> = ({ children }) => {
 
   return (
     <CardCarousel ref={carouselRef} {...settings}>
-      {children}
+      {React.Children.map(children, (child) => (
+        <>{child}</>
+      ))}
     </CardCarousel>
   );
 };

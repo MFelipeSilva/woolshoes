@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "apps/web",
+      "use": "vercel/node@16",
+      "config": {
+        "maxLambdaSize": "15mb"
+      }
+    }
+  ]
+}

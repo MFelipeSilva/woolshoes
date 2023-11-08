@@ -25,7 +25,7 @@ export const Navbar = () => {
       </Logo>
       <Pages>
         <Page>
-          <Link href={"/products/1"}>Produtos</Link>
+          <Link href={"/products"}>Produtos</Link>
         </Page>
         <Page>
           <Link href={"/"}>Sobre</Link>

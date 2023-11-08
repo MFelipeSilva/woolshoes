@@ -41,7 +41,8 @@ export const BannerHeader = styled.div`
   flex-direction: column;
 
   button {
-    font-weight: 600 !important;
+    width: 15em;
+    height: 60% !important;
   }
 `;
 
