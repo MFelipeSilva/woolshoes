@@ -1,6 +1,9 @@
 {
   "version": 2,
-  "projects": {
-    "default": "/apps/web"
-  }
+  "builds": [
+    {
+      "src": "apps/web",
+      "use": "@vercel/node"
+    }
+  ]
 }
