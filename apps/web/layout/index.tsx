@@ -7,7 +7,7 @@ import { Footer } from "@/components/Footer";
 
 import { Container as LayoutContainer } from "./styles";
 
-export const Layout = ({ children }: any) => {
+export default function Layout({ children }: any) {
   return (
     <LayoutContainer>
       <GlobalStyle />
@@ -16,4 +16,4 @@ export const Layout = ({ children }: any) => {
       <Footer />
     </LayoutContainer>
   );
-};
+}

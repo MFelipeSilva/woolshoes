@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 
-import { Layout } from "@/layout";
+import Layout from "@/layout";
 
 import { getProducts } from "@/data/getProducts";
 import { purchaseAdvantage } from "@/data/purchaseAdvantage";

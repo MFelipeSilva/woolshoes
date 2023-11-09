@@ -6,7 +6,7 @@ import Link from "next/link";
 
 import { Col, Row } from "antd";
 
-import { Layout } from "@/layout";
+import Layout from "@/layout";
 
 import { getProducts } from "@/data/getProducts";
 

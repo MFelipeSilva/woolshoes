@@ -8,7 +8,7 @@ import { getProduct } from "@/data/getProducts";
 
 import { formatPrice } from "@/utils/formatPrice";
 
-import { Layout } from "@/layout";
+import Layout from "@/layout";
 
 import { PrimaryButton } from "@/components/Buttons/PrimaryButton";
 
