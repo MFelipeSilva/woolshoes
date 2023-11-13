@@ -21,22 +21,22 @@ export const Navbar = () => {
   return (
     <NavBar>
       <Logo>
-        <Link href={"/"}>Woolshoes</Link>
+        <Link href="/">Woolshoes</Link>
       </Logo>
       <Pages>
         <Page>
-          <Link href={"/products"}>Produtos</Link>
+          <Link href="/products">Produtos</Link>
         </Page>
         <Page>
-          <Link href={"/"}>Sobre</Link>
+          <Link href="/">Sobre</Link>
         </Page>
         <Page>
-          <Link href={"/"}>Contato</Link>
+          <Link href="/">Contato</Link>
         </Page>
       </Pages>
       <CartAndLogin>
         <Page>
-          <Link href={"/"} onClick={() => setOpen(true)}>
+          <Link href="/" onClick={() => setOpen(true)}>
             <IoCart />
             <p>Carrinho</p>
           </Link>
@@ -52,8 +52,8 @@ export const Navbar = () => {
       <Drawer
         title="Seu carrinho de compras"
         placement="right"
-        onClose={() => setOpen(false)}
         open={open}
+        onClose={() => setOpen(false)}
       >
         <p>Vazio</p>
       </Drawer>

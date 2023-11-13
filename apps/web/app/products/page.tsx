@@ -1,14 +1,16 @@
 "use client";
 
-import React from "react";
+import { useQuery } from "react-query";
 
 import Link from "next/link";
 
 import { Col, Row } from "antd";
 
-import Layout from "@/layout";
+import { Layout } from "@/layout";
 
 import { getProducts } from "@/data/getProducts";
+
+import { ProductType } from "@/types/ProductType";
 
 import { formatPrice } from "@/utils/formatPrice";
 
@@ -22,8 +24,8 @@ import {
   SwitchGender,
 } from "./styles";
 
-export default async function Products() {
-  const products = await getProducts();
+export default function Products() {
+  const { data, isLoading, error } =  useQuery("products", async () => await getProducts());
 
   return (
     <Layout>
@@ -31,12 +33,12 @@ export default async function Products() {
         <Sidebar></Sidebar>
         <ProductsContent>
           <SwitchGender>
-            <Link href={"/products"}>Homem</Link>{" "}
-            <Link href={"/products"}>Mulher</Link>
+            <Link href="/products">Homem</Link>{" "}
+            <Link href="/products">Mulher</Link>
           </SwitchGender>
           <Row gutter={[30, 40]}>
-            {products.map((product) => (
-              <Col span={8} key={product.id}>
+            {data?.map((product: ProductType) => (
+              <Col xxl={8} xl={12} lg={12} key={product.id}>
                 <Link href={`/products/${product.id}`}>
                   <CardProducts
                     cover={<Image src={product.image} alt="product images" />}

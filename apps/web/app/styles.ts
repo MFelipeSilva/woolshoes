@@ -5,7 +5,7 @@ import { Card } from "antd";
 const { Meta } = Card;
 
 interface SectionProps {
-  page: number;
+  $page: number;
 }
 
 export const Content = styled.section`
@@ -131,20 +131,22 @@ export const Section = styled.section<SectionProps>`
   display: flex;
   width: 100vw;
   height: ${(props) =>
-    props.page === 1 ? "80%" : "100%" && props.page === 3 ? "40%" : "100%"};
-  gap: 3em;
+    props.$page === 1 ? "70%" : props.$page === 3 ? "40%" : "100%"};
+  margin-top: ${(props) =>
+    props.$page === 1 ? "5em" : props.$page === 2 ? "5em" : props.$page === 3 ? "0" : ""};
+    gap: 3em;
   align-items: center;
   justify-content: start;
   flex-direction: column;
 
   @media (max-width: 1200px) {
     height: ${(props) =>
-      props.page === 1 ? "80%" : "100%" && props.page === 3 && "60%"};
+      props.$page === 1 ? "70%" : (props.$page === 3 ? "60%" : "100%")};
   }
 
   @media (max-width: 768px) {
     height: ${(props) =>
-      props.page === 1 ? "100%" : "100%" && props.page === 3 && "70%"};
+      props.$page === 1 ? "70%" : (props.$page === 3 ? "60%" : "100%")};
   }
 `;
 

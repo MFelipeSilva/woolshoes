@@ -1,12 +1,13 @@
-import type { Metadata } from "next";
+"use client";
+
 import { Inter } from "next/font/google";
+import { metadata } from "../utils/metaData";
+
+import { QueryClient, QueryClientProvider } from "react-query";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata: Metadata = {
-  title: "Woolshoes",
-  description: "woolshoes | e-commerce",
-};
+const queryClient = new QueryClient();
 
 export default function RootLayout({
   children,
@@ -15,7 +16,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <head>
+        <title dangerouslySetInnerHTML={{ __html: metadata.title || "" }} />
+        <meta name="description" content={metadata.description || undefined} />
+      </head>
+      <body className={inter.className}>
+        <QueryClientProvider client={queryClient}>
+          {children}
+        </QueryClientProvider>
+      </body>
     </html>
   );
 }

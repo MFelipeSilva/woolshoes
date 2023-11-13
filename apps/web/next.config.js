@@ -1,16 +1,22 @@
-import { fileURLToPath } from "url";
-import path from "path";
+const url = require('url');
+const { fileURLToPath } = require('url');
+const path = require('path');
 
 function getCurrentDirname(importMetaUrl) {
-  const __filename = fileURLToPath(importMetaUrl);
+  const fileUrl = url.pathToFileURL(importMetaUrl);
+
+  const __filename = fileURLToPath(fileUrl);
+  
   return path.dirname(__filename);
 }
 
-export default {
+module.exports = {
+  experimental: {
+    webpackBuildWorker: true,
+  },
   webpack: (config) => {
-    const currentDir = getCurrentDirname(import.meta.url);
+    const currentDir = getCurrentDirname(require.main.filename);
     config.resolve.alias["@"] = currentDir;
-
     return config;
   },
 };

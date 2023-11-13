@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactNode } from "react";
 
 import GlobalStyle from "@/styles/global";
 
@@ -7,7 +7,11 @@ import { Footer } from "@/components/Footer";
 
 import { Container as LayoutContainer } from "./styles";
 
-export default function Layout({ children }: any) {
+interface LayoutProps {
+  children: ReactNode;
+}
+
+export function Layout({ children }: LayoutProps) {
   return (
     <LayoutContainer>
       <GlobalStyle />

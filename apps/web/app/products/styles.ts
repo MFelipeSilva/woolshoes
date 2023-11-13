@@ -52,6 +52,10 @@ export const ProductsContent = styled.section`
   align-items: start;
   flex-direction: column;
   justify-content: start;
+
+  @media (max-width: 1850px) {
+    width: 65vw;
+  }
 `;
 
 export const CardProducts = styled(Card)`

@@ -1,5 +1,4 @@
 {
-  "type": "module",
   "name": "web",
   "version": "0.1.0",
   "private": true,
@@ -13,12 +12,16 @@
     "@stripe/stripe-js": "^2.1.11",
     "@types/styled-components": "^5.1.29",
     "antd": "^5.10.0",
+    "eslint-config-custom": "*",
     "next": "^14.0.1",
     "react": "^18",
     "react-dom": "^18",
     "react-icons": "^4.11.0",
+    "react-query": "^3.39.3",
     "stripe": "^14.3.0",
-    "styled-components": "^6.1.0"
+    "styled-components": "^6.1.0",
+    "ts-api-utils": "^1.0.3",
+    "tsconfig": "*"
   },
   "devDependencies": {
     "@types/node": "^20",
@@ -26,6 +29,6 @@
     "@types/react-dom": "^18",
     "eslint": "^8",
     "eslint-config-next": "13.5.4",
-    "typescript": "^5"
+    "typescript": "^5.2.2"
   }
 }
