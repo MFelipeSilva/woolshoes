@@ -8,8 +8,8 @@
   },
   "devDependencies": {
     "eslint": "^8.48.0",
+    "eslint-config-custom": "*",
     "prettier": "^3.0.3",
-    "tsconfig": "*",
     "turbo": "latest"
   },
   "name": "woolshoes",
@@ -17,5 +17,6 @@
   "workspaces": [
     "apps/*",
     "packages/*"
-  ]
+  ],
+  "version": "0.0.0"
 }
