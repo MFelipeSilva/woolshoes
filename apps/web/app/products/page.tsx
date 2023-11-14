@@ -25,7 +25,10 @@ import {
 } from "./styles";
 
 export default function Products() {
-  const { data, isLoading, error } =  useQuery("products", async () => await getProducts());
+  const { data, isLoading, error } = useQuery(
+    "products",
+    async () => await getProducts()
+  );
 
   return (
     <Layout>
