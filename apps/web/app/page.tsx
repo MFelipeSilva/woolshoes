@@ -44,7 +44,7 @@ import {
   BannerTitle,
 } from "./styles";
 
-export default function Home() {
+export default function Page() {
   const { data, isLoading, error } = useQuery(
     "products",
     async () => await getProducts()

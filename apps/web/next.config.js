@@ -1,22 +1,15 @@
-const url = require('url');
-const { fileURLToPath } = require('url');
 const path = require('path');
 
-function getCurrentDirname(importMetaUrl) {
-  const fileUrl = url.pathToFileURL(importMetaUrl);
-
-  const __filename = fileURLToPath(fileUrl);
-  
-  return path.dirname(__filename);
-}
-
 module.exports = {
+  reactStrictMode: true,
   experimental: {
     webpackBuildWorker: true,
   },
-  webpack: (config) => {
-    const currentDir = getCurrentDirname(require.main.filename);
-    config.resolve.alias["@"] = currentDir;
+  webpack: (config, { isServer }) => {
+    if (!isServer) {
+      config.resolve.alias['@'] = path.join(__dirname, '/');
+    }
+
     return config;
   },
 };
