@@ -40,20 +40,24 @@ export default function Products() {
             <Link href="/products">Mulher</Link>
           </SwitchGender>
           <Row gutter={[30, 40]}>
-            {data?.map((product: ProductType) => (
-              <Col xxl={8} xl={12} lg={12} key={product.id}>
-                <Link href={`/products/${product.id}`}>
-                  <CardProducts
-                    cover={<Image src={product.image} alt="product images" />}
-                  >
-                    <MetaProducts
-                      title={product.name}
-                      description={formatPrice(product.price)}
-                    />
-                  </CardProducts>
-                </Link>
-              </Col>
-            ))}
+            {Array.isArray(data)
+              ? data.map((product: ProductType) => (
+                  <Col xxl={8} xl={12} lg={12} key={product.id}>
+                    <Link href={`/products/${product.id}`}>
+                      <CardProducts
+                        cover={
+                          <Image src={product.image} alt="product images" />
+                        }
+                      >
+                        <MetaProducts
+                          title={product.name}
+                          description={formatPrice(product.price)}
+                        />
+                      </CardProducts>
+                    </Link>
+                  </Col>
+                ))
+              : ""}
           </Row>
         </ProductsContent>
       </Container>

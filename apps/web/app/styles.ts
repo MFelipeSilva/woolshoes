@@ -83,6 +83,7 @@ export const Categories = styled.div`
 export const CategoriesTitle = styled.h4`
   margin-bottom: 1em;
   letter-spacing: 1px;
+  text-transform: uppercase;
 `;
 
 export const Category = styled.li`

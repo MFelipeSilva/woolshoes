@@ -14,14 +14,11 @@ export const PrimaryButton = styled(Button)`
   box-shadow: none !important;
   padding: 13px 20px !important;
   border-radius: 5px !important;
-  
 
-  
   &:hover {
     color: #000000 !important;
     box-shadow: none;
     border: 1px solid #000000 !important;
-    background-color: #ffffff !important;
+    background-color: #FFFFFF !important;
   }
-
 `;

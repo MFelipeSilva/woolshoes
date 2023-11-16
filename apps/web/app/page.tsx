@@ -62,7 +62,7 @@ export default function Home() {
           </BannerHeader>
           <MainAnnouncement src="https://uploaddeimagens.com.br/images/004/647/123/full/1d461901-923e-462c-a9e9-b4166e76e1b1.jpg?1698244824" />
           <Categories>
-            <CategoriesTitle>CATEGORIAS</CategoriesTitle>
+            <CategoriesTitle>Categorias</CategoriesTitle>
             <Category>
               <Link href="/">Calçados Femininos</Link>
             </Category>
