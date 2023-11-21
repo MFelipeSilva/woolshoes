@@ -73,7 +73,7 @@ export const Navbar = () => {
         onClose={() => setOpen(false)}
       >
         {cart && cart.length > 0 ? (
-          cart.map((product) => <CartProduct product={product} />)
+          cart.map((product) => <CartProduct key={product.id} product={product} />)
         ) : (
           <Content>
             <IoCartOutline />
