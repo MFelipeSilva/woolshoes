@@ -8,27 +8,28 @@ import { Col, Row } from "antd";
 
 import { Layout } from "@/layout";
 
-import { getProducts } from "@/data/getProducts";
+import { getProducts } from "@services/api/getProducts";
 
 import { ProductType } from "@/types/ProductType";
 
 import { formatPrice } from "@/utils/formatPrice";
 
 import {
-  CardProducts,
   Container,
   ProductsContent,
+  CardProducts,
   MetaProducts,
-  Sidebar,
   Image,
+  Sidebar,
   SwitchGender,
 } from "./styles";
 
 export default function Products() {
-  const { data, isLoading, error } = useQuery(
-    "products",
-    async () => await getProducts()
-  );
+  const {
+    data: product,
+    isLoading,
+    error,
+  } = useQuery("products", () => getProducts());
 
   return (
     <Layout>
@@ -40,18 +41,18 @@ export default function Products() {
             <Link href="/products">Mulher</Link>
           </SwitchGender>
           <Row gutter={[30, 40]}>
-            {Array.isArray(data)
-              ? data.map((product: ProductType) => (
-                  <Col xxl={8} xl={12} lg={12} key={product.id}>
-                    <Link href={`/products/${product.id}`}>
+            {Array.isArray(product)
+              ? product.map((productItem: ProductType) => (
+                  <Col xxl={8} xl={12} lg={12} key={productItem.id}>
+                    <Link href={`/products/${productItem.id}`}>
                       <CardProducts
                         cover={
-                          <Image src={product.image} alt="product images" />
+                          <Image src={productItem.image} alt="product images" />
                         }
                       >
                         <MetaProducts
-                          title={product.name}
-                          description={formatPrice(product.price)}
+                          title={productItem.name}
+                          description={formatPrice(productItem.price)}
                         />
                       </CardProducts>
                     </Link>

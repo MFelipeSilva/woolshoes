@@ -4,19 +4,34 @@ import { useState } from "react";
 
 import Link from "next/link";
 
-import { Drawer } from "antd";
-
 import {
   IoPersonCircleOutline,
   IoCart,
-  IoSearch,
   IoMenuSharp,
+  IoCloseSharp,
+  IoCartOutline,
 } from "react-icons/io5";
 
-import { NavBar, Logo, Pages, Page, CartAndLogin } from "./styles";
+import { useCart } from "@services/cart/CartStorageProvider";
+
+import { CartProduct } from "@components/CartProduct";
+
+import {
+  NavBar,
+  Logo,
+  Pages,
+  Page,
+  CartAndLogin,
+  CartDrawer,
+  Content,
+  Text,
+  SubText,
+} from "./styles";
 
 export const Navbar = () => {
   const [open, setOpen] = useState(false);
+
+  const { cart } = useCart();
 
   return (
     <NavBar>
@@ -28,35 +43,45 @@ export const Navbar = () => {
           <Link href="/products">Produtos</Link>
         </Page>
         <Page>
-          <Link href="/">Sobre</Link>
+          <Link href="#">Sobre</Link>
         </Page>
         <Page>
-          <Link href="/">Contato</Link>
+          <Link href="#">Contato</Link>
         </Page>
       </Pages>
       <CartAndLogin>
         <Page>
-          <Link href="/" onClick={() => setOpen(true)}>
+          <Link href="#" onClick={() => setOpen(true)}>
             <IoCart />
             <p>Carrinho</p>
           </Link>
         </Page>
         <Page>
-          <Link href={"/"}>
+          <Link href={"#"}>
             <IoPersonCircleOutline />
             <p>Login</p>
           </Link>
         </Page>
         <IoMenuSharp />
       </CartAndLogin>
-      <Drawer
-        title="Seu carrinho de compras"
+      <CartDrawer
+        title="Meu carrinho"
         placement="right"
         open={open}
+        width="510px"
+        closeIcon={<IoCloseSharp />}
         onClose={() => setOpen(false)}
       >
-        <p>Vazio</p>
-      </Drawer>
+        {cart && cart.length > 0 ? (
+          cart.map((product) => <CartProduct product={product} />)
+        ) : (
+          <Content>
+            <IoCartOutline />
+            <Text>Carrinho vazio!</Text>
+            <SubText>Adicione produtos no seu carrinho.</SubText>
+          </Content>
+        )}
+      </CartDrawer>
     </NavBar>
   );
 };

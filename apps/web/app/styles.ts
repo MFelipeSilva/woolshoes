@@ -134,20 +134,26 @@ export const Section = styled.section<SectionProps>`
   height: ${(props) =>
     props.$page === 1 ? "70%" : props.$page === 3 ? "40%" : "100%"};
   margin-top: ${(props) =>
-    props.$page === 1 ? "5em" : props.$page === 2 ? "5em" : props.$page === 3 ? "0" : ""};
-    gap: 3em;
+    props.$page === 1
+      ? "5em"
+      : props.$page === 2
+        ? "5em"
+        : props.$page === 3
+          ? "0"
+          : ""};
+  gap: 3em;
   align-items: center;
   justify-content: start;
   flex-direction: column;
 
   @media (max-width: 1200px) {
     height: ${(props) =>
-      props.$page === 1 ? "70%" : (props.$page === 3 ? "60%" : "100%")};
+      props.$page === 1 ? "70%" : props.$page === 3 ? "60%" : "100%"};
   }
 
   @media (max-width: 768px) {
     height: ${(props) =>
-      props.$page === 1 ? "70%" : (props.$page === 3 ? "60%" : "100%")};
+      props.$page === 1 ? "70%" : props.$page === 3 ? "60%" : "100%"};
   }
 `;
 

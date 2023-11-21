@@ -3,11 +3,13 @@
 import { Inter } from "next/font/google";
 import { metadata } from "../utils/metaData";
 
-import { QueryClient, QueryClientProvider } from "react-query";
+import { QueryClientProvider } from "react-query";
+
+import { queryClient } from "@utils/queryClient";
+
+import { CartProvider } from "@services/cart/CartStorageProvider";
 
 const inter = Inter({ subsets: ["latin"] });
-
-const queryClient = new QueryClient();
 
 export default function RootLayout({
   children,
@@ -22,7 +24,7 @@ export default function RootLayout({
       </head>
       <body className={inter.className}>
         <QueryClientProvider client={queryClient}>
-          {children}
+          <CartProvider>{children}</CartProvider>
         </QueryClientProvider>
       </body>
     </html>

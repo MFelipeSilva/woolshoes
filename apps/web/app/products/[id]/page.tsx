@@ -4,9 +4,11 @@ import { useQuery } from "react-query";
 
 import { IoMdStar, IoMdStarHalf } from "react-icons/io";
 
-import { getProduct } from "@/data/getProducts";
+import { getProduct } from "@services/api/getProducts";
 
 import { formatPrice } from "@/utils/formatPrice";
+
+import { useCart } from "@services/cart/CartStorageProvider";
 
 import { Layout } from "@/layout";
 
@@ -36,23 +38,28 @@ interface ProductIdProps {
 }
 
 export default function ProductId({ params: { id } }: ProductIdProps) {
-  const { data, isLoading, error } = useQuery(
-    "products",
-    async () => await getProduct(id)
-  );
+  const {
+    data: product,
+    isLoading,
+    error,
+  } = useQuery(["product", id], () => getProduct(id), {
+    enabled: !!id,
+  });
+
+  const { addProductToCart } = useCart();
 
   const ratingNumbers = Math.floor(Math.random() * 101) + 100;
 
   return (
     <Layout>
       <Container>
-        {data ? (
+        {product ? (
           <Content>
             <ImageAndDescription>
-              <ProductImage src={data.image} />
+              <ProductImage src={product.image} />
             </ImageAndDescription>
             <ProductDetails>
-              <Title>{data.name}</Title>
+              <Title>{product.name}</Title>
               <Stars>
                 <IoMdStar />
                 <IoMdStar />
@@ -61,7 +68,7 @@ export default function ProductId({ params: { id } }: ProductIdProps) {
                 <IoMdStarHalf /> ({ratingNumbers}) avaliações.
               </Stars>
               <Price>
-                Por apenas: <h2>{formatPrice(data.price)}</h2>
+                Por apenas: <h2>{formatPrice(product.price)}</h2>
               </Price>
 
               <ProductColor>
@@ -82,7 +89,9 @@ export default function ProductId({ params: { id } }: ProductIdProps) {
                   <ButtonSize>43</ButtonSize>
                 </Buttons>
               </SelectSize>
-              <PrimaryButton>Adicionar ao carrinho</PrimaryButton>
+              <PrimaryButton onClick={() => addProductToCart(product)}>
+                Adicionar ao carrinho
+              </PrimaryButton>
             </ProductDetails>
           </Content>
         ) : (

@@ -6,8 +6,9 @@ import Link from "next/link";
 
 import { Layout } from "@/layout";
 
-import { getProducts } from "@/data/getProducts";
-import { purchaseAdvantage } from "@/data/purchaseAdvantage";
+import { getProducts } from "@services/api/getProducts";
+
+import { purchaseAdvantage } from "@utils/purchaseAdvantage";
 
 import { ProductType } from "@/types/ProductType";
 
@@ -16,10 +17,7 @@ import { Carousel } from "@/components/Carousel";
 import { PrimaryButton } from "@/components/Buttons/PrimaryButton";
 
 import {
-  MainAnnouncement,
   Content,
-  BannerContent,
-  OtherAnnouncement,
   Section,
   Title,
   Advantage,
@@ -27,28 +25,32 @@ import {
   AdvantageContent,
   AdvantageTitle,
   AdvantageDescription,
-  CardProducts,
-  Image,
-  CarouselContent,
-  MetaProducts,
-  CarouselContainer,
-  Banner,
-  SecondaryBannerContent,
-  Categories,
-  CategoriesTitle,
-  Category,
   AdvantageTexts,
   AdvantageContainer,
   Icon,
-  BannerHeader,
+  Image,
+  CardProducts,
+  MetaProducts,
+  CarouselContainer,
+  CarouselContent,
+  Category,
+  Categories,
+  CategoriesTitle,
+  MainAnnouncement,
+  OtherAnnouncement,
+  Banner,
+  SecondaryBannerContent,
   BannerTitle,
+  BannerHeader,
+  BannerContent,
 } from "./styles";
 
 export default function Home() {
-  const { data, isLoading, error } = useQuery(
-    "products",
-    async () => await getProducts()
-  );
+  const {
+    data: product,
+    isLoading,
+    error,
+  } = useQuery("products", async () => await getProducts());
 
   return (
     <Layout>
@@ -81,8 +83,8 @@ export default function Home() {
           <Title>Nossos lançamentos</Title>
           <CarouselContent>
             <Carousel>
-              {Array.isArray(data)
-                ? data.slice(0, 8).map((product: ProductType) => (
+              {Array.isArray(product)
+                ? product.slice(0, 8).map((product: ProductType) => (
                     <Link key={product.id} href={`products/${product.id}`}>
                       <CardProducts
                         cover={

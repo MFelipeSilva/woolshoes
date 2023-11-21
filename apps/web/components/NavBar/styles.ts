@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+import { Drawer } from "antd";
+
 export const NavBar = styled.nav`
   display: flex;
   position: relative;
@@ -99,4 +101,45 @@ export const Page = styled.li`
       }
     }
   }
+`;
+
+export const CartDrawer = styled(Drawer)`
+  .ant-drawer-header {
+    .ant-drawer-header-title > button {
+      display: flex;
+      color: #000000;
+      font-size: 27pt;
+    }
+  }
+
+  .ant-drawer-body {
+    display: flex;
+    gap: 3em;
+    padding: 40px 24px;
+    flex-direction: column;
+  }
+`;
+
+export const Content = styled.div`
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    font-size: 70pt;
+    margin-bottom: 0.3em;
+  }
+`;
+
+export const Text = styled.p`
+  font-size: 12pt;
+  font-weight: 700;
+`;
+
+export const SubText = styled.span`
+  font-size: 12pt;
+  font-weight: 100;
 `;
