@@ -63,7 +63,7 @@ export const CardProducts = styled(Card)`
 `;
 
 export const MetaProducts = styled(Meta)`
-  & > div > div:nth-child(1) {
+  .ant-card-meta-title {
     font-size: 12pt !important;
     font-weight: 700;
   }

@@ -18,6 +18,6 @@ export const purchaseAdvantage = [
     icon: "https://img.icons8.com/external-kiranshastry-lineal-kiranshastry/64/external-quality-logistic-delivery-kiranshastry-lineal-kiranshastry.png",
     title: "Melhor qualidade",
     description:
-      "Projetados para durar, cada um de nossos produtos foi fabricado com os melhores materiais..",
+      "Projetados para durar, cada um de nossos produtos foi fabricado com os melhores materiais.",
   },
 ];

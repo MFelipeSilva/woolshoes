@@ -5,41 +5,49 @@ import { Button, Carousel } from "antd";
 export const CardCarousel = styled(Carousel)`
   & > .slick-list > .slick-track {
     display: flex !important;
-    height: 600px;
-    margin-left: 0.9em;
   }
 
   & > button {
-    margin: -50px 30px 0 30px !important;
+    margin: -50px 45px 0 45px !important;
+
+    @media (max-width: 768px) {
+      margin: -50px 60px 0 60px !important;
+    }
+  }
+
+  .slick-slide {
+    height: 550px;
+    position: relative;
   }
 
   .slick-slide > div {
     width: 90%;
-    min-height: 38em;
+    margin-left: 1em;
     pointer-events: auto;
   }
 
   @media (min-width: 1200px) {
     .slick-slide {
-      width: 5.5% !important;
+      width: 32em !important;
     }
   }
 
   @media (max-width: 1199px) and (min-width: 992px) {
     .slick-slide {
-      width: 3.5% !important;
+      width: 32em !important;
     }
   }
 
   @media (max-width: 991px) and (min-width: 768px) {
     .slick-slide {
-      width: 50% !important;
+      width: 32em !important;
     }
   }
 
   @media (max-width: 767px) {
     .slick-slide {
       width: 100% !important;
+      height: 475px;
     }
   }
 `;

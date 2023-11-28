@@ -8,10 +8,15 @@ interface SectionProps {
   $page: number;
 }
 
+export const Container = styled.main`
+  width: 100vw;
+  height: 100%;
+  margin-top: 6em;
+`;
+
 export const Content = styled.section`
   display: flex;
   width: 100vw;
-  height: 90vh;
   align-items: center;
   justify-content: center;
 `;
@@ -19,16 +24,15 @@ export const Content = styled.section`
 export const BannerContent = styled.section`
   display: flex;
   position: relative;
-  width: 90%;
+  width: 90vw;
   height: 70vh;
   gap: 2.5em;
   align-items: center;
   justify-content: center;
 
   @media (max-width: 768px) {
-    display: flex;
-    width: 80vw;
-    justify-content: center;
+    width: 100vw;
+    height: 50vh;
   }
 `;
 
@@ -37,6 +41,7 @@ export const BannerHeader = styled.div`
   position: absolute;
   left: 0;
   gap: 2em;
+  z-index: 1;
   margin-left: clamp(1vw, 5vw, 5em);
   flex-direction: column;
 
@@ -48,34 +53,40 @@ export const BannerHeader = styled.div`
 
 export const BannerTitle = styled.h1`
   color: #ffffff;
-  font-size: clamp(20pt, 3vw, 34pt);
   width: 11em;
   text-transform: uppercase;
+  font-size: clamp(20pt, 3vw, 34pt);
 `;
 
 export const Categories = styled.div`
   display: flex;
+  width: 70%;
+  height: 100%;
+  left: 0;
+  margin-top: 6em;
   position: absolute;
-  right: 0;
+  align-items: center;
+  background-color: transparent;
+`;
+
+export const CategoriesContent = styled.div`
+  display: flex;
   width: 15em;
   height: 17em;
+  position: absolute;
+  right: 0;
   gap: 0.7em;
   padding: 0 1em;
   border: 1px solid black;
-  border-left: 0;
-  border-radius: 5px !important;
   background-color: #ffffff;
   flex-direction: column;
   align-items: start;
   justify-content: center;
-  margin-top: 10vh;
-  margin-right: 26.8vw;
+  border-left: 0;
+  z-index: 1;
+  border-radius: 5px !important;
 
-  @media (max-width: 1650px) {
-    margin-right: 25vw;
-  }
-
-  @media (max-width: 1000px) {
+  @media (max-width: 1200px) {
     display: none;
   }
 `;
@@ -107,6 +118,7 @@ export const MainAnnouncement = styled.img`
   max-height: 100%;
   width: 70%;
   height: 100%;
+  z-index: 1;
   border-radius: 5px;
   object-fit: cover;
   object-position: center;
@@ -131,48 +143,46 @@ export const OtherAnnouncement = styled.img`
 export const Section = styled.section<SectionProps>`
   display: flex;
   width: 100vw;
-  height: ${(props) =>
-    props.$page === 1 ? "70%" : props.$page === 3 ? "40%" : "100%"};
-  margin-top: ${(props) =>
-    props.$page === 1
-      ? "5em"
-      : props.$page === 2
-        ? "5em"
-        : props.$page === 3
-          ? "0"
-          : ""};
+  height: 100%;
   gap: 3em;
   align-items: center;
-  justify-content: start;
+  justify-content: center;
   flex-direction: column;
-
-  @media (max-width: 1200px) {
-    height: ${(props) =>
-      props.$page === 1 ? "70%" : props.$page === 3 ? "60%" : "100%"};
-  }
-
-  @media (max-width: 768px) {
-    height: ${(props) =>
-      props.$page === 1 ? "70%" : props.$page === 3 ? "60%" : "100%"};
-  }
 `;
 
 export const SecondaryBannerContent = styled.section`
   display: flex;
   width: 100%;
-  height: 100vh;
   align-items: start;
   justify-content: start;
+
+  @media (max-width: 768px) {
+    height: 60vh;
+  }
 `;
 
 export const Banner = styled.img`
   max-width: 100%;
   max-height: 100%;
-  width: 90%;
-  height: 80%;
+  width: 90vw;
+  height: 80vh;
   border-radius: 0px 5px 5px 0;
   object-fit: cover;
   object-position: center;
+`;
+
+export const TitleContainer = styled.div`
+  width: 80vw;
+  margin-left: 15em;
+  padding-top: 10em;
+
+  @media (max-width: 1200px) {
+    margin-left: 0em;
+  }
+
+  @media (max-width: 768px) {
+    width: 90vw;
+  }
 `;
 
 export const Title = styled.h1`
@@ -183,46 +193,79 @@ export const Title = styled.h1`
 `;
 
 export const CarouselContainer = styled.div`
-  display: flex;
-  gap: 3em;
-  margin-left: 15em;
-  flex-direction: column;
+  width: 80vw;
+  margin-left: 14em;
+  padding-bottom: 10em;
 
   @media (max-width: 1200px) {
     margin-left: 0;
   }
+
+  @media (max-width: 768px) {
+    width: 95vw;
+  }
 `;
 
 export const CarouselContent = styled.div`
-  z-index: 1;
   width: 80vw;
+
+  @media (max-width: 1200px) {
+    width: 85vw;
+  }
+
+  @media (max-width: 768px) {
+    width: 100vw;
+  }
 `;
 
 export const CardProducts = styled(Card)`
-  width: 400px !important;
-  height: 530px !important;
+  width: 100% !important;
+  min-height: 100% !important;
   box-shadow: rgba(68, 68, 68, 0.2) 0px 8px 20px 2px;
+
+  .ant-card-body {
+    height: 120px;
+
+    .ant-card-meta > .ant-card-meta-detail {
+      display: flex;
+      text-align: start;
+      flex-direction: column;
+    }
+  }
+
+  @media (max-width: 768px) {
+    width: 330px !important;
+  }
 `;
 
 export const MetaProducts = styled(Meta)`
-  & > div > div:nth-child(1) {
-    font-size: 16pt !important;
+  .ant-card-meta-title {
+    font-size: clamp(13pt, 2vw, 16pt);
     font-weight: 700;
+    overflow: auto;
+    white-space: normal;
+    text-overflow: clip;
   }
 
-  & > div > div:nth-child(2) {
+  .ant-card-meta-description {
     font-size: 11pt !important;
   }
 `;
 
-export const Image = styled.img``;
+export const Image = styled.img`
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+`;
 
 export const AdvantageContainer = styled.div`
   display: flex;
+  gap: 3em;
   width: 80%;
   height: 100%;
-  gap: 3em;
+  padding: 13em 0;
   flex-direction: column;
+  justify-content: center;
 
   h1 {
     align-self: flex-start;
@@ -235,6 +278,7 @@ export const AdvantageContainer = styled.div`
 
   @media (max-width: 768px) {
     height: 80%;
+    align-items: center;
   }
 `;
 
@@ -272,7 +316,7 @@ export const AdvantageTexts = styled.div`
   flex-direction: column;
 
   @media (max-width: 1200px) {
-    width: clamp(20em, 17vw, 24em);
+    width: clamp(15em, 17vw, 24em);
   }
 `;
 

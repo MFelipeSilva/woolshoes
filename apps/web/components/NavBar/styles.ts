@@ -15,6 +15,12 @@ export const NavBar = styled.nav`
   background-color: #2d3142;
   transition: transform 100ms ease-out 0s;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 24px 0px;
+
+  @media (max-width: 1000px) {
+    & {
+      padding: 0 2em;
+    }
+  }
 `;
 
 export const Logo = styled.h2`
@@ -62,10 +68,12 @@ export const CartAndLogin = styled.ul`
   }
 
   @media (max-width: 1000px) {
+    gap: 1em;
+
     & > svg {
       display: flex !important;
       color: #ffffff;
-      font-size: 18pt;
+      font-size: 20pt;
       cursor: pointer;
     }
   }
@@ -93,11 +101,9 @@ export const Page = styled.li`
       p {
         display: none;
       }
-    }
 
-    @media (max-width: 1000px) {
       & > svg {
-        font-size: 18pt;
+        font-size: 15pt;
       }
     }
   }
