@@ -12,6 +12,7 @@
     "@stripe/stripe-js": "^2.1.11",
     "@types/styled-components": "^5.1.29",
     "antd": "^5.10.0",
+    "axios": "^1.6.2",
     "eslint-config-custom": "*",
     "next": "^14.0.1",
     "react": "^18",

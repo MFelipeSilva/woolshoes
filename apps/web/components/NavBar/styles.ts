@@ -1,20 +1,25 @@
 import styled from "styled-components";
 
-import { Drawer } from "antd";
+import { Drawer, Input } from "antd";
+
+export const Container = styled.div`
+  display: flex;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  z-index: 99;
+  flex-direction: column;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 24px 0px;
+`;
 
 export const NavBar = styled.nav`
   display: flex;
-  position: relative;
-  top: 0;
-  z-index: 4;
   width: 100%;
   height: 3.8em;
   padding: 0 3em;
   align-items: center;
   justify-content: space-between;
   background-color: #2d3142;
-  transition: transform 100ms ease-out 0s;
-  box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 24px 0px;
 
   @media (max-width: 1000px) {
     & {
@@ -56,7 +61,7 @@ export const Pages = styled.ul`
 
 export const CartAndLogin = styled.ul`
   display: flex;
-  gap: 2em;
+  gap: 1.5em;
   list-style: none;
   align-items: center;
   justify-content: center;
@@ -73,8 +78,16 @@ export const CartAndLogin = styled.ul`
     & > svg {
       display: flex !important;
       color: #ffffff;
-      font-size: 20pt;
+      font-size: 15pt;
       cursor: pointer;
+    }
+  }
+
+  @media (max-width: 768px) {
+    & > li:nth-child(1) {
+      svg {
+        display: none;
+      }
     }
   }
 `;
@@ -83,7 +96,7 @@ export const Page = styled.li`
   display: flex;
 
   svg {
-    font-size: 13pt;
+    font-size: 15pt;
   }
 
   a {
@@ -148,4 +161,27 @@ export const Text = styled.p`
 export const SubText = styled.span`
   font-size: 12pt;
   font-weight: 100;
+`;
+
+export const SearchContainer = styled.div`
+  display: none;
+  width: 100%;
+  height: 4em;
+  padding: 0 2em;
+  align-items: center;
+  justify-content: center;
+  background-color: #2d3142;
+
+  @media (max-width: 768px) {
+    display: flex;
+  }
+`;
+
+export const SearchInput = styled(Input)`
+  display: flex;
+  height: 2.5em;
+  border-radius: 10px;
+
+  .ant-input {
+  }
 `;

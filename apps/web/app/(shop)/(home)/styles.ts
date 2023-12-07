@@ -11,12 +11,16 @@ interface SectionProps {
 export const Container = styled.main`
   width: 100vw;
   height: 100%;
-  margin-top: 6em;
+
+  @media (max-width: 768px) {
+    margin-top: 0;
+  }
 `;
 
 export const Content = styled.section`
   display: flex;
   width: 100vw;
+  margin-top: 7.5em;
   align-items: center;
   justify-content: center;
 `;
@@ -67,6 +71,10 @@ export const Categories = styled.div`
   position: absolute;
   align-items: center;
   background-color: transparent;
+
+  @media (max-width: 1500px) {
+    width: 72%;
+  }
 `;
 
 export const CategoriesContent = styled.div`
@@ -125,6 +133,8 @@ export const MainAnnouncement = styled.img`
 
   @media (max-width: 1000px) {
     width: 100%;
+    height: 100%;
+    border-radius: 0;
   }
 `;
 
@@ -225,6 +235,7 @@ export const CardProducts = styled(Card)`
 
   .ant-card-body {
     height: 120px;
+    padding: 20px 24px 24px 24px !important;
 
     .ant-card-meta > .ant-card-meta-detail {
       display: flex;
@@ -235,6 +246,10 @@ export const CardProducts = styled(Card)`
 
   @media (max-width: 768px) {
     width: 330px !important;
+
+    .ant-card-body {
+      height: 130px;
+    }
   }
 `;
 
@@ -243,12 +258,13 @@ export const MetaProducts = styled(Meta)`
     font-size: clamp(13pt, 2vw, 16pt);
     font-weight: 700;
     overflow: auto;
+    line-height: 1.3em;
     white-space: normal;
     text-overflow: clip;
   }
 
   .ant-card-meta-description {
-    font-size: 11pt !important;
+    font-size: 11pt;
   }
 `;
 

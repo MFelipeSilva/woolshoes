@@ -2,11 +2,11 @@ import React from "react";
 
 import { RiDeleteBin7Line, RiAddFill, RiSubtractFill } from "react-icons/ri";
 
-import { useCart } from "@services/cart/CartStorageProvider";
+import { useCart } from "@providers/cart";
 
 import { ProductType } from "@/types/ProductType";
 
-import { formatPrice } from "@utils/formatPrice";
+import { formatPrice } from "@helpers/formatPrice";
 
 import { CloseButton } from "@components/Buttons/CloseButton";
 
@@ -37,7 +37,7 @@ export const CartProduct = ({ product }: CartProduct) => {
 
   return (
     <Container>
-      <Image src={product.image} />
+      <Image alt="product image" src={product.imageUrls[0]} />
       <ProductInformation>
         <Title>{product.name}</Title>
         <Color>Natural Black (Natural Black Sole)</Color>

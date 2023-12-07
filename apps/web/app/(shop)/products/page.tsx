@@ -8,11 +8,11 @@ import { Col, Row } from "antd";
 
 import { Layout } from "@/layout";
 
-import { getProducts } from "@services/api/getProducts";
+import { getProducts } from "../api/products";
 
 import { ProductType } from "@/types/ProductType";
 
-import { formatPrice } from "@/utils/formatPrice";
+import { formatPrice } from "@helpers/formatPrice";
 
 import {
   Container,
@@ -25,11 +25,7 @@ import {
 } from "./styles";
 
 export default function Products() {
-  const {
-    data: product,
-    isLoading,
-    error,
-  } = useQuery("products", () => getProducts());
+  const { data: product, isLoading, error } = useQuery("products", getProducts);
 
   return (
     <Layout>
@@ -37,17 +33,20 @@ export default function Products() {
         <Sidebar></Sidebar>
         <ProductsContent>
           <SwitchGender>
-            <Link href="/products">Homem</Link>{" "}
-            <Link href="/products">Mulher</Link>
+            <Link href="/products/homens">Homem</Link>{" "}
+            <Link href="/products/mulheres">Mulher</Link>
           </SwitchGender>
           <Row gutter={[30, 40]}>
             {Array.isArray(product)
-              ? product.map((productItem: ProductType) => (
+              ? product.slice(0, 9).map((productItem: ProductType) => (
                   <Col xxl={8} xl={12} lg={12} key={productItem.id}>
-                    <Link href={`/products/${productItem.id}`}>
+                    <Link href={`/products/${productItem.slug}`}>
                       <CardProducts
                         cover={
-                          <Image src={productItem.image} alt="product images" />
+                          <Image
+                            src={productItem.imageUrls[0]}
+                            alt="product images"
+                          />
                         }
                       >
                         <MetaProducts

@@ -1,13 +1,13 @@
 "use client";
 
 import { Inter } from "next/font/google";
-import { metadata } from "../utils/metaData";
+import { metadata } from "../../helpers/metadata";
 
 import { QueryClientProvider } from "react-query";
 
-import { queryClient } from "@utils/queryClient";
+import { queryClient } from "@helpers/queryClient";
 
-import { CartProvider } from "@services/cart/CartStorageProvider";
+import { CartProvider } from "@providers/cart";
 
 const inter = Inter({ subsets: ["latin"] });
 

@@ -4,11 +4,11 @@ import { useQuery } from "react-query";
 
 import { IoMdStar, IoMdStarHalf } from "react-icons/io";
 
-import { getProduct } from "@services/api/getProducts";
+import { getProductSlug } from "@app/(shop)/api/products";
 
-import { formatPrice } from "@/utils/formatPrice";
+import { formatPrice } from "@helpers/formatPrice";
 
-import { useCart } from "@services/cart/CartStorageProvider";
+import { useCart } from "@providers/cart";
 
 import { Layout } from "@/layout";
 
@@ -33,17 +33,17 @@ import {
 
 interface ProductIdProps {
   params: {
-    id: string;
+    slug: string;
   };
 }
 
-export default function ProductId({ params: { id } }: ProductIdProps) {
+export default function ProductId({ params: { slug } }: ProductIdProps) {
   const {
     data: product,
     isLoading,
     error,
-  } = useQuery(["product", id], () => getProduct(id), {
-    enabled: !!id,
+  } = useQuery(["product", slug], () => getProductSlug(slug), {
+    enabled: !!slug,
   });
 
   const { addProductToCart } = useCart();
@@ -56,7 +56,7 @@ export default function ProductId({ params: { id } }: ProductIdProps) {
         {product ? (
           <Content>
             <ImageAndDescription>
-              <ProductImage src={product.image} />
+              <ProductImage src={product.imageUrls[0]} />
             </ImageAndDescription>
             <ProductDetails>
               <Title>{product.name}</Title>

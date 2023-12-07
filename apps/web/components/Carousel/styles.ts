@@ -11,7 +11,7 @@ export const CardCarousel = styled(Carousel)`
     margin: -50px 45px 0 45px !important;
 
     @media (max-width: 768px) {
-      margin: -50px 60px 0 60px !important;
+      display: none !important;
     }
   }
 
@@ -47,7 +47,7 @@ export const CardCarousel = styled(Carousel)`
   @media (max-width: 767px) {
     .slick-slide {
       width: 100% !important;
-      height: 475px;
+      height: 480px;
     }
   }
 `;

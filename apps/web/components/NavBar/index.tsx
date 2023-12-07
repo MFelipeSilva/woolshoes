@@ -5,14 +5,15 @@ import { useState } from "react";
 import Link from "next/link";
 
 import {
-  IoPersonCircleOutline,
-  IoCart,
-  IoMenuSharp,
-  IoCloseSharp,
-  IoCartOutline,
-} from "react-icons/io5";
+  RiUser3Fill,
+  RiShoppingCartLine,
+  RiShoppingCartFill,
+  RiSearchLine,
+  RiMenu5Fill,
+  RiCloseFill,
+} from "react-icons/ri";
 
-import { useCart } from "@services/cart/CartStorageProvider";
+import { useCart } from "@providers/cart";
 
 import { CartProduct } from "@components/CartProduct";
 
@@ -26,6 +27,9 @@ import {
   Content,
   Text,
   SubText,
+  SearchContainer,
+  Container,
+  SearchInput,
 } from "./styles";
 
 export const Navbar = () => {
@@ -34,54 +38,68 @@ export const Navbar = () => {
   const { cart } = useCart();
 
   return (
-    <NavBar>
-      <Logo>
-        <Link href="/">Woolshoes</Link>
-      </Logo>
-      <Pages>
-        <Page>
-          <Link href="/products">Produtos</Link>
-        </Page>
-        <Page>
-          <Link href="#">Sobre</Link>
-        </Page>
-        <Page>
-          <Link href="#">Contato</Link>
-        </Page>
-      </Pages>
-      <CartAndLogin>
-        <Page>
-          <Link href="#" onClick={() => setOpen(true)}>
-            <IoCart />
-            <p>Carrinho</p>
-          </Link>
-        </Page>
-        <Page>
-          <Link href={"#"}>
-            <IoPersonCircleOutline />
-            <p>Login</p>
-          </Link>
-        </Page>
-        <IoMenuSharp />
-      </CartAndLogin>
-      <CartDrawer
-        title="Meu carrinho"
-        placement="right"
-        open={open}
-        width="510px"
-        closeIcon={<IoCloseSharp />}
-        onClose={() => setOpen(false)}
-      >
-        {cart && cart.length > 0 ? (
-          cart.map((product) => <CartProduct key={product.id} product={product} />)
-        ) : (
-          <Content>
-            <IoCartOutline />
-            <Text>Carrinho vazio!</Text>
-            <SubText>Adicione produtos no seu carrinho.</SubText>
-          </Content>
-        )}
-      </CartDrawer>
-    </NavBar>
+    <Container>
+      <NavBar>
+        <Logo>
+          <Link href="/">Woolshoes</Link>
+        </Logo>
+        <Pages>
+          <Page>
+            <Link href="/products">Produtos</Link>
+          </Page>
+          <Page>
+            <Link href="#">Sobre</Link>
+          </Page>
+          <Page>
+            <Link href="#">Contato</Link>
+          </Page>
+        </Pages>
+        <CartAndLogin>
+          <Page>
+            <Link href={"#"}>
+              <RiSearchLine />
+            </Link>
+          </Page>
+          <Page>
+            <Link href="#" onClick={() => setOpen(true)}>
+              <RiShoppingCartFill />
+            </Link>
+          </Page>
+          <Page>
+            <Link href={"#"}>
+              <RiUser3Fill />
+            </Link>
+          </Page>
+          <RiMenu5Fill />
+        </CartAndLogin>
+        <CartDrawer
+          title="Meu carrinho"
+          placement="right"
+          open={open}
+          width="510px"
+          closeIcon={<RiCloseFill />}
+          onClose={() => setOpen(false)}
+        >
+          {cart && cart.length > 0 ? (
+            cart.map((product) => (
+              <CartProduct key={product.id} product={product} />
+            ))
+          ) : (
+            <Content>
+              <RiShoppingCartLine />
+              <Text>Carrinho vazio!</Text>
+              <SubText>Adicione produtos no seu carrinho.</SubText>
+            </Content>
+          )}
+        </CartDrawer>
+      </NavBar>
+      <SearchContainer>
+        <SearchInput
+          placeholder="Pesquisar"
+          prefix={<RiSearchLine />}
+          size="small"
+        />
+      </SearchContainer>
+    </Container>
   );
 };

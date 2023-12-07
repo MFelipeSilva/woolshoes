@@ -6,9 +6,9 @@ import Link from "next/link";
 
 import { Layout } from "@/layout";
 
-import { getProducts } from "@services/api/getProducts";
+import { getProducts } from "../api/products";
 
-import { purchaseAdvantage } from "@utils/purchaseAdvantage";
+import { purchaseAdvantage } from "@helpers/purchaseAdvantages";
 
 import { ProductType } from "@/types/ProductType";
 
@@ -49,11 +49,7 @@ import {
 } from "./styles";
 
 export default function Home() {
-  const {
-    data: product,
-    isLoading,
-    error,
-  } = useQuery("products", async () => await getProducts());
+  const { data: product, isLoading, error } = useQuery("products", getProducts);
 
   return (
     <Layout>
@@ -93,10 +89,13 @@ export default function Home() {
               <Carousel>
                 {Array.isArray(product)
                   ? product.slice(0, 8).map((product: ProductType) => (
-                      <Link key={product.id} href={`products/${product.id}`}>
+                      <Link key={product.id} href={`products/${product.slug}`}>
                         <CardProducts
                           cover={
-                            <Image src={product.image} alt="product images" />
+                            <Image
+                              src={product.imageUrls[0]}
+                              alt="product images"
+                            />
                           }
                         >
                           <MetaProducts
