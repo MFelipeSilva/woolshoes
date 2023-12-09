@@ -5,7 +5,6 @@
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc",
     "prisma:generate": "npx prisma generate",
     "prisma:pull": "npx prisma db pull",
     "prisma:push": "npx prisma db push"
@@ -17,12 +16,12 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@prisma/client": "^5.7.0",
     "@types/node": "^20.8.10",
+    "prisma": "^5.7.0",
     "typescript": "^5.2.2"
   },
   "dependencies": {
-    "@prisma/client": "^5.7.0",
-    "prisma": "^5.6.0",
     "ts-node": "^10.9.1"
   }
 }
