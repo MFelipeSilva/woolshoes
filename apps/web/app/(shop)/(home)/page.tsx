@@ -6,7 +6,7 @@ import Link from "next/link";
 
 import { Layout } from "@/layout";
 
-import { getProducts } from "../api/products";
+import { getProducts } from "../services/apiFunctions";
 
 import { purchaseAdvantage } from "@helpers/purchaseAdvantages";
 

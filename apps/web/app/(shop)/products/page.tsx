@@ -8,7 +8,7 @@ import { Col, Row } from "antd";
 
 import { Layout } from "@/layout";
 
-import { getProducts } from "../api/products";
+import { getProducts } from "../services/apiFunctions";
 
 import { ProductType } from "@/types/ProductType";
 

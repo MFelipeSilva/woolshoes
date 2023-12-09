@@ -1,11 +1,11 @@
 "use client";
 
 import { Inter } from "next/font/google";
-import { metadata } from "../../helpers/metadata";
+import { metadata } from "../../lib/metadata";
 
 import { QueryClientProvider } from "react-query";
 
-import { queryClient } from "@helpers/queryClient";
+import { queryClient } from "@lib/queryClient";
 
 import { CartProvider } from "@providers/cart";
 

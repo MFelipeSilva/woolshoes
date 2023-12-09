@@ -2,12 +2,10 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "",
-  "main": "server.ts",
+  "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "tsnd --respawn --transpile-only src/server.ts",
     "build": "tsc",
-    "start": "node src/server.js",
     "prisma:generate": "npx prisma generate",
     "prisma:pull": "npx prisma db pull",
     "prisma:push": "npx prisma db push"
@@ -19,16 +17,11 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@types/cors": "^2.8.17",
-    "@types/express": "^4.17.20",
     "@types/node": "^20.8.10",
-    "ts-node-dev": "^2.0.0",
     "typescript": "^5.2.2"
   },
   "dependencies": {
-    "@prisma/client": "^5.5.2",
-    "cors": "^2.8.5",
-    "express": "^4.18.2",
+    "@prisma/client": "^5.7.0",
     "prisma": "^5.6.0",
     "ts-node": "^10.9.1"
   }

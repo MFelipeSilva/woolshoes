@@ -4,7 +4,7 @@ import { useQuery } from "react-query";
 
 import { IoMdStar, IoMdStarHalf } from "react-icons/io";
 
-import { getProductSlug } from "@app/(shop)/api/products";
+import { getProductSlug } from "@app/(shop)/services/apiFunctions";
 
 import { formatPrice } from "@helpers/formatPrice";
 
