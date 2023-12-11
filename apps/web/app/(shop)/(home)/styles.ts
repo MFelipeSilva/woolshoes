@@ -11,6 +11,7 @@ interface SectionProps {
 export const Container = styled.main`
   width: 100vw;
   height: 100%;
+  margin-top: 7.5em;
 
   @media (max-width: 768px) {
     margin-top: 0;
@@ -20,7 +21,6 @@ export const Container = styled.main`
 export const Content = styled.section`
   display: flex;
   width: 100vw;
-  margin-top: 7.5em;
   align-items: center;
   justify-content: center;
 `;
@@ -36,7 +36,7 @@ export const BannerContent = styled.section`
 
   @media (max-width: 768px) {
     width: 100vw;
-    height: 50vh;
+    height: 60vh;
   }
 `;
 
@@ -49,9 +49,16 @@ export const BannerHeader = styled.div`
   margin-left: clamp(1vw, 5vw, 5em);
   flex-direction: column;
 
-  button {
-    width: 15em;
-    height: 60% !important;
+  a {
+    width: min-content;
+    height: min-content;
+    text-decoration: none;
+
+    @media (max-width: 768px) {
+      button {
+        width: 90%;
+      }
+    }
   }
 `;
 
@@ -59,7 +66,7 @@ export const BannerTitle = styled.h1`
   color: #ffffff;
   width: 11em;
   text-transform: uppercase;
-  font-size: clamp(20pt, 3vw, 34pt);
+  font-size: clamp(21pt, 3vw, 34pt);
 `;
 
 export const Categories = styled.div`
@@ -101,7 +108,7 @@ export const CategoriesContent = styled.div`
 
 export const CategoriesTitle = styled.h4`
   margin-bottom: 1em;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
   text-transform: uppercase;
 `;
 
@@ -197,7 +204,6 @@ export const TitleContainer = styled.div`
 
 export const Title = styled.h1`
   font-size: clamp(22pt, 2vw, 25pt);
-  z-index: 1;
   font-weight: 700;
   text-align: start;
 `;
@@ -235,7 +241,7 @@ export const CardProducts = styled(Card)`
 
   .ant-card-body {
     height: 120px;
-    padding: 20px 24px 24px 24px !important;
+    padding: 24px 15px !important;
 
     .ant-card-meta > .ant-card-meta-detail {
       display: flex;
@@ -254,9 +260,11 @@ export const CardProducts = styled(Card)`
 `;
 
 export const MetaProducts = styled(Meta)`
+  font-family: "Inter", sans-serif;
+
   .ant-card-meta-title {
-    font-size: clamp(13pt, 2vw, 16pt);
-    font-weight: 700;
+    font-size: clamp(13pt, 2vw, 14pt);
+    font-weight: 800;
     overflow: auto;
     line-height: 1.3em;
     white-space: normal;
@@ -277,7 +285,7 @@ export const Image = styled.img`
 export const AdvantageContainer = styled.div`
   display: flex;
   gap: 3em;
-  width: 80%;
+  width: 70%;
   height: 100%;
   padding: 13em 0;
   flex-direction: column;

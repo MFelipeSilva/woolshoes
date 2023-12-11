@@ -1,4 +1,4 @@
-export const purchaseAdvantage = [
+export const purchaseAdvantages = [
   {
     id: "1",
     icon: "https://img.icons8.com/ios/50/truck-with-trailer.png",

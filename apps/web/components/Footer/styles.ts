@@ -12,7 +12,7 @@ export const Container = styled.footer`
 
 export const ContentRow = styled.div`
   display: flex;
-  width: 80%;
+  width: 70%;
   gap: 5em 15em;
   flex-wrap: wrap;
   align-items: start;
@@ -31,6 +31,7 @@ export const ContentCol = styled.div`
   flex-direction: column;
 
   @media (max-width: 768px) {
+    gap: 1.5em;
     align-items: center;
   }
 `;
@@ -53,5 +54,5 @@ export const Title = styled.h3`
 `;
 
 export const Li = styled.li`
-  font-size: 14px;
+  font-size: 13px;
 `;

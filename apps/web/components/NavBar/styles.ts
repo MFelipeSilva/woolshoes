@@ -4,17 +4,16 @@ import { Drawer, Input } from "antd";
 
 export const Container = styled.div`
   display: flex;
-  width: 100vw;
-  position: fixed;
-  top: 0;
-  z-index: 99;
   flex-direction: column;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 24px 0px;
 `;
 
 export const NavBar = styled.nav`
   display: flex;
-  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 99;
+  width: 100vw;
   height: 3.8em;
   padding: 0 3em;
   align-items: center;
@@ -94,6 +93,7 @@ export const CartAndLogin = styled.ul`
 
 export const Page = styled.li`
   display: flex;
+  color: #ffffff;
 
   svg {
     font-size: 15pt;
@@ -124,10 +124,14 @@ export const Page = styled.li`
 
 export const CartDrawer = styled(Drawer)`
   .ant-drawer-header {
-    .ant-drawer-header-title > button {
-      display: flex;
-      color: #000000;
-      font-size: 27pt;
+    .ant-drawer-header-title {
+      font-family: "Inter", sans-serif;
+
+      button {
+        display: flex;
+        color: #000000;
+        font-size: 27pt;
+      }
     }
   }
 
@@ -136,6 +140,11 @@ export const CartDrawer = styled(Drawer)`
     gap: 3em;
     padding: 40px 24px;
     flex-direction: column;
+    font-family: "Inter", sans-serif;
+
+    span {
+      font-weight: 200;
+    }
   }
 `;
 
@@ -163,18 +172,32 @@ export const SubText = styled.span`
   font-weight: 100;
 `;
 
-export const SearchContainer = styled.div`
+export const CategoriesContainer = styled.div`
   display: none;
   width: 100%;
-  height: 4em;
+  height: 3em;
   padding: 0 2em;
+  margin-top: 3.8em;
   align-items: center;
   justify-content: center;
-  background-color: #2d3142;
+  background-color: #ffffff;
 
   @media (max-width: 768px) {
     display: flex;
   }
+`;
+
+export const Categories = styled.ul`
+  display: flex;
+  width: 100vw;
+  justify-content: space-evenly;
+`;
+
+export const Category = styled.ul`
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
 `;
 
 export const SearchInput = styled(Input)`

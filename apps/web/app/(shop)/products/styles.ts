@@ -46,16 +46,26 @@ export const SwitchGender = styled.div`
 
 export const ProductsContent = styled.section`
   display: flex;
-  width: 55vw;
+  width: 55%;
   height: 100%;
   gap: 2em;
-  align-items: start;
+  align-items: center;
   flex-direction: column;
-  justify-content: start;
+  justify-content: center;
 
   @media (max-width: 1850px) {
-    width: 65vw;
+    width: 65%;
   }
+
+  @media (max-width: 768px) {
+    width: 60%;
+  }
+`;
+
+export const ProductsHeader = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: flex-start;
 `;
 
 export const CardProducts = styled(Card)`
@@ -63,9 +73,16 @@ export const CardProducts = styled(Card)`
 `;
 
 export const MetaProducts = styled(Meta)`
+  font-family: "Inter", sans-serif;
+
   .ant-card-meta-title {
     font-size: 12pt !important;
     font-weight: 700;
+  }
+
+  .ant-card-meta-description {
+    font-size: 11pt;
+    font-weight: 500;
   }
 `;
 

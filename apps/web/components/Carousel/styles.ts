@@ -47,7 +47,7 @@ export const CardCarousel = styled(Carousel)`
   @media (max-width: 767px) {
     .slick-slide {
       width: 100% !important;
-      height: 480px;
+      height: 490px;
     }
   }
 `;

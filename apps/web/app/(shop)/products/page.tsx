@@ -22,36 +22,43 @@ import {
   Image,
   Sidebar,
   SwitchGender,
+  ProductsHeader,
 } from "./styles";
 
 export default function Products() {
-  const { data: product, isLoading, error } = useQuery("products", getProducts);
+  const {
+    data: products,
+    isLoading,
+    error,
+  } = useQuery("products", getProducts);
 
   return (
     <Layout>
       <Container>
         <Sidebar></Sidebar>
         <ProductsContent>
-          <SwitchGender>
-            <Link href="/products/homens">Homem</Link>{" "}
-            <Link href="/products/mulheres">Mulher</Link>
-          </SwitchGender>
+          <ProductsHeader>
+            <SwitchGender>
+              <Link href="/products/homens">Homem</Link>{" "}
+              <Link href="/products/mulheres">Mulher</Link>
+            </SwitchGender>
+          </ProductsHeader>
           <Row gutter={[30, 40]}>
-            {Array.isArray(product)
-              ? product.slice(0, 9).map((productItem: ProductType) => (
-                  <Col xxl={8} xl={12} lg={12} key={productItem.id}>
-                    <Link href={`/products/${productItem.slug}`}>
+            {Array.isArray(products)
+              ? products.slice(0, 9).map((product: ProductType) => (
+                  <Col xxl={8} xl={12} lg={12} key={product.id}>
+                    <Link href={`/products/${product.slug}`}>
                       <CardProducts
                         cover={
                           <Image
-                            src={productItem.imageUrls[0]}
+                            src={product.imageUrls[0]}
                             alt="product images"
                           />
                         }
                       >
                         <MetaProducts
-                          title={productItem.name}
-                          description={formatPrice(productItem.price)}
+                          title={product.name}
+                          description={formatPrice(product.price)}
                         />
                       </CardProducts>
                     </Link>

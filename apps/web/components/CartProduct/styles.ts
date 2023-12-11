@@ -89,7 +89,7 @@ export const IncreaseAndDecreaseButton = styled(Button)`
 
 export const Quantity = styled.span`
   display: flex;
-  font-weight: 700;
+  font-weight: 600 !important;
   width: 15px !important;
   justify-content: center;
 `;

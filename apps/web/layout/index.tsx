@@ -1,7 +1,5 @@
 import React, { ReactNode } from "react";
 
-import GlobalStyle from "@/styles/global";
-
 import { Navbar } from "@/components/NavBar";
 import { Footer } from "@/components/Footer";
 
@@ -14,7 +12,6 @@ interface LayoutProps {
 export function Layout({ children }: LayoutProps) {
   return (
     <LayoutContainer>
-      <GlobalStyle />
       <Navbar />
       {children}
       <Footer />

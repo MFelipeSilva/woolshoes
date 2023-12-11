@@ -3,17 +3,20 @@ import styled from "styled-components";
 import { Button } from "antd";
 
 export const PrimaryButton = styled(Button)`
-  width: 100%;
+  display: flex;
   height: 60%;
   background-color: #2d3142;
-  font-weight: 600;
-  color: #ffffff;
   letter-spacing: 1px;
+  color: #ffffff;
+  font-weight: 600;
+  font-family: "Inter", sans-serif;
   font-size: clamp(9pt, 1vw, 11pt) !important;
   text-transform: uppercase;
-  box-shadow: none !important;
-  padding: 13px 20px !important;
-  border-radius: 5px !important;
+  box-shadow: none;
+  padding: 13px 20px;
+  border-radius: 5px;
+  align-items: center;
+  justify-content: center;
 
   & > div > div {
     box-shadow: none !important;

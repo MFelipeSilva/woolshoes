@@ -27,9 +27,10 @@ import {
   Content,
   Text,
   SubText,
-  SearchContainer,
+  CategoriesContainer,
   Container,
-  SearchInput,
+  Categories,
+  Category,
 } from "./styles";
 
 export const Navbar = () => {
@@ -60,10 +61,8 @@ export const Navbar = () => {
               <RiSearchLine />
             </Link>
           </Page>
-          <Page>
-            <Link href="#" onClick={() => setOpen(true)}>
-              <RiShoppingCartFill />
-            </Link>
+          <Page onClick={() => setOpen(true)}>
+            <RiShoppingCartFill />
           </Page>
           <Page>
             <Link href={"#"}>
@@ -93,13 +92,13 @@ export const Navbar = () => {
           )}
         </CartDrawer>
       </NavBar>
-      <SearchContainer>
-        <SearchInput
-          placeholder="Pesquisar"
-          prefix={<RiSearchLine />}
-          size="small"
-        />
-      </SearchContainer>
+      <CategoriesContainer>
+        <Categories>
+          <Category>Masculinos</Category>
+          <Category>Femininos</Category>
+          <Category>Infantis</Category>
+        </Categories>
+      </CategoriesContainer>
     </Container>
   );
 };

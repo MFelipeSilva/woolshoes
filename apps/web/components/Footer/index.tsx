@@ -9,8 +9,8 @@ export const Footer = () => {
         <ContentCol>
           <Title>Companhia</Title>
           <Ul>
-            <Li>Nossas Lojas</Li>
-            <Li>Nossa História</Li>
+            <Li>Nossas lojas</Li>
+            <Li>Nossa história</Li>
             <Li>Investidores</Li>
             <Li>Parcerias</Li>
             <Li>Cuidados com os sapatos</Li>
@@ -18,16 +18,16 @@ export const Footer = () => {
             <Li>Impresa</Li>
             <Li>Pedidos em massa</Li>
             <Li>Testes de produtos</Li>
-            <Li>Ofertas da Comunidade</Li>
+            <Li>Ofertas da comunidade</Li>
           </Ul>
         </ContentCol>
         <ContentCol>
           <Title>Central</Title>
           <Ul>
             <Li>Regulamentos</Li>
-            <Li>Política de Cookies</Li>
-            <Li>Políticas de Trocas e Arrependimento</Li>
-            <Li>Perguntas Frequentes</Li>
+            <Li>Política de cookies</Li>
+            <Li>Políticas de trocas e arrependimento</Li>
+            <Li>Perguntas frequentes</Li>
             <Li>Termos e Condições</Li>
             <Li>Fornecedores</Li>
             <Li>Serviços</Li>

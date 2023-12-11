@@ -8,7 +8,7 @@ import { Layout } from "@/layout";
 
 import { getProducts } from "../services/apiFunctions";
 
-import { purchaseAdvantage } from "@helpers/purchaseAdvantages";
+import { purchaseAdvantages } from "@helpers/purchaseAdvantages";
 
 import { ProductType } from "@/types/ProductType";
 
@@ -49,7 +49,11 @@ import {
 } from "./styles";
 
 export default function Home() {
-  const { data: product, isLoading, error } = useQuery("products", getProducts);
+  const {
+    data: products,
+    isLoading,
+    error,
+  } = useQuery("products", getProducts);
 
   return (
     <Layout>
@@ -59,9 +63,9 @@ export default function Home() {
             <MainAnnouncement src="https://uploaddeimagens.com.br/images/004/647/123/full/1d461901-923e-462c-a9e9-b4166e76e1b1.jpg?1698244824" />
             <BannerHeader>
               <BannerTitle>Tênis confortaveis e de alta qualidade.</BannerTitle>
-              <PrimaryButton type="primary" size="large">
-                Conferir produtos
-              </PrimaryButton>
+              <Link href="/products">
+                <PrimaryButton type="primary">Conferir produtos</PrimaryButton>
+              </Link>
             </BannerHeader>
             <Categories>
               <CategoriesContent>
@@ -87,8 +91,8 @@ export default function Home() {
           <CarouselContainer>
             <CarouselContent>
               <Carousel>
-                {Array.isArray(product)
-                  ? product.slice(0, 8).map((product: ProductType) => (
+                {Array.isArray(products)
+                  ? products.slice(0, 8).map((product: ProductType) => (
                       <Link key={product.id} href={`products/${product.slug}`}>
                         <CardProducts
                           cover={
@@ -120,7 +124,7 @@ export default function Home() {
           <AdvantageContainer>
             <Title>Vantagens de comprar no nosso site</Title>
             <AdvantageContent>
-              {purchaseAdvantage.map((advantage) => (
+              {purchaseAdvantages.map((advantage) => (
                 <Advantage key={advantage.id}>
                   <AdvantageIcon>
                     <Icon src={advantage.icon} />
