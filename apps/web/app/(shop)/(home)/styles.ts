@@ -11,7 +11,6 @@ interface SectionProps {
 export const Container = styled.main`
   width: 100vw;
   height: 100%;
-  margin-top: 7.5em;
 
   @media (max-width: 768px) {
     margin-top: 0;
@@ -280,83 +279,4 @@ export const Image = styled.img`
   max-width: 100%;
   max-height: 100%;
   object-fit: cover;
-`;
-
-export const AdvantageContainer = styled.div`
-  display: flex;
-  gap: 3em;
-  width: 70%;
-  height: 100%;
-  padding: 13em 0;
-  flex-direction: column;
-  justify-content: center;
-
-  h1 {
-    align-self: flex-start;
-    text-align: start;
-  }
-
-  @media (max-width: 1350px) {
-    width: 80%;
-  }
-
-  @media (max-width: 768px) {
-    height: 80%;
-    align-items: center;
-  }
-`;
-
-export const AdvantageContent = styled.div`
-  display: flex;
-  gap: clamp(2em, 2vw, 3em);
-  flex-wrap: wrap;
-  align-items: center;
-`;
-
-export const Advantage = styled.div`
-  display: flex;
-  gap: 1em;
-`;
-
-export const AdvantageIcon = styled.div`
-  display: flex;
-  width: 4.7em;
-  height: 4.7em;
-  border-radius: 5px;
-  align-items: center;
-  justify-content: center;
-  background-color: #f2f4f5;
-`;
-
-export const Icon = styled.img`
-  width: 45px;
-  height: 45px;
-`;
-
-export const AdvantageTexts = styled.div`
-  display: flex;
-  width: clamp(10em, 17vw, 24em);
-  gap: 0.5em;
-  flex-direction: column;
-
-  @media (max-width: 1200px) {
-    width: clamp(15em, 17vw, 24em);
-  }
-`;
-
-export const AdvantageTitle = styled.h2`
-  font-size: 13pt;
-  font-weight: 600;
-`;
-
-export const AdvantageDescription = styled.p`
-  font-size: 11pt;
-
-  @media (max-width: 1200px) {
-    width: 100%;
-  }
-
-  @media (max-width: 768px) {
-    width: 100%;
-  }
 `;

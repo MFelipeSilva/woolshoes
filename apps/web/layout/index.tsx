@@ -2,6 +2,7 @@ import React, { ReactNode } from "react";
 
 import { Navbar } from "@/components/NavBar";
 import { Footer } from "@/components/Footer";
+import { Advantages } from "@components/Advantages";
 
 import { Container as LayoutContainer } from "./styles";
 
@@ -14,6 +15,7 @@ export function Layout({ children }: LayoutProps) {
     <LayoutContainer>
       <Navbar />
       {children}
+      <Advantages />
       <Footer />
     </LayoutContainer>
   );

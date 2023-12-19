@@ -24,7 +24,9 @@ model Product {
   slug         String
   description  String
   imageUrls    String[]
-  price        Float
+  price        Int
+  color        String
+  sizes        Int[]
   categoryId   String
   category     Category    @relation(fields: [categoryId], references: [id])
 }

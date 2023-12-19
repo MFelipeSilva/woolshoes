@@ -7,7 +7,6 @@ const { Meta } = Card;
 export const Container = styled.main`
   display: flex;
   width: 100vw;
-  margin: 10em 0;
   flex-direction: row;
   align-items: center;
   justify-content: center;

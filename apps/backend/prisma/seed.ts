@@ -21,6 +21,8 @@ async function main() {
           "https://woolshoes.s3.amazonaws.com/04-superlight-runners.png",
         ],
         price: 25700,
+        color: "Preto (Sola Cinza)",
+        sizes: [37, 38, 39, 40, 41, 42, 43],
         categoryId: menCategory.id,
       },
       {
@@ -35,6 +37,8 @@ async function main() {
           "https://woolshoes.s3.amazonaws.com/04-tree-flyer-02.png",
         ],
         price: 33000,
+        color: "Preto/Azul (Sola Cinza)",
+        sizes: [37, 38, 39, 40, 41, 42, 43, 44],
         categoryId: menCategory.id,
       },
       {
@@ -49,6 +53,8 @@ async function main() {
           "https://woolshoes.s3.amazonaws.com/04-dasher-mizzles.png",
         ],
         price: 25500,
+        color: "Cinza (Sola Bege)",
+        sizes: [37, 38, 39, 40, 41, 42, 43, 44],
         categoryId: menCategory.id,
       },
       {
@@ -62,6 +68,8 @@ async function main() {
           "https://woolshoes.s3.amazonaws.com/04-golf-dashers.png",
         ],
         price: 24400,
+        color: "Preto (Sola Branca)",
+        sizes: [37, 38, 39, 40, 41, 42, 43],
         categoryId: menCategory.id,
       },
       {
@@ -75,6 +83,8 @@ async function main() {
           "https://woolshoes.s3.amazonaws.com/04-tree-dasher-relay.png",
         ],
         price: 24700,
+        color: "Preto (Sola Preta)",
+        sizes: [37, 38, 39, 40, 41, 42, 43],
         categoryId: menCategory.id,
       },
       {
@@ -89,6 +99,8 @@ async function main() {
           "https://woolshoes.s3.amazonaws.com/04-dasher-fluffs.png",
         ],
         price: 34000,
+        color: "Preto (Sola Preta)",
+        sizes: [37, 38, 39, 40, 41, 42, 43],
         categoryId: menCategory.id,
       },
       {
@@ -103,6 +115,8 @@ async function main() {
           "https://woolshoes.s3.amazonaws.com/04-tree-dasher-02.png",
         ],
         price: 37500,
+        color: "Cinza (Sola Cinza)",
+        sizes: [37, 38, 39, 40, 41, 42, 43],
         categoryId: menCategory.id,
       },
       {
@@ -116,6 +130,8 @@ async function main() {
           "https://woolshoes.s3.amazonaws.com/04-tree-runners.png",
         ],
         price: 22000,
+        color: "Cinza (Sola Branca)",
+        sizes: [37, 38, 39, 40, 41, 42, 43],
         categoryId: menCategory.id,
       },
       {
@@ -130,6 +146,8 @@ async function main() {
           "https://woolshoes.s3.amazonaws.com/04-flyer-mizzles.png",
         ],
         price: 30000,
+        color: "Azul (Sola Branca)",
+        sizes: [38, 39, 40, 41, 42, 43, 44, 45],
         categoryId: menCategory.id,
       },
     ];
@@ -156,6 +174,8 @@ async function main() {
           "https://woolshoes.s3.amazonaws.com/04-tree-runners-women.png",
         ],
         price: 24500,
+        color: "Vermelho Vinho (Sola Branca)",
+        sizes: [34, 35, 36, 37, 38, 39, 40],
         categoryId: womenCategory.id,
       },
       {
@@ -170,6 +190,8 @@ async function main() {
           "https://woolshoes.s3.amazonaws.com/04-tree-dasher-02-women.png",
         ],
         price: 27500,
+        color: "Branco (Sola Branca)",
+        sizes: [34, 35, 36, 37, 38, 39],
         categoryId: womenCategory.id,
       },
       {
@@ -183,6 +205,8 @@ async function main() {
           "https://woolshoes.s3.amazonaws.com/04-runner-up-mizzles-women.png",
         ],
         price: 23500,
+        color: "Vermelho Vinho (Sola Vinho)",
+        sizes: [34, 35, 36, 37, 38, 39],
         categoryId: womenCategory.id,
       },
       {
@@ -197,6 +221,8 @@ async function main() {
           "https://woolshoes.s3.amazonaws.com/04-runner-fluffs-women.png",
         ],
         price: 26700,
+        color: "Preto (Sola Branca)",
+        sizes: [34, 35, 36, 37, 38],
         categoryId: womenCategory.id,
       },
       {
@@ -211,6 +237,8 @@ async function main() {
           "https://woolshoes.s3.amazonaws.com/04-tree-loungers-women.png",
         ],
         price: 22500,
+        color: "Rosa (Sola Branca)",
+        sizes: [34, 35, 36, 37, 38, 39, 40],
         categoryId: womenCategory.id,
       },
       {
@@ -224,6 +252,8 @@ async function main() {
           "https://woolshoes.s3.amazonaws.com/04-wool-pipers-women.png",
         ],
         price: 23700,
+        color: "Cinza (Sola Branca)",
+        sizes: [34, 35, 36, 37, 38, 39, 40],
         categoryId: womenCategory.id,
       },
       {
@@ -237,6 +267,8 @@ async function main() {
           "https://woolshoes.s3.amazonaws.com/04-superlight-tree-runners-women.png",
         ],
         price: 28000,
+        color: "Rosa (Sola Rosa)",
+        sizes: [34, 35, 36, 37, 38, 39],
         categoryId: womenCategory.id,
       },
       {
@@ -251,6 +283,8 @@ async function main() {
           "https://woolshoes.s3.amazonaws.com/04-golf-dashers-women.png",
         ],
         price: 30000,
+        color: "Branco (Sola Branca)",
+        sizes: [34, 35, 36, 37, 38, 39],
         categoryId: womenCategory.id,
       },
       {
@@ -264,6 +298,8 @@ async function main() {
           "https://woolshoes.s3.amazonaws.com/04-runner-mizzles-women.png",
         ],
         price: 24900,
+        color: "Vermelho Vinho (Sola Branca)",
+        sizes: [34, 35, 36, 37, 38, 39, 40],
         categoryId: womenCategory.id,
       },
     ];
@@ -291,6 +327,8 @@ async function main() {
           "https://woolshoes.s3.amazonaws.com/04-wool-loungers-kids.png",
         ],
         price: 26900,
+        color: "Preto (Sola Branca)",
+        sizes: [25, 26, 27],
         categoryId: kidsCategory.id,
       },
       {
@@ -305,6 +343,8 @@ async function main() {
           "https://woolshoes.s3.amazonaws.com/04-wool-runners-kids.png",
         ],
         price: 27600,
+        color: "Vermelho (Sola Branca)",
+        sizes: [24, 25, 26],
         categoryId: kidsCategory.id,
       },
     ];

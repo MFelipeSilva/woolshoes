@@ -99,6 +99,10 @@ export const Page = styled.li`
     font-size: 15pt;
   }
 
+  &:hover {
+    cursor: pointer;
+  }
+
   a {
     display: flex;
     gap: 0.5em;

@@ -1,34 +1,68 @@
 "use client";
 
+import Link from "next/link";
+
 import { useQuery } from "react-query";
 
-import { IoMdStar, IoMdStarHalf } from "react-icons/io";
+import { IoAlertCircleOutline } from "react-icons/io5";
 
-import { getProductSlug } from "@app/(shop)/services/apiFunctions";
+import { getProductSlug, getProducts } from "@app/(shop)/services/apiFunctions";
+
+import { ProductType } from "@/types/ProductType";
 
 import { formatPrice } from "@helpers/formatPrice";
+import { assessments } from "@helpers/assessments";
 
 import { useCart } from "@providers/cart";
 
 import { Layout } from "@/layout";
 
+import { Stars } from "@components/Stars";
 import { PrimaryButton } from "@/components/Buttons/PrimaryButton";
 
 import {
   Container,
-  ProductDetails,
-  ImageAndDescription,
+  MainImage,
   ProductImage,
   Title,
   Price,
   SelectSize,
-  Content,
-  Stars,
   SubTitle,
   ButtonSize,
   Buttons,
   ProductColor,
   ButtonColor,
+  ProductImages,
+  ContentImages,
+  ReviewsContainer,
+  ReviewsCard,
+  CommentTitle,
+  CommentDescription,
+  ReviewsContent,
+  ReviewsTitle,
+  SizeAlert,
+  ProductPath,
+  CardContent,
+  ContentMain,
+  ImagesAndDescription,
+  ImagesContainer,
+  DescriptionContainer,
+  DescriptionTitle,
+  DescriptionText,
+  Rows,
+  DescriptionSubTitle,
+  DetailsAndRecommendations,
+  RecommendationsContainer,
+  CardProducts,
+  Image,
+  MetaProducts,
+  DetailsContainer,
+  RecommendationsTitle,
+  Recommendations,
+  DetailsHeader,
+  StarsContent,
+  FreeShippingContainer,
+  TextFreeShipping,
 } from "./styles";
 
 interface ProductIdProps {
@@ -46,57 +80,143 @@ export default function ProductId({ params: { slug } }: ProductIdProps) {
     enabled: !!slug,
   });
 
-  const { addProductToCart } = useCart();
+  const { data: products } = useQuery(["products"], getProducts);
 
-  const ratingNumbers = Math.floor(Math.random() * 101) + 100;
+  const { addProductToCart } = useCart();
 
   return (
     <Layout>
       <Container>
         {product ? (
-          <Content>
-            <ImageAndDescription>
-              <ProductImage src={product.imageUrls[0]} />
-            </ImageAndDescription>
-            <ProductDetails>
-              <Title>{product.name}</Title>
-              <Stars>
-                <IoMdStar />
-                <IoMdStar />
-                <IoMdStar />
-                <IoMdStar />
-                <IoMdStarHalf /> ({ratingNumbers}) avaliações.
-              </Stars>
-              <Price>
-                Por apenas: <h2>{formatPrice(product.price)}</h2>
-              </Price>
-
-              <ProductColor>
-                <SubTitle>Cor do produto:</SubTitle>
-                <Buttons>
-                  <ButtonColor />
-                </Buttons>
-              </ProductColor>
-              <SelectSize>
-                <SubTitle>Selecione o tamanho:</SubTitle>
-                <Buttons>
-                  <ButtonSize>37</ButtonSize>
-                  <ButtonSize>38</ButtonSize>
-                  <ButtonSize>39</ButtonSize>
-                  <ButtonSize>40</ButtonSize>
-                  <ButtonSize>41</ButtonSize>
-                  <ButtonSize>42</ButtonSize>
-                  <ButtonSize>43</ButtonSize>
-                </Buttons>
-              </SelectSize>
-              <PrimaryButton onClick={() => addProductToCart(product)}>
-                Adicionar ao carrinho
-              </PrimaryButton>
-            </ProductDetails>
-          </Content>
+          <ContentMain>
+            <ImagesAndDescription>
+              <ImagesContainer>
+                <ProductImages>
+                  {product.imageUrls.map((image: any) => (
+                    <ContentImages src={image} />
+                  ))}
+                </ProductImages>
+                <MainImage>
+                  <ProductImage src={product.imageUrls[0]} />
+                </MainImage>
+              </ImagesContainer>
+              <DescriptionContainer>
+                <DescriptionTitle>Descrição do produto</DescriptionTitle>
+                <Rows>
+                  <DescriptionText>
+                    Estiloso e sofisticado, produzido pensando no seu conforto
+                    ao utiliza-lo para praticar esportes físicos ou no seu dia a
+                    dia. Com materiais na parte superior 100% algodão orgânico e
+                    solas de borracha para permitir uma enorme leveza e
+                    resistência.
+                  </DescriptionText>
+                </Rows>
+                <Rows>
+                  <DescriptionSubTitle>Nome:&nbsp;</DescriptionSubTitle>
+                  <DescriptionText>{product.name}</DescriptionText>
+                </Rows>
+                <Rows>
+                  <DescriptionSubTitle>Marca:&nbsp;</DescriptionSubTitle>
+                  <DescriptionText>Allbirds</DescriptionText>
+                </Rows>
+                <Rows>
+                  <DescriptionSubTitle>Gênero:&nbsp;</DescriptionSubTitle>
+                  <DescriptionText>
+                    {product.name.split(" ").pop()}
+                  </DescriptionText>
+                </Rows>
+                <Rows>
+                  <DescriptionSubTitle>Origem:&nbsp;</DescriptionSubTitle>
+                  <DescriptionText>Internacional</DescriptionText>
+                </Rows>
+              </DescriptionContainer>
+            </ImagesAndDescription>
+            <DetailsAndRecommendations>
+              <DetailsContainer>
+                <DetailsHeader>
+                  <ProductPath>
+                    <Link href="/">Home</Link> /{" "}
+                    <Link href="/products">Products</Link> /
+                  </ProductPath>
+                  <Title>{product.name}</Title>
+                  <StarsContent>
+                    <Stars rating={4.5} /> ({assessments.length}) avaliações.
+                  </StarsContent>
+                </DetailsHeader>
+                <Price>
+                  Por apenas: <h2>{formatPrice(product.price)}</h2>
+                </Price>
+                <ProductColor>
+                  <SubTitle>
+                    Cor do produto: <span>{product.color}</span>
+                  </SubTitle>
+                  <Buttons>
+                    <ButtonColor color={product.color}/>
+                  </Buttons>
+                </ProductColor>
+                <SelectSize>
+                  <SubTitle>Selecione o tamanho:</SubTitle>
+                  <Buttons>
+                    {product.sizes.map((size: number) => (
+                      <ButtonSize>{size}</ButtonSize>
+                    ))}
+                  </Buttons>
+                </SelectSize>
+                <SizeAlert>
+                  Caso tenha problemas com tamanho de tênis, recomendamos pegar
+                  uma <span>numeração maior</span>.
+                </SizeAlert>
+                <PrimaryButton onClick={() => addProductToCart(product)}>
+                  Adicionar ao carrinho
+                </PrimaryButton>
+              </DetailsContainer>
+              <FreeShippingContainer>
+                <IoAlertCircleOutline />
+                <TextFreeShipping>
+                  Todas as compras acima de R$299 são elegíveis para frete
+                  grátis.
+                </TextFreeShipping>
+              </FreeShippingContainer>
+              <RecommendationsContainer>
+                <RecommendationsTitle>Recomendações</RecommendationsTitle>
+                <Recommendations>
+                  {products?.slice(2, 4).map((product: ProductType) => (
+                    <Link href={`/products/${product.slug}`}>
+                      <CardProducts
+                        cover={
+                          <Image
+                            src={product.imageUrls[0]}
+                            alt="product images"
+                          />
+                        }
+                      >
+                        <MetaProducts title={product.name} />
+                      </CardProducts>
+                    </Link>
+                  ))}
+                </Recommendations>
+              </RecommendationsContainer>
+            </DetailsAndRecommendations>
+          </ContentMain>
         ) : (
           ""
         )}
+        <ReviewsContainer>
+          <ReviewsContent>
+            <ReviewsTitle>{assessments.length} comentários</ReviewsTitle>
+            <CardContent>
+              {assessments.map((assessment) => (
+                <ReviewsCard key={assessment.id}>
+                  <Stars rating={assessment.rating} text={assessment.stars} />
+                  <CommentTitle>{assessment.title}</CommentTitle>
+                  <CommentDescription>
+                    {assessment.description}
+                  </CommentDescription>
+                </ReviewsCard>
+              ))}
+            </CardContent>
+          </ReviewsContent>
+        </ReviewsContainer>
       </Container>
     </Layout>
   );

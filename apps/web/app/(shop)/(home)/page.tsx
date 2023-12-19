@@ -8,8 +8,6 @@ import { Layout } from "@/layout";
 
 import { getProducts } from "../services/apiFunctions";
 
-import { purchaseAdvantages } from "@helpers/purchaseAdvantages";
-
 import { ProductType } from "@/types/ProductType";
 
 import { Carousel } from "@/components/Carousel";
@@ -20,14 +18,6 @@ import {
   Content,
   Section,
   Title,
-  Advantage,
-  AdvantageIcon,
-  AdvantageContent,
-  AdvantageTitle,
-  AdvantageDescription,
-  AdvantageTexts,
-  AdvantageContainer,
-  Icon,
   Image,
   CardProducts,
   MetaProducts,
@@ -119,26 +109,6 @@ export default function Home() {
           <SecondaryBannerContent>
             <Banner src="https://cdn.allbirds.com/image/upload/f_auto,q_auto,w_2048/cms/5fpkfzYQ5cQnhuIz1VFU67/1266845421d7e9876b6375fbf91a4280/23Q4-ZombiePack-Secondary-Hero-Desktop.jpg" />
           </SecondaryBannerContent>
-        </Section>
-        <Section $page={3}>
-          <AdvantageContainer>
-            <Title>Vantagens de comprar no nosso site</Title>
-            <AdvantageContent>
-              {purchaseAdvantages.map((advantage) => (
-                <Advantage key={advantage.id}>
-                  <AdvantageIcon>
-                    <Icon src={advantage.icon} />
-                  </AdvantageIcon>
-                  <AdvantageTexts>
-                    <AdvantageTitle>{advantage.title}</AdvantageTitle>
-                    <AdvantageDescription>
-                      {advantage.description}
-                    </AdvantageDescription>
-                  </AdvantageTexts>
-                </Advantage>
-              ))}
-            </AdvantageContent>
-          </AdvantageContainer>
         </Section>
       </Container>
     </Layout>
