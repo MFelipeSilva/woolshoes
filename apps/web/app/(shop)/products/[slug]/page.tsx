@@ -154,14 +154,14 @@ export default function ProductId({ params: { slug } }: ProductIdProps) {
                   </SubTitle>
                   <Buttons>
                     <ButtonColor type="button" aria-label="product color">
-                      <Color color={product?.color} />
+                      <Color color={product.color} />
                     </ButtonColor>
                   </Buttons>
                 </ProductColor>
                 <SelectSize>
                   <SubTitle>Selecione o tamanho:</SubTitle>
                   <Buttons>
-                    {product?.sizes?.map((size: number) => (
+                    {product.sizes.map((size: number) => (
                       <ButtonSize
                         type="button"
                         aria-label="product color"
