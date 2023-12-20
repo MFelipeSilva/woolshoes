@@ -8,6 +8,67 @@ interface IButtonColor {
   color: string;
 }
 
+interface IColorStyles {
+  background: string;
+}
+
+interface IColors {
+  [key: string]: IColorStyles;
+}
+
+const colors: IColors = {
+  "Cinza (Sola Cinza)": {
+    background:
+      "linear-gradient(135deg, rgb(224, 226, 220) 50%, rgb(180, 182, 186) 50%)",
+  },
+  "Preto/Azul (Sola Cinza)": {
+    background:
+      "linear-gradient(135deg, rgb(36, 39, 41) 50%, rgb(64, 74, 96) 50%)",
+  },
+  "Preto (Sola Cinza)": {
+    background:
+      "linear-gradient(135deg, rgb(36, 39, 41) 50%, rgb(211, 210, 209) 50%)",
+  },
+  "Cinza (Sola Bege)": {
+    background:
+      "linear-gradient(to right, rgb(59, 59, 52) 33%, rgb(223, 41, 50) 33%, rgb(223, 41, 50) 66%, rgb(226, 224, 209) 66%)",
+  },
+  "Preto (Sola Branca)": {
+    background:
+      "linear-gradient(135deg, rgb(36, 39, 41) 50%, rgb(224, 226, 220) 50%)",
+  },
+  "Preto (Sola Preta)": {
+    background:
+      "linear-gradient(135deg, rgb(36, 39, 41) 50%, rgb(36, 39, 41) 50%)",
+  },
+  "Cinza (Sola Branca)": {
+    background:
+      "linear-gradient(135deg, rgb(136, 134, 136) 50%, rgb(255, 255, 255) 50%)",
+  },
+  "Azul (Sola Branca)": {
+    background:
+      "linear-gradient(135deg, rgb(64, 74, 96) 50%, rgb(224, 226, 220) 50%)",
+  },
+  "Vermelho Vinho (Sola Branca)": {
+    background:
+      "linear-gradient(135deg, rgb(149, 73, 83) 50%, rgb(224, 226, 220) 50%)",
+  },
+  "Branco (Sola Branca)": {
+    background: "rgb(224, 226, 220)",
+  },
+  "Vermelho Vinho (Sola Vinho)": {
+    background: "rgb(149, 73, 83)",
+  },
+  "Rosa (Sola Branca)": {
+    background:
+      "linear-gradient(135deg, rgb(250,235,215) 50%, rgb(255, 255, 255) 50%)",
+  },
+  "Vermelho (Sola Branca)": {
+    background:
+      "linear-gradient(135deg, rgb(223, 41, 50) 50%, rgb(231, 228, 211) 50%)",
+  },
+};
+
 export const Container = styled.main`
   display: flex;
   width: 100vw;
@@ -246,36 +307,11 @@ export const ButtonColor = styled.button<IButtonColor>`
   cursor: pointer;
   border: none;
   border-radius: 50%;
-  background: ${(props) =>
-    props.color === "Cinza (Sola Cinza)"
-      ? `linear-gradient(135deg, rgb(224, 226, 220) 50%, rgb(180, 182, 186) 50%)`
-      : props.color === "Preto/Azul (Sola Cinza)"
-        ? `linear-gradient(135deg, rgb(36, 39, 41) 50%, rgb(64, 74, 96) 50%)`
-        : props.color === "Preto (Sola Cinza)"
-          ? `linear-gradient(135deg, rgb(36, 39, 41) 50%, rgb(211, 210, 209) 50%)`
-          : props.color === "Cinza (Sola Bege)"
-            ? `linear-gradient(to right, rgb(59, 59, 52) 33%, rgb(223, 41, 50) 33%, rgb(223, 41, 50) 66%, rgb(226, 224, 209) 66%)`
-            : props.color === "Preto (Sola Branca)"
-              ? `linear-gradient(135deg, rgb(36, 39, 41) 50%, rgb(224, 226, 220) 50%)`
-              : props.color === "Preto (Sola Preta)"
-                ? `linear-gradient(135deg, rgb(36, 39, 41) 50%, rgb(36, 39, 41) 50%)`
-                : props.color === "Cinza (Sola Branca)"
-                  ? `linear-gradient(135deg, rgb(136, 134, 136) 50%, rgb(255, 255, 255) 50%)`
-                  : props.color === "Azul (Sola Branca)"
-                    ? `linear-gradient(135deg, rgb(64, 74, 96) 50%, rgb(224, 226, 220) 50%)`
-                    : props.color === "Vermelho Vinho (Sola Branca)"
-                      ? `linear-gradient(135deg, rgb(149, 73, 83) 50%, rgb(224, 226, 220) 50%)`
-                      : props.color === "Branco (Sola Branca)"
-                        ? `rgb(224, 226, 220)`
-                        : props.color === "Vermelho Vinho (Sola Vinho)"
-                          ? `background: rgb(149, 73, 83)`
-                          : props.color === "Rosa (Sola Branca)"
-                            ? `linear-gradient(135deg, rgb(250,235,215) 50%, rgb(255, 255, 255) 50%)`
-                            : props.color === "Rosa (Sola Rosa)"
-                              ? `rgb(237, 204, 212)`
-                              : props.color === "Vermelho (Sola Branca)"
-                                ? `linear-gradient(135deg, rgb(223, 41, 50) 50%, rgb(231, 228, 211) 50%)`
-                                : ""};
+  background: ${(props) => {
+    const colorStyle = colors[props.color];
+    return colorStyle ? colorStyle.background : "inherit";
+  }};
+
   &::after {
     content: "";
     position: absolute;

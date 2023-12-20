@@ -158,7 +158,7 @@ export default function ProductId({ params: { slug } }: ProductIdProps) {
                   <SubTitle>Selecione o tamanho:</SubTitle>
                   <Buttons>
                     {product?.sizes?.map((size: number) => (
-                      <ButtonSize key={product.id}>{size}</ButtonSize>
+                      <ButtonSize key={size}>{size}</ButtonSize>
                     ))}
                   </Buttons>
                 </SelectSize>
