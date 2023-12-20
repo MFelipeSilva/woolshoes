@@ -300,7 +300,15 @@ export const ProductColor = styled.div`
   flex-direction: column;
 `;
 
-export const ButtonColor = styled.button<IButtonColor>`
+export const ButtonColor = styled.button`
+  display: inline-block;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  background: transparent;
+`;
+
+export const Color = styled.div<IButtonColor>`
   position: relative;
   width: 3.3em;
   height: 3.3em;
@@ -354,10 +362,20 @@ export const Buttons = styled.div`
 `;
 
 export const ButtonSize = styled.button`
+  display: inline-block;
+  border: none;
+  cursor: pointer;
+  background: transparent;
+`;
+
+export const Size = styled.span`
+  display: flex;
   width: clamp(3.6em, 3vw, 4.5em);
   height: clamp(3.6em, 3vw, 4.5em);
   cursor: pointer;
   border-radius: 5px;
+  align-items: center;
+  justify-content: center;
   border: 1px solid #000000;
   background-color: transparent;
   font-family: "Inter", sans-serif;

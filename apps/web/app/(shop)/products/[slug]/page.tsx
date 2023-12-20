@@ -63,6 +63,8 @@ import {
   StarsContent,
   FreeShippingContainer,
   TextFreeShipping,
+  Color,
+  Size,
 } from "./styles";
 
 interface ProductIdProps {
@@ -151,14 +153,22 @@ export default function ProductId({ params: { slug } }: ProductIdProps) {
                     Cor do produto: <span>{product.color}</span>
                   </SubTitle>
                   <Buttons>
-                    <ButtonColor color={product?.color} />
+                    <ButtonColor type="button" aria-label="product color">
+                      <Color color={product?.color} />
+                    </ButtonColor>
                   </Buttons>
                 </ProductColor>
                 <SelectSize>
                   <SubTitle>Selecione o tamanho:</SubTitle>
                   <Buttons>
                     {product?.sizes?.map((size: number) => (
-                      <ButtonSize key={size}>{size}</ButtonSize>
+                      <ButtonSize
+                        type="button"
+                        aria-label="product color"
+                        key={product.id}
+                      >
+                        <Size>{size}</Size>
+                      </ButtonSize>
                     ))}
                   </Buttons>
                 </SelectSize>
