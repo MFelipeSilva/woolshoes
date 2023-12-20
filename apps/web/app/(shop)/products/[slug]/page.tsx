@@ -72,13 +72,13 @@ interface ProductIdProps {
 }
 
 export default function ProductId({ params: { slug } }: ProductIdProps) {
-  const {
-    data: product,
-    isLoading,
-    error,
-  } = useQuery(["product", slug], () => getProductSlug(slug), {
-    enabled: !!slug,
-  });
+  const { data: product } = useQuery(
+    ["product", slug],
+    () => getProductSlug(slug),
+    {
+      enabled: !!slug,
+    }
+  ) as { data: ProductType | undefined };
 
   const { data: products } = useQuery(["products"], getProducts);
 
@@ -92,7 +92,7 @@ export default function ProductId({ params: { slug } }: ProductIdProps) {
             <ImagesAndDescription>
               <ImagesContainer>
                 <ProductImages>
-                  {product.imageUrls.map((image: any) => (
+                  {product?.imageUrls?.map((image: any) => (
                     <ContentImages key={product.id} src={image} />
                   ))}
                 </ProductImages>
@@ -122,7 +122,7 @@ export default function ProductId({ params: { slug } }: ProductIdProps) {
                 <Rows>
                   <DescriptionSubTitle>Gênero:&nbsp;</DescriptionSubTitle>
                   <DescriptionText>
-                    {product.name.split(" ").pop()}
+                    {product?.name.split(" ").pop()}
                   </DescriptionText>
                 </Rows>
                 <Rows>
@@ -151,15 +151,17 @@ export default function ProductId({ params: { slug } }: ProductIdProps) {
                     Cor do produto: <span>{product.color}</span>
                   </SubTitle>
                   <Buttons>
-                    <ButtonColor color={product.color}/>
+                    <ButtonColor color={product.color} />
                   </Buttons>
                 </ProductColor>
                 <SelectSize>
                   <SubTitle>Selecione o tamanho:</SubTitle>
                   <Buttons>
-                    {product.sizes.map((size: number) => (
-                      <ButtonSize key={product.id}>{size}</ButtonSize>
-                    ))}
+                    {Array.isArray(product?.sizes) && product.sizes.length > 0
+                      ? product.sizes.map((size: number) => (
+                          <ButtonSize key={size}>{size}</ButtonSize>
+                        ))
+                      : ""}
                   </Buttons>
                 </SelectSize>
                 <SizeAlert>
