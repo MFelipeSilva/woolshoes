@@ -93,7 +93,7 @@ export default function ProductId({ params: { slug } }: ProductIdProps) {
               <ImagesContainer>
                 <ProductImages>
                   {product.imageUrls.map((image: any) => (
-                    <ContentImages src={image} />
+                    <ContentImages key={product.id} src={image} />
                   ))}
                 </ProductImages>
                 <MainImage>
@@ -158,7 +158,7 @@ export default function ProductId({ params: { slug } }: ProductIdProps) {
                   <SubTitle>Selecione o tamanho:</SubTitle>
                   <Buttons>
                     {product.sizes.map((size: number) => (
-                      <ButtonSize>{size}</ButtonSize>
+                      <ButtonSize key={product.id}>{size}</ButtonSize>
                     ))}
                   </Buttons>
                 </SelectSize>
@@ -181,7 +181,7 @@ export default function ProductId({ params: { slug } }: ProductIdProps) {
                 <RecommendationsTitle>Recomendações</RecommendationsTitle>
                 <Recommendations>
                   {products?.slice(2, 4).map((product: ProductType) => (
-                    <Link href={`/products/${product.slug}`}>
+                    <Link key={product.id} href={`/products/${product.slug}`}>
                       <CardProducts
                         cover={
                           <Image
