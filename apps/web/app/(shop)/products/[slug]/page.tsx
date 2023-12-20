@@ -151,17 +151,15 @@ export default function ProductId({ params: { slug } }: ProductIdProps) {
                     Cor do produto: <span>{product.color}</span>
                   </SubTitle>
                   <Buttons>
-                    <ButtonColor color={product.color} />
+                    <ButtonColor color={product?.color} />
                   </Buttons>
                 </ProductColor>
                 <SelectSize>
                   <SubTitle>Selecione o tamanho:</SubTitle>
                   <Buttons>
-                    {Array.isArray(product?.sizes) && product.sizes.length > 0
-                      ? product.sizes.map((size: number) => (
-                          <ButtonSize key={size}>{size}</ButtonSize>
-                        ))
-                      : ""}
+                    {product?.sizes?.map((size: number) => (
+                      <ButtonSize key={product.id}>{size}</ButtonSize>
+                    ))}
                   </Buttons>
                 </SelectSize>
                 <SizeAlert>
