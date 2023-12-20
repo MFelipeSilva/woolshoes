@@ -94,8 +94,8 @@ export default function ProductId({ params: { slug } }: ProductIdProps) {
             <ImagesAndDescription>
               <ImagesContainer>
                 <ProductImages>
-                  {product?.imageUrls?.map((image: any) => (
-                    <ContentImages key={product.id} src={image} />
+                  {product?.imageUrls?.map((image: any, index) => (
+                    <ContentImages key={index} src={image} />
                   ))}
                 </ProductImages>
                 <MainImage>
@@ -150,7 +150,7 @@ export default function ProductId({ params: { slug } }: ProductIdProps) {
                 </Price>
                 <ProductColor>
                   <SubTitle>
-                    Cor do produto: <span>{product.color}</span>
+                    Cor do produto: <span>{product?.color}</span>
                   </SubTitle>
                   <Buttons>
                     <ButtonColor type="button" aria-label="product color">
@@ -161,11 +161,11 @@ export default function ProductId({ params: { slug } }: ProductIdProps) {
                 <SelectSize>
                   <SubTitle>Selecione o tamanho:</SubTitle>
                   <Buttons>
-                    {product.sizes.map((size: number) => (
+                    {product?.sizes?.map((size: number, index) => (
                       <ButtonSize
                         type="button"
                         aria-label="product color"
-                        key={product.id}
+                        key={index}
                       >
                         <Size>{size}</Size>
                       </ButtonSize>
