@@ -276,7 +276,7 @@ export const ProductPath = styled.span`
 `;
 
 export const Title = styled.h1`
-  font-size: clamp(16pt, 3vw, 21pt);
+  font-size: clamp(18pt, 3vw, 21pt);
 `;
 
 export const StarsContent = styled.div`
@@ -290,7 +290,7 @@ export const Price = styled.p`
 
   h2 {
     color: #2d3142;
-    font-size: 21pt;
+    font-size: clamp(18pt, 3vw, 21pt);
   }
 `;
 
@@ -373,6 +373,7 @@ export const Size = styled.span`
   width: clamp(3.6em, 3vw, 4.5em);
   height: clamp(3.6em, 3vw, 4.5em);
   cursor: pointer;
+  color: #000000;
   border-radius: 5px;
   align-items: center;
   justify-content: center;
