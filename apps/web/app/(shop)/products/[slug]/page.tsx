@@ -21,6 +21,16 @@ import { Stars } from "@components/Stars";
 import { PrimaryButton } from "@/components/Buttons/PrimaryButton";
 
 import {
+  CardsProductsSkeleton,
+  ImagesContainerSkeleton,
+  ButtonSkeleton,
+  DescriptionSkeleton,
+  ImageSkeleton,
+  ImagesSkeleton,
+  TitleSkeleton,
+} from "@components/Skeletons/ProductSkeleton";
+
+import {
   Container,
   MainImage,
   ProductImage,
@@ -74,13 +84,13 @@ interface ProductIdProps {
 }
 
 export default function ProductId({ params: { slug } }: ProductIdProps) {
-  const { data: product } = useQuery(
+  const { data: product, isLoading } = useQuery(
     ["product", slug],
     () => getProductSlug(slug),
     {
       enabled: !!slug,
     }
-  ) as { data: ProductType | undefined };
+  ) as { data: ProductType; isLoading: boolean };
 
   const { data: products } = useQuery(["products"], getProducts);
 
@@ -89,9 +99,20 @@ export default function ProductId({ params: { slug } }: ProductIdProps) {
   return (
     <Layout>
       <Container>
-        {product ? (
-          <ContentMain>
-            <ImagesAndDescription>
+        <ContentMain>
+          <ImagesAndDescription>
+            {isLoading || !product ? (
+              <ImagesContainerSkeleton>
+                <ProductImages>
+                  {[1, 2, 3, 4].map((_, index) => (
+                    <ImagesSkeleton key={index} />
+                  ))}
+                </ProductImages>
+                <MainImage>
+                  <ImageSkeleton />
+                </MainImage>
+              </ImagesContainerSkeleton>
+            ) : (
               <ImagesContainer>
                 <ProductImages>
                   {product?.imageUrls?.map((image: any, index) => (
@@ -102,6 +123,10 @@ export default function ProductId({ params: { slug } }: ProductIdProps) {
                   <ProductImage src={product.imageUrls[0]} />
                 </MainImage>
               </ImagesContainer>
+            )}
+            {isLoading || !product ? (
+              <DescriptionSkeleton />
+            ) : (
               <DescriptionContainer>
                 <DescriptionTitle>Descrição do produto</DescriptionTitle>
                 <Rows>
@@ -124,7 +149,7 @@ export default function ProductId({ params: { slug } }: ProductIdProps) {
                 <Rows>
                   <DescriptionSubTitle>Gênero:&nbsp;</DescriptionSubTitle>
                   <DescriptionText>
-                    {product?.name.split(" ").pop()}
+                    {product.name.split(" ").pop()}
                   </DescriptionText>
                 </Rows>
                 <Rows>
@@ -132,85 +157,94 @@ export default function ProductId({ params: { slug } }: ProductIdProps) {
                   <DescriptionText>Internacional</DescriptionText>
                 </Rows>
               </DescriptionContainer>
-            </ImagesAndDescription>
-            <DetailsAndRecommendations>
-              <DetailsContainer>
-                <DetailsHeader>
-                  <ProductPath>
-                    <Link href="/">Home</Link> /{" "}
-                    <Link href="/products">Products</Link> /
-                  </ProductPath>
-                  <Title>{product.name}</Title>
-                  <StarsContent>
-                    <Stars rating={4.5} /> ({assessments.length}) avaliações.
-                  </StarsContent>
-                </DetailsHeader>
-                <Price>
-                  Por apenas: <h2>{formatPrice(product.price)}</h2>
-                </Price>
-                <ProductColor>
+            )}
+          </ImagesAndDescription>
+          <DetailsAndRecommendations>
+            <DetailsContainer>
+              <DetailsHeader>
+                <ProductPath>
+                  <Link href="/">Home</Link> /{" "}
+                  <Link href="/products">Products</Link> /
+                </ProductPath>
+                <Title>{product?.name}</Title>
+                <StarsContent>
+                  <Stars rating={4.5} /> ({assessments.length}) avaliações.
+                </StarsContent>
+              </DetailsHeader>
+              <Price>
+                Por apenas: <span>{formatPrice(product?.price)}</span>
+              </Price>
+              <ProductColor>
+                {isLoading || !product ? (
+                  <TitleSkeleton active size="large" />
+                ) : (
                   <SubTitle>
-                    Cor do produto: <span>{product?.color}</span>
+                    Cor do produto: <span>{product.color}</span>
                   </SubTitle>
-                  <Buttons>
-                    <ButtonColor type="button" aria-label="product color">
+                )}
+                <Buttons>
+                  <ButtonColor type="button" aria-label="product color">
+                    {isLoading || !product ? (
+                      <ButtonSkeleton active shape="circle" />
+                    ) : (
                       <Color color={product.color} />
-                    </ButtonColor>
-                  </Buttons>
-                </ProductColor>
-                <SelectSize>
-                  <SubTitle>Selecione o tamanho:</SubTitle>
-                  <Buttons>
-                    {product?.sizes?.map((size: number, index) => (
-                      <ButtonSize
-                        type="button"
-                        aria-label="product color"
-                        key={index}
-                      >
-                        <Size>{size}</Size>
-                      </ButtonSize>
-                    ))}
-                  </Buttons>
-                </SelectSize>
-                <SizeAlert>
-                  Caso tenha problemas com tamanho de tênis, recomendamos pegar
-                  uma <span>numeração maior</span>.
-                </SizeAlert>
-                <PrimaryButton onClick={() => addProductToCart(product)}>
-                  Adicionar ao carrinho
-                </PrimaryButton>
-              </DetailsContainer>
-              <FreeShippingContainer>
-                <IoAlertCircleOutline />
-                <TextFreeShipping>
-                  Todas as compras acima de R$299 são elegíveis para frete
-                  grátis.
-                </TextFreeShipping>
-              </FreeShippingContainer>
-              <RecommendationsContainer>
-                <RecommendationsTitle>Recomendações</RecommendationsTitle>
-                <Recommendations>
-                  {products?.slice(2, 4).map((product: ProductType) => (
-                    <Link key={product.id} href={`/products/${product.slug}`}>
-                      <CardProducts
-                        cover={
-                          <Image
-                            src={product.imageUrls[0]}
-                            alt="product images"
-                          />
-                        }
-                      >
-                        <MetaProducts title={product.name} />
-                      </CardProducts>
-                    </Link>
+                    )}
+                  </ButtonColor>
+                </Buttons>
+              </ProductColor>
+              <SelectSize>
+                <SubTitle>Selecione o tamanho:</SubTitle>
+                <Buttons>
+                  {product?.sizes?.map((size: number, index) => (
+                    <ButtonSize
+                      type="button"
+                      aria-label="product color"
+                      key={index}
+                    >
+                      <Size>{size}</Size>
+                    </ButtonSize>
                   ))}
-                </Recommendations>
-              </RecommendationsContainer>
-            </DetailsAndRecommendations>
-          </ContentMain>
-        ) : (
-          ""
-        )}
+                </Buttons>
+              </SelectSize>
+              <SizeAlert>
+                Caso tenha problemas com tamanho de tênis, recomendamos pegar
+                uma <span>numeração maior</span>.
+              </SizeAlert>
+              <PrimaryButton onClick={() => addProductToCart(product)}>
+                Adicionar ao carrinho
+              </PrimaryButton>
+            </DetailsContainer>
+            <FreeShippingContainer>
+              <IoAlertCircleOutline />
+              <TextFreeShipping>
+                Todas as compras acima de R$299 são elegíveis para frete grátis.
+              </TextFreeShipping>
+            </FreeShippingContainer>
+            <RecommendationsContainer>
+              <RecommendationsTitle>Recomendações</RecommendationsTitle>
+              <Recommendations>
+                {isLoading || !product
+                  ? [1, 2].map((_, index) => (
+                      <CardsProductsSkeleton key={index} />
+                    ))
+                  : products?.slice(2, 4).map((product: ProductType) => (
+                      <Link key={product.id} href={`/products/${product.slug}`}>
+                        <CardProducts
+                          cover={
+                            <Image
+                              src={product.imageUrls[0]}
+                              alt="product images"
+                            />
+                          }
+                        >
+                          <MetaProducts title={product.name} />
+                        </CardProducts>
+                      </Link>
+                    ))}
+              </Recommendations>
+            </RecommendationsContainer>
+          </DetailsAndRecommendations>
+        </ContentMain>
         <ReviewsContainer>
           <ReviewsContent>
             <ReviewsTitle>{assessments.length} comentários</ReviewsTitle>

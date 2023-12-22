@@ -284,12 +284,15 @@ export const StarsContent = styled.div`
   align-items: center;
 `;
 
-export const Price = styled.p`
+export const Price = styled.span`
   display: flex;
+  font-size: 16px;
+  font-weight: normal;
   flex-direction: column;
 
-  h2 {
+  span {
     color: #2d3142;
+    font-weight:700;
     font-size: clamp(18pt, 3vw, 21pt);
   }
 `;
