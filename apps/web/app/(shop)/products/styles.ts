@@ -67,7 +67,7 @@ export const ProductsHeader = styled.div`
   justify-content: flex-start;
 `;
 
-export const CardProducts = styled(Card)`
+export const ProductsCard = styled(Card)`
   width: 320px !important;
 `;
 

@@ -15,12 +15,19 @@ import { Carousel } from "@/components/Carousel";
 import { PrimaryButton } from "@/components/Buttons/PrimaryButton";
 
 import {
+  ProductCardSkeleton,
+  CardMetaSkeleton,
+  TitleSkeleton,
+  DescriptionSkeleton,
+} from "@components/Skeletons/ProductsSkeleton";
+
+import {
   Content,
   Section,
   Title,
   Image,
-  CardProducts,
-  MetaProducts,
+  ProductCard,
+  CardMeta,
   CarouselContainer,
   CarouselContent,
   Category,
@@ -39,11 +46,10 @@ import {
 } from "./styles";
 
 export default function Home() {
-  const {
-    data: products,
-    isLoading,
-    error,
-  } = useQuery("products", getProducts);
+  const { data: products, isLoading } = useQuery("products", getProducts) as {
+    data: ProductType[];
+    isLoading: boolean;
+  };
 
   return (
     <Layout>
@@ -81,10 +87,18 @@ export default function Home() {
           <CarouselContainer>
             <CarouselContent>
               <Carousel>
-                {Array.isArray(products)
-                  ? products.slice(0, 8).map((product: ProductType) => (
+                {isLoading || !products
+                  ? [1, 2, 3, 4, 5, 6, 7, 8].map((_, index) => (
+                      <ProductCardSkeleton key={index}>
+                        <CardMetaSkeleton>
+                          <TitleSkeleton sizes="large" />
+                          <DescriptionSkeleton sizes="large" />
+                        </CardMetaSkeleton>
+                      </ProductCardSkeleton>
+                    ))
+                  : products?.slice(0, 8).map((product: ProductType) => (
                       <Link key={product.id} href={`products/${product.slug}`}>
-                        <CardProducts
+                        <ProductCard
                           cover={
                             <Image
                               src={product.imageUrls[0]}
@@ -92,14 +106,13 @@ export default function Home() {
                             />
                           }
                         >
-                          <MetaProducts
+                          <CardMeta
                             title={product.name}
                             description={product.description}
                           />
-                        </CardProducts>
+                        </ProductCard>
                       </Link>
-                    ))
-                  : ""}
+                    ))}
               </Carousel>
             </CarouselContent>
           </CarouselContainer>

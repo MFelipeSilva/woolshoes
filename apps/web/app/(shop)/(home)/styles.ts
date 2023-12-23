@@ -233,7 +233,7 @@ export const CarouselContent = styled.div`
   }
 `;
 
-export const CardProducts = styled(Card)`
+export const ProductCard = styled(Card)`
   width: 100% !important;
   min-height: 100% !important;
   box-shadow: rgba(68, 68, 68, 0.2) 0px 8px 20px 2px;
@@ -258,7 +258,7 @@ export const CardProducts = styled(Card)`
   }
 `;
 
-export const MetaProducts = styled(Meta)`
+export const CardMeta = styled(Meta)`
   font-family: "Inter", sans-serif;
 
   .ant-card-meta-title {

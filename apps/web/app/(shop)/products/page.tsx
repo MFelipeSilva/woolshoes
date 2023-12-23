@@ -15,9 +15,16 @@ import { ProductType } from "@/types/ProductType";
 import { formatPrice } from "@helpers/formatPrice";
 
 import {
+  DescriptionSkeleton,
+  CardMetaSkeleton,
+  ProductsCardSkeleton,
+  TitleSkeleton,
+} from "@components/Skeletons/ProductsSkeleton";
+
+import {
   Container,
   ProductsContent,
-  CardProducts,
+  ProductsCard,
   MetaProducts,
   Image,
   Sidebar,
@@ -26,11 +33,10 @@ import {
 } from "./styles";
 
 export default function Products() {
-  const {
-    data: products,
-    isLoading,
-    error,
-  } = useQuery("products", getProducts);
+  const { data: products, isLoading } = useQuery("products", getProducts) as {
+    data: ProductType[];
+    isLoading: boolean;
+  };
 
   return (
     <Layout>
@@ -44,11 +50,21 @@ export default function Products() {
             </SwitchGender>
           </ProductsHeader>
           <Row gutter={[30, 40]}>
-            {Array.isArray(products)
-              ? products.slice(0, 9).map((product: ProductType) => (
+            {isLoading || !products
+              ? [1, 2, 3, 4, 5, 6, 7, 8, 9].map((_, index) => (
+                  <Col xxl={8} xl={12} lg={12} key={index}>
+                    <ProductsCardSkeleton>
+                      <CardMetaSkeleton>
+                        <TitleSkeleton sizes="default" />
+                        <DescriptionSkeleton sizes="default" />
+                      </CardMetaSkeleton>
+                    </ProductsCardSkeleton>
+                  </Col>
+                ))
+              : products.slice(0, 9).map((product: ProductType) => (
                   <Col xxl={8} xl={12} lg={12} key={product.id}>
                     <Link href={`/products/${product.slug}`}>
-                      <CardProducts
+                      <ProductsCard
                         cover={
                           <Image
                             src={product.imageUrls[0]}
@@ -60,11 +76,10 @@ export default function Products() {
                           title={product.name}
                           description={formatPrice(product.price)}
                         />
-                      </CardProducts>
+                      </ProductsCard>
                     </Link>
                   </Col>
-                ))
-              : ""}
+                ))}
           </Row>
         </ProductsContent>
       </Container>
