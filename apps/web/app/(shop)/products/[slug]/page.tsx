@@ -1,266 +1,248 @@
 "use client";
 
-import Link from "next/link";
+import { ReactNode, useEffect, useState } from "react";
 
 import { useQuery } from "react-query";
 
-import { IoAlertCircleOutline } from "react-icons/io5";
+import Link from "next/link";
 
-import { getProductSlug, getProducts } from "@app/(shop)/services/apiFunctions";
+import { LuSettings2, LuChevronLeft } from "react-icons/lu";
+
+import { Layout } from "@layout";
+
+import { getCategory } from "@app/(shop)/api/apiFunctions";
 
 import { ProductType } from "@/types/ProductType";
+import { CategoryType } from "@/types/CategoryType";
 
 import { formatPrice } from "@helpers/formatPrice";
-import { assessments } from "@helpers/assessments";
-
-import { useCart } from "@providers/cart";
-
-import { Layout } from "@/layout";
-
-import { Stars } from "@components/Stars";
-import { PrimaryButton } from "@/components/Buttons/PrimaryButton";
 
 import {
-  CardsProductsSkeleton,
-  ImagesContainerSkeleton,
-  ButtonSkeleton,
   DescriptionSkeleton,
-  ImageSkeleton,
-  ImagesSkeleton,
+  CardMetaSkeleton,
+  ProductsCardSkeleton,
   TitleSkeleton,
-} from "@components/Skeletons/ProductSkeleton";
+} from "@components/Skeletons/ProductsSkeleton";
 
 import {
   Container,
-  MainImage,
-  ProductImage,
-  Title,
-  Price,
-  SelectSize,
-  SubTitle,
-  ButtonSize,
-  Buttons,
-  ProductColor,
-  ButtonColor,
-  ProductImages,
-  ContentImages,
-  ReviewsContainer,
-  ReviewsCard,
-  CommentTitle,
-  CommentDescription,
-  ReviewsContent,
-  ReviewsTitle,
-  SizeAlert,
-  ProductPath,
-  CardContent,
-  ContentMain,
-  ImagesAndDescription,
-  ImagesContainer,
-  DescriptionContainer,
-  DescriptionTitle,
-  DescriptionText,
-  Rows,
-  DescriptionSubTitle,
-  DetailsAndRecommendations,
-  RecommendationsContainer,
-  CardProducts,
-  Image,
+  ProductsContent,
+  ProductsCard,
   MetaProducts,
-  DetailsContainer,
-  RecommendationsTitle,
-  Recommendations,
-  DetailsHeader,
-  StarsContent,
-  FreeShippingContainer,
-  TextFreeShipping,
-  Color,
-  Size,
+  ProductImage,
+  Sidebar,
+  SwitchContainer,
+  SwitchLink,
+  ProductsHeader,
+  ProductPath,
+  Title,
+  Filter,
+  Categories,
+  ButtonSize,
+  SizeGroup,
+  FilterTitle,
+  CategoryTitle,
+  Header,
+  Genres,
+  Gender,
+  Material,
+  Materials,
+  Shoes,
+  ProductsRow,
+  ProductsCol,
+  FilterButton,
+  Content,
+  FilterDrawer,
+  CheckboxAndText,
 } from "./styles";
 
-interface ProductIdProps {
+type CategoryProductsParams = {
   params: {
     slug: string;
   };
-}
+};
 
-export default function ProductId({ params: { slug } }: ProductIdProps) {
-  const { data: product, isLoading } = useQuery(
-    ["product", slug],
-    () => getProductSlug(slug),
+type ContentSidebarProps = {
+  display: boolean;
+  children?: ReactNode;
+};
+
+export default function CategoryProducts({
+  params: { slug },
+}: CategoryProductsParams) {
+  const [open, setOpen] = useState(false);
+
+  const initialGender = localStorage.getItem("@woolshoes/gender") || "men";
+  const [chosenGender, setChosenGender] = useState(initialGender);
+
+  const { data: category, isLoading } = useQuery(
+    ["category", slug],
+    () => getCategory(slug),
     {
       enabled: !!slug,
     }
-  ) as { data: ProductType; isLoading: boolean };
+  ) as { data: CategoryType; isLoading: boolean };
 
-  const { data: products } = useQuery(["products"], getProducts);
+  useEffect(() => {
+    localStorage.setItem("@woolshoes/gender", chosenGender);
+  }, [chosenGender]);
 
-  const { addProductToCart } = useCart();
+  const ContentSidebar = ({ children, display }: ContentSidebarProps) => {
+    return (
+      <Sidebar display={display}>
+        {children}
+        <Filter>
+          <FilterTitle>Filtro:</FilterTitle>
+          <Categories>
+            <CategoryTitle>Tamanhos</CategoryTitle>
+            <SizeGroup>
+              {[24, 25, 26, 27, 28, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43].map(
+                (size, index) => (
+                  <ButtonSize key={index}>{size}</ButtonSize>
+                )
+              )}
+            </SizeGroup>
+          </Categories>
+          <Categories>
+            <CategoryTitle>Material</CategoryTitle>
+            <Materials>
+              <Material>
+                <CheckboxAndText>Leve & Arejado</CheckboxAndText>
+              </Material>
+              <Material>
+                <CheckboxAndText>Lã Macia & Aconchegante</CheckboxAndText>
+              </Material>
+              <Material>
+                <CheckboxAndText>Algodão Confortável & Durável</CheckboxAndText>
+              </Material>
+            </Materials>
+          </Categories>
+          <Categories>
+            <CategoryTitle>Genêro</CategoryTitle>
+            <Genres>
+              <Gender>
+                <CheckboxAndText checked>Masculino</CheckboxAndText>
+              </Gender>
+              <Gender>
+                <CheckboxAndText>Feminino</CheckboxAndText>
+              </Gender>
+              <Gender>
+                <CheckboxAndText>Unissex</CheckboxAndText>
+              </Gender>
+            </Genres>
+          </Categories>
+        </Filter>
+      </Sidebar>
+    );
+  };
 
   return (
     <Layout>
       <Container>
-        <ContentMain>
-          <ImagesAndDescription>
-            {isLoading || !product ? (
-              <ImagesContainerSkeleton>
-                <ProductImages>
-                  {[1, 2, 3, 4].map((_, index) => (
-                    <ImagesSkeleton key={index} />
-                  ))}
-                </ProductImages>
-                <MainImage>
-                  <ImageSkeleton />
-                </MainImage>
-              </ImagesContainerSkeleton>
-            ) : (
-              <ImagesContainer>
-                <ProductImages>
-                  {product?.imageUrls?.map((image: any, index) => (
-                    <ContentImages key={index} src={image} />
-                  ))}
-                </ProductImages>
-                <MainImage>
-                  <ProductImage src={product.imageUrls[0]} />
-                </MainImage>
-              </ImagesContainer>
-            )}
-            {isLoading || !product ? (
-              <DescriptionSkeleton />
-            ) : (
-              <DescriptionContainer>
-                <DescriptionTitle>Descrição do produto</DescriptionTitle>
-                <Rows>
-                  <DescriptionText>
-                    Estiloso e sofisticado, produzido pensando no seu conforto
-                    ao utiliza-lo para praticar esportes físicos ou no seu dia a
-                    dia. Com materiais na parte superior 100% algodão orgânico e
-                    solas de borracha para permitir uma enorme leveza e
-                    resistência.
-                  </DescriptionText>
-                </Rows>
-                <Rows>
-                  <DescriptionSubTitle>Nome:&nbsp;</DescriptionSubTitle>
-                  <DescriptionText>{product.name}</DescriptionText>
-                </Rows>
-                <Rows>
-                  <DescriptionSubTitle>Marca:&nbsp;</DescriptionSubTitle>
-                  <DescriptionText>Allbirds</DescriptionText>
-                </Rows>
-                <Rows>
-                  <DescriptionSubTitle>Gênero:&nbsp;</DescriptionSubTitle>
-                  <DescriptionText>
-                    {product.name.split(" ").pop()}
-                  </DescriptionText>
-                </Rows>
-                <Rows>
-                  <DescriptionSubTitle>Origem:&nbsp;</DescriptionSubTitle>
-                  <DescriptionText>Internacional</DescriptionText>
-                </Rows>
-              </DescriptionContainer>
-            )}
-          </ImagesAndDescription>
-          <DetailsAndRecommendations>
-            <DetailsContainer>
-              <DetailsHeader>
-                <ProductPath>
-                  <Link href="/">Home</Link> /{" "}
-                  <Link href="/products">Products</Link> /
-                </ProductPath>
-                <Title>{product?.name}</Title>
-                <StarsContent>
-                  <Stars rating={4.5} /> ({assessments.length}) avaliações.
-                </StarsContent>
-              </DetailsHeader>
-              <Price>
-                Por apenas: <span>{formatPrice(product?.price)}</span>
-              </Price>
-              <ProductColor>
-                {isLoading || !product ? (
-                  <TitleSkeleton active size="large" />
-                ) : (
-                  <SubTitle>
-                    Cor do produto: <span>{product.color}</span>
-                  </SubTitle>
-                )}
-                <Buttons>
-                  <ButtonColor type="button" aria-label="product color">
-                    {isLoading || !product ? (
-                      <ButtonSkeleton active shape="circle" />
-                    ) : (
-                      <Color color={product.color} />
-                    )}
-                  </ButtonColor>
-                </Buttons>
-              </ProductColor>
-              <SelectSize>
-                <SubTitle>Selecione o tamanho:</SubTitle>
-                <Buttons>
-                  {product?.sizes?.map((size: number, index) => (
-                    <ButtonSize
-                      type="button"
-                      aria-label="product color"
+        <Content>
+          <ContentSidebar display={open}>
+            <Header>
+              <ProductPath>
+                <Link href="/">Home</Link> /
+              </ProductPath>
+              <Title>
+                {slug === "men"
+                  ? "Calçados masculinos"
+                  : slug === "women"
+                    ? "Calçados femininos"
+                    : slug === "kids"
+                      ? "Calçados infantis"
+                      : "Calçados"}
+              </Title>
+              <Shoes>
+                <Link href="/products/women">Calçados femininos</Link>
+              </Shoes>
+              <Shoes>
+                <Link href="/products/kids">Calçados infantis</Link>
+              </Shoes>
+            </Header>
+          </ContentSidebar>
+          <ProductsContent>
+            <ProductsHeader>
+              <FilterButton onClick={() => setOpen(true)}>
+                Filtro <LuSettings2 />
+              </FilterButton>
+              <SwitchContainer>
+                <SwitchLink
+                  onClick={() => setChosenGender("men")}
+                  active={chosenGender === "men"}
+                  href="/products/men"
+                >
+                  Homem
+                </SwitchLink>
+                <SwitchLink
+                  onClick={() => setChosenGender("women")}
+                  active={chosenGender === "women"}
+                  href="/products/women"
+                >
+                  Mulher
+                </SwitchLink>
+              </SwitchContainer>
+            </ProductsHeader>
+            <ProductsRow gutter={40}>
+              {isLoading || !category?.products
+                ? [1, 2, 3, 4, 5, 6, 7, 8, 9].map((_, index) => (
+                    <ProductsCol
+                      xxl={8}
+                      xl={8}
+                      lg={12}
+                      md={12}
+                      sm={12}
+                      xs={12}
                       key={index}
                     >
-                      <Size>{size}</Size>
-                    </ButtonSize>
-                  ))}
-                </Buttons>
-              </SelectSize>
-              <SizeAlert>
-                Caso tenha problemas com tamanho de tênis, recomendamos pegar
-                uma <span>numeração maior</span>.
-              </SizeAlert>
-              <PrimaryButton onClick={() => addProductToCart(product)}>
-                Adicionar ao carrinho
-              </PrimaryButton>
-            </DetailsContainer>
-            <FreeShippingContainer>
-              <IoAlertCircleOutline />
-              <TextFreeShipping>
-                Todas as compras acima de R$299 são elegíveis para frete grátis.
-              </TextFreeShipping>
-            </FreeShippingContainer>
-            <RecommendationsContainer>
-              <RecommendationsTitle>Recomendações</RecommendationsTitle>
-              <Recommendations>
-                {isLoading || !product
-                  ? [1, 2].map((_, index) => (
-                      <CardsProductsSkeleton key={index} />
-                    ))
-                  : products?.slice(2, 4).map((product: ProductType) => (
-                      <Link key={product.id} href={`/products/${product.slug}`}>
-                        <CardProducts
+                      <ProductsCardSkeleton>
+                        <CardMetaSkeleton>
+                          <TitleSkeleton />
+                          <DescriptionSkeleton />
+                        </CardMetaSkeleton>
+                      </ProductsCardSkeleton>
+                    </ProductsCol>
+                  ))
+                : category?.products.slice(0, 9).map((product: ProductType) => (
+                    <ProductsCol
+                      xxl={8}
+                      xl={8}
+                      lg={12}
+                      md={12}
+                      sm={12}
+                      xs={12}
+                      key={product.id}
+                    >
+                      <Link href={`/product/${product.slug}`}>
+                        <ProductsCard
                           cover={
-                            <Image
+                            <ProductImage
                               src={product.imageUrls[0]}
                               alt="product images"
                             />
                           }
                         >
-                          <MetaProducts title={product.name} />
-                        </CardProducts>
+                          <MetaProducts
+                            title={product.name}
+                            description={formatPrice(product.price)}
+                          />
+                        </ProductsCard>
                       </Link>
-                    ))}
-              </Recommendations>
-            </RecommendationsContainer>
-          </DetailsAndRecommendations>
-        </ContentMain>
-        <ReviewsContainer>
-          <ReviewsContent>
-            <ReviewsTitle>{assessments.length} comentários</ReviewsTitle>
-            <CardContent>
-              {assessments.map((assessment) => (
-                <ReviewsCard key={assessment.id}>
-                  <Stars rating={assessment.rating} text={assessment.stars} />
-                  <CommentTitle>{assessment.title}</CommentTitle>
-                  <CommentDescription>
-                    {assessment.description}
-                  </CommentDescription>
-                </ReviewsCard>
-              ))}
-            </CardContent>
-          </ReviewsContent>
-        </ReviewsContainer>
+                    </ProductsCol>
+                  ))}
+            </ProductsRow>
+          </ProductsContent>
+        </Content>
+        <FilterDrawer
+          closeIcon={<LuChevronLeft />}
+          placement="left"
+          width="300px"
+          onClose={() => setOpen(false)}
+          open={open}
+        >
+          <ContentSidebar display={open} />
+        </FilterDrawer>
       </Container>
     </Layout>
   );

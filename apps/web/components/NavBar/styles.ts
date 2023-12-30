@@ -5,7 +5,7 @@ import { Drawer, Input } from "antd";
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 24px 0px;
+  box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 24px 0px
 `;
 
 export const NavBar = styled.nav`

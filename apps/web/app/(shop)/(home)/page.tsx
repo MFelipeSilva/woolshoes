@@ -4,11 +4,12 @@ import { useQuery } from "react-query";
 
 import Link from "next/link";
 
-import { Layout } from "@/layout";
+import { Layout } from "@layout";
 
-import { getProducts } from "../services/apiFunctions";
+import { getCategory } from "@app/(shop)/api/apiFunctions";
 
 import { ProductType } from "@/types/ProductType";
+import { CategoryType } from "@/types/CategoryType";
 
 import { Carousel } from "@/components/Carousel";
 
@@ -46,10 +47,9 @@ import {
 } from "./styles";
 
 export default function Home() {
-  const { data: products, isLoading } = useQuery("products", getProducts) as {
-    data: ProductType[];
-    isLoading: boolean;
-  };
+  const { data: category, isLoading } = useQuery("products", () =>
+    getCategory("men")
+  ) as { data: CategoryType; isLoading: boolean };
 
   return (
     <Layout>
@@ -59,7 +59,7 @@ export default function Home() {
             <MainAnnouncement src="https://uploaddeimagens.com.br/images/004/647/123/full/1d461901-923e-462c-a9e9-b4166e76e1b1.jpg?1698244824" />
             <BannerHeader>
               <BannerTitle>Tênis confortaveis e de alta qualidade.</BannerTitle>
-              <Link href="/products">
+              <Link href="/products/men">
                 <PrimaryButton type="primary">Conferir produtos</PrimaryButton>
               </Link>
             </BannerHeader>
@@ -87,32 +87,37 @@ export default function Home() {
           <CarouselContainer>
             <CarouselContent>
               <Carousel>
-                {isLoading || !products
+                {isLoading || !category.products
                   ? [1, 2, 3, 4, 5, 6, 7, 8].map((_, index) => (
                       <ProductCardSkeleton key={index}>
                         <CardMetaSkeleton>
-                          <TitleSkeleton sizes="large" />
-                          <DescriptionSkeleton sizes="large" />
+                          <TitleSkeleton />
+                          <DescriptionSkeleton />
                         </CardMetaSkeleton>
                       </ProductCardSkeleton>
                     ))
-                  : products?.slice(0, 8).map((product: ProductType) => (
-                      <Link key={product.id} href={`products/${product.slug}`}>
-                        <ProductCard
-                          cover={
-                            <Image
-                              src={product.imageUrls[0]}
-                              alt="product images"
-                            />
-                          }
+                  : category?.products
+                      ?.slice(0, 8)
+                      .map((product: ProductType) => (
+                        <Link
+                          key={product.id}
+                          href={`/product/${product.slug}`}
                         >
-                          <CardMeta
-                            title={product.name}
-                            description={product.description}
-                          />
-                        </ProductCard>
-                      </Link>
-                    ))}
+                          <ProductCard
+                            cover={
+                              <Image
+                                src={product.imageUrls[0]}
+                                alt="product images"
+                              />
+                            }
+                          >
+                            <CardMeta
+                              title={product.name}
+                              description={product.description}
+                            />
+                          </ProductCard>
+                        </Link>
+                      ))}
               </Carousel>
             </CarouselContent>
           </CarouselContainer>

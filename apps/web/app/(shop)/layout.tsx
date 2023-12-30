@@ -1,8 +1,8 @@
 "use client";
 
-import GlobalStyle from "@styles/global";
-
 import { metadata } from "../../lib/metadata";
+
+import GlobalStyle from "@styles/global";
 
 import { QueryClientProvider } from "react-query";
 

@@ -2,7 +2,10 @@ import { prisma } from "@lib/prisma";
 
 import { NextApiRequest, NextApiResponse } from "next";
 
-export default async function productsSlug (req: NextApiRequest, res: NextApiResponse) {
+export default async function productsSlug(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
   const { slug } = req.query;
 
   const slugValue = Array.isArray(slug) ? slug[0] : slug;
@@ -24,6 +27,4 @@ export default async function productsSlug (req: NextApiRequest, res: NextApiRes
   } catch (error) {
     res.status(500).json({ error: "Error when finding product." });
   }
-};
-
-
+}

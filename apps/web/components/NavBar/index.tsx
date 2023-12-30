@@ -46,7 +46,7 @@ export const Navbar = () => {
         </Logo>
         <Pages>
           <Page>
-            <Link href="/products">Produtos</Link>
+            <Link href="/products/men">Produtos</Link>
           </Page>
           <Page>
             <Link href="#">Sobre</Link>
