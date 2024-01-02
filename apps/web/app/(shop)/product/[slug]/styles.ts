@@ -73,6 +73,7 @@ export const Container = styled.main`
   display: flex;
   width: 100vw;
   height: 100%;
+  padding-top: 4em;
   align-items: center;
   flex-direction: column;
   justify-content: center;
@@ -292,7 +293,7 @@ export const Price = styled.span`
 
   span {
     color: #2d3142;
-    font-weight:700;
+    font-weight: 700;
     font-size: clamp(18pt, 3vw, 21pt);
   }
 `;

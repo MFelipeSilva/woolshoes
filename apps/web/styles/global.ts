@@ -8,7 +8,7 @@ export default createGlobalStyle`
   }
 
   body {
-    padding-top: 8em;
+    padding-top: 4em;
     font-family: "Inter", sans-serif;
 
     @media (max-width: 768px) {

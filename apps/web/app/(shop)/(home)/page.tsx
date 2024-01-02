@@ -12,6 +12,7 @@ import { ProductType } from "@/types/ProductType";
 import { CategoryType } from "@/types/CategoryType";
 
 import { Carousel } from "@/components/Carousel";
+import { Advantages } from "@components/Advantages";
 
 import { PrimaryButton } from "@/components/Buttons/PrimaryButton";
 
@@ -129,6 +130,7 @@ export default function Home() {
           </SecondaryBannerContent>
         </Section>
       </Container>
+      <Advantages />
     </Layout>
   );
 }

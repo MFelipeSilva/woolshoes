@@ -57,7 +57,7 @@ export const Navbar = () => {
         </Pages>
         <CartAndLogin>
           <Page>
-            <Link href={"#"}>
+            <Link href="#">
               <RiSearchLine />
             </Link>
           </Page>
@@ -65,7 +65,7 @@ export const Navbar = () => {
             <RiShoppingCartFill />
           </Page>
           <Page>
-            <Link href={"#"}>
+            <Link href="/account">
               <RiUser3Fill />
             </Link>
           </Page>

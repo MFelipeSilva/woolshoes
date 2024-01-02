@@ -23,6 +23,7 @@ import {
   ProductsCardSkeleton,
   TitleSkeleton,
 } from "@components/Skeletons/ProductsSkeleton";
+import { Advantages } from "@components/Advantages";
 
 import {
   Container,
@@ -244,6 +245,7 @@ export default function CategoryProducts({
           <ContentSidebar display={open} />
         </FilterDrawer>
       </Container>
+      <Advantages />
     </Layout>
   );
 }
