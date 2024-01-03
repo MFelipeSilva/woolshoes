@@ -50,13 +50,22 @@ export const BannerHeader = styled.div`
   flex-direction: column;
 
   a {
-    width: min-content;
+    width: max-content;
     height: min-content;
     text-decoration: none;
 
+    button {
+      width: max-content;
+    }
+
     @media (max-width: 768px) {
-      button {
-        width: 90%;
+      & {
+        width: max-content;
+
+        button {
+          width: max-content;
+          height: 4em;
+        }
       }
     }
   }

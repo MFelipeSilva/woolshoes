@@ -14,7 +14,7 @@ import { CategoryType } from "@/types/CategoryType";
 import { Carousel } from "@/components/Carousel";
 import { Advantages } from "@components/Advantages";
 
-import { PrimaryButton } from "@/components/Buttons/PrimaryButton";
+import { PrimaryButton } from "ui";
 
 import {
   ProductCardSkeleton,
@@ -61,7 +61,7 @@ export default function Home() {
             <BannerHeader>
               <BannerTitle>Tênis confortaveis e de alta qualidade.</BannerTitle>
               <Link href="/products/men">
-                <PrimaryButton type="primary">Conferir produtos</PrimaryButton>
+                <PrimaryButton>Conferir produtos</PrimaryButton>
               </Link>
             </BannerHeader>
             <Categories>

@@ -8,7 +8,7 @@ import { ProductType } from "@/types/ProductType";
 
 import { formatPrice } from "@helpers/formatPrice";
 
-import { CloseButton } from "@components/Buttons/CloseButton";
+import { CloseButton } from "ui";
 
 import {
   Container,

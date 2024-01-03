@@ -4,7 +4,7 @@ import React from "react";
 
 import { Layout } from "@layout";
 
-import { PrimaryButton } from "@components/Buttons/PrimaryButton";
+import { PrimaryButton } from "ui";
 
 import {
   Container,

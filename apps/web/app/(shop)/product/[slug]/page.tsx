@@ -19,7 +19,8 @@ import { assessments } from "@helpers/assessments";
 import { useCart } from "@providers/cart";
 
 import { Stars } from "@components/Stars";
-import { PrimaryButton } from "@/components/Buttons/PrimaryButton";
+
+import { PrimaryButton } from "ui";
 
 import {
   CardsProductsSkeleton,
