@@ -25,7 +25,7 @@ app.get("/category/:slug", async (request, reply) => {
     }
     reply.send(category);
   } catch (error) {
-    reply.status(500).send({ error: "Error when finding category." });
+    reply.status(500).send(error);
   }
 });
 
@@ -44,7 +44,7 @@ app.get("/product/:slug", async (request, reply) => {
     }
     reply.send(product);
   } catch (error) {
-    reply.status(500).send({ error: "Error when finding product." });
+    reply.status(500).send(error);
   }
 });
 
