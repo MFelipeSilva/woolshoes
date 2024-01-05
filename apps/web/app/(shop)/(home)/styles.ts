@@ -14,7 +14,7 @@ export const Container = styled.main`
   padding-top: 4em;
 
   @media (max-width: 768px) {
-    margin-top: 0;
+    padding-top: 0;
   }
 `;
 

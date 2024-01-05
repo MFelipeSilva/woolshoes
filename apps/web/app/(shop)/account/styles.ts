@@ -55,7 +55,7 @@ export const SectionContent = styled.div`
 `;
 
 export const Title = styled.h1`
-  font-size: 22px;
+  font-size: 25px;
 `;
 
 export const Label = styled.label`

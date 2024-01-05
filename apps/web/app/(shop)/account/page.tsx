@@ -2,6 +2,8 @@
 
 import React from "react";
 
+import { FcGoogle } from "react-icons/fc";
+
 import { Layout } from "@layout";
 
 import { PrimaryButton } from "ui";
@@ -42,6 +44,9 @@ export default function Account() {
               </Inputs>
               <PrimaryButton>Entrar</PrimaryButton>
               <Separator>ou</Separator>
+              <PrimaryButton color="#FFFFFF" border="#636363">
+                <FcGoogle fontSize={23} />
+              </PrimaryButton>
             </SectionContent>
           </LoginSection>
           <RegisterSection>
