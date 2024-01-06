@@ -3,6 +3,11 @@
   "globalDependencies": ["**/.env.*local"],
   "pipeline": {
     "build": {
+      "env": [
+        "NODE_ENV",
+        "NEXT_PUBLIC_API_URL_PRODUCTION",
+        "NEXT_PUBLIC_API_URL_DEVELOPMENT"
+      ],
       "dependsOn": ["^build"],
       "outputs": [".next/**", "!.next/cache/**"]
     },

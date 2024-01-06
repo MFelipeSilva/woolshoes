@@ -4,7 +4,8 @@
   "main": "server.js",
   "license": "ISC",
   "engines": {
-    "node": "18"
+    "node": "18",
+    "node_latest": "20.9.0"
   },
   "scripts": {
     "dev": "tsx src/server.ts",

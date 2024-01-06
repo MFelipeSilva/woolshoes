@@ -8,7 +8,7 @@ import { IoAlertCircleOutline } from "react-icons/io5";
 
 import { Layout } from "@layout";
 
-import { getCategory, getProduct } from "@app/(shop)/api/apiFunctions";
+import { getCategory, getProduct } from "@lib/api";
 
 import { ProductType } from "@/types/ProductType";
 import { CategoryType } from "@/types/CategoryType";

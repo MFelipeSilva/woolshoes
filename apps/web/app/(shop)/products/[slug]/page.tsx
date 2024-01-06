@@ -10,7 +10,7 @@ import { LuSettings2, LuChevronLeft } from "react-icons/lu";
 
 import { Layout } from "@layout";
 
-import { getCategory } from "@app/(shop)/api/apiFunctions";
+import { getCategory } from "@lib/api";
 
 import { ProductType } from "@/types/ProductType";
 import { CategoryType } from "@/types/CategoryType";
