@@ -48,7 +48,7 @@ import {
 } from "./styles";
 
 export default function Home() {
-  const { data: category, isLoading } = useQuery("products", () =>
+  const { data: category, isLoading } = useQuery("category", () =>
     getCategory("men")
   ) as { data: CategoryType; isLoading: boolean };
 
@@ -60,7 +60,7 @@ export default function Home() {
             <MainAnnouncement src="https://uploaddeimagens.com.br/images/004/647/123/full/1d461901-923e-462c-a9e9-b4166e76e1b1.jpg?1698244824" />
             <BannerHeader>
               <BannerTitle>Tênis confortaveis e de alta qualidade.</BannerTitle>
-              <Link href="/products/men">
+              <Link href="/category/men">
                 <PrimaryButton>Conferir produtos</PrimaryButton>
               </Link>
             </BannerHeader>
@@ -71,7 +71,7 @@ export default function Home() {
                   <Link href="/">Calçados Femininos</Link>
                 </Category>
                 <Category>
-                  <Link href="/products">Calçados Masculinos</Link>
+                  <Link href="/category">Calçados Masculinos</Link>
                 </Category>
                 <Category>
                   <Link href="/">Calçados Infantis</Link>

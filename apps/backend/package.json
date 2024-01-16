@@ -4,11 +4,10 @@
   "main": "server.js",
   "license": "ISC",
   "engines": {
-    "node": "18",
-    "node_latest": "20.9.0"
+    "node": "18 || >=20.x"
   },
   "scripts": {
-    "dev": "tsx src/server.ts",
+    "dev": "nodemon --watch src --exec ts-node src/server.ts",
     "build": "tsup src",
     "start": "node dist/server.js",
     "prisma:generate": "npx prisma generate",
@@ -21,6 +20,7 @@
   "devDependencies": {
     "@prisma/client": "^5.7.1",
     "@types/node": "^20.8.10",
+    "nodemon": "^3.0.2",
     "prisma": "^5.7.1",
     "tsup": "^8.0.1",
     "tsx": "^4.7.0",
@@ -28,10 +28,14 @@
   },
   "dependencies": {
     "@fastify/cors": "^8.5.0",
+    "@types/bcrypt": "^5.0.2",
     "@types/cors": "^2.8.17",
+    "@types/jsonwebtoken": "^9.0.5",
+    "bcrypt": "^5.1.1",
     "cors": "^2.8.5",
     "fastify": "^4.25.2",
     "fastify-cors": "^6.1.0",
+    "jsonwebtoken": "^9.0.2",
     "ts-node": "^10.9.1"
   }
 }

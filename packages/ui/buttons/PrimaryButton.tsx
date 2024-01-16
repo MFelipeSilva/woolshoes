@@ -1,9 +1,10 @@
-import React, { ReactNode } from "react";
+import { ReactNode } from "react";
 
 import { PrimaryButtonStyle } from "./PrimaryButtonStyle";
 
 interface IPrimaryButton {
   children: ReactNode;
+  type?: "button" | "submit" | "reset";
   size?: "small" | "middle" | "large";
   color?: string;
   border?: string;
@@ -14,6 +15,7 @@ interface IPrimaryButton {
 export const PrimaryButton = (props: IPrimaryButton) => {
   return (
     <PrimaryButtonStyle
+      type={props.type}
       size={props.size}
       color={props.color}
       border={props.border}

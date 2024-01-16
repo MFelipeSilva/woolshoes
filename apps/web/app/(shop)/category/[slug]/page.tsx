@@ -156,10 +156,10 @@ export default function CategoryProducts({
                       : "Calçados"}
               </Title>
               <Shoes>
-                <Link href="/products/women">Calçados femininos</Link>
+                <Link href="/category/women">Calçados femininos</Link>
               </Shoes>
               <Shoes>
-                <Link href="/products/kids">Calçados infantis</Link>
+                <Link href="/category/kids">Calçados infantis</Link>
               </Shoes>
             </Header>
           </ContentSidebar>
@@ -172,14 +172,14 @@ export default function CategoryProducts({
                 <SwitchLink
                   onClick={() => setChosenGender("men")}
                   active={chosenGender === "men"}
-                  href="/products/men"
+                  href="/category/men"
                 >
                   Homem
                 </SwitchLink>
                 <SwitchLink
                   onClick={() => setChosenGender("women")}
                   active={chosenGender === "women"}
-                  href="/products/women"
+                  href="/category/women"
                 >
                   Mulher
                 </SwitchLink>

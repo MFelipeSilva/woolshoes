@@ -94,7 +94,7 @@ export default function ProductId({ params: { slug } }: ProductIdParams) {
     }
   ) as { data: ProductType; isLoading: boolean };
 
-  const { data: category } = useQuery(["products"], () =>
+  const { data: category } = useQuery(["category"], () =>
     getCategory("men")
   ) as { data: CategoryType; isLoading: boolean };
 
@@ -168,7 +168,7 @@ export default function ProductId({ params: { slug } }: ProductIdParams) {
               <DetailsHeader>
                 <ProductPath>
                   <Link href="/">Home</Link> /{" "}
-                  <Link href="/products/men">Products</Link> /
+                  <Link href="/category/men">Products</Link> /
                 </ProductPath>
                 <Title>{product?.name}</Title>
                 <StarsContent>
