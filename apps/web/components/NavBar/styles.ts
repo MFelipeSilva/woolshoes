@@ -1,11 +1,15 @@
 import styled from "styled-components";
 
-import { Drawer, Input } from "antd";
+import { Drawer, Input, Popover } from "antd";
+
+export const overlayStyle = {
+  width: "180px",
+};
 
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 24px 0px
+  box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 24px 0px;
 `;
 
 export const NavBar = styled.nav`
@@ -15,9 +19,8 @@ export const NavBar = styled.nav`
   z-index: 99;
   width: 100vw;
   height: 3.8em;
-  padding: 0 3em;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   background-color: #2d3142;
 
   @media (max-width: 1000px) {
@@ -60,7 +63,7 @@ export const Pages = styled.ul`
 
 export const CartAndLogin = styled.ul`
   display: flex;
-  gap: 1.5em;
+  gap: 0.3em;
   list-style: none;
   align-items: center;
   justify-content: center;
@@ -96,6 +99,7 @@ export const Page = styled.li`
   color: #ffffff;
 
   svg {
+    width: 38px;
     font-size: 15pt;
   }
 
@@ -152,7 +156,7 @@ export const CartDrawer = styled(Drawer)`
   }
 `;
 
-export const Content = styled.div`
+export const CartContent = styled.div`
   display: flex;
   width: 100%;
   height: 100%;
@@ -163,6 +167,18 @@ export const Content = styled.div`
   svg {
     font-size: 70pt;
     margin-bottom: 0.3em;
+  }
+`;
+
+export const Content = styled.div`
+  display: flex;
+  width: 90vw;
+  height: 100%;
+  align-items: center;
+  justify-content: space-between;
+
+  @media (max-width: 1000px) {
+    width: 90vw;
   }
 `;
 
@@ -210,5 +226,42 @@ export const SearchInput = styled(Input)`
   border-radius: 10px;
 
   .ant-input {
+  }
+`;
+
+export const UserPopover = styled(Popover)``;
+
+export const PopoverTitle = styled.h3`
+  display: flex;
+  font-size: 15px;
+  font-family: "Inter", sans-serif;
+  align-items: center;
+`;
+
+export const PopoverContent = styled.div`
+  display: flex;
+  margin-top: 1em;
+  flex-direction: column;
+`;
+
+export const PopoverOptions = styled.button`
+  display: flex;
+  padding: 10px 10px;
+  gap: 0.5em;
+  border: none;
+  border-radius: 8px;
+  align-items: center;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 400;
+  font-family: "Inter", sans-serif;
+  background-color: transparent;
+
+  svg {
+    font-size: 16px;
+  }
+
+  &:hover {
+    background-color: #f2f2f2;
   }
 `;

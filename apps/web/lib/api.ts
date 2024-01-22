@@ -33,9 +33,13 @@ export const postRegisterUser = async ({
 };
 
 export const postLoginUser = async ({ email, password }: LoginUserType) => {
-  const { data } = await axios.post(`${apiUrl}/login`, {
-    email,
-    password,
-  });
-  return data;
+  try {
+    const { data } = await axios.post(`${apiUrl}/login`, {
+      email,
+      password,
+    });
+    return data;
+  } catch (error) {
+    throw error;
+  }
 };

@@ -35,6 +35,7 @@ type UserFormData = z.infer<typeof userFormSchema>;
 
 export const SignIn = () => {
   const {
+    setError,
     register,
     handleSubmit,
     formState: { errors },
@@ -50,12 +51,28 @@ export const SignIn = () => {
     const { email, password } = userData;
 
     try {
-      const user = await mutation.mutateAsync({ email, password });
+      const user = await mutation.mutateAsync({
+        email,
+        password,
+      });
       localStorage.setItem("@woolshoes/access-token", user.accessToken);
 
-      router.push("/account");
-    } catch (error) {
-      console.error(error);
+      router.push("/");
+    } catch (error: any) {
+      if (error.response && error.response.status === 400) {
+        const errorMessage = error.response.data.error;
+
+        setError("email", {
+          type: "manual",
+        });
+
+        setError("password", {
+          type: "manual",
+          message: errorMessage,
+        });
+      } else {
+        console.error(error);
+      }
     }
   };
 
@@ -70,7 +87,7 @@ export const SignIn = () => {
             {...register("email")}
             error={errors && errors.email === undefined ? false : true}
           />
-          {errors.email && <ErrorText>{errors.email.message}</ErrorText>}
+          {errors.email && <ErrorText>{errors.email?.message}</ErrorText>}
         </Label>
         <Label>
           Senhas
@@ -79,7 +96,7 @@ export const SignIn = () => {
             {...register("password")}
             error={errors && errors.password === undefined ? false : true}
           />
-          {errors.password && <ErrorText>{errors.password.message}</ErrorText>}
+          {errors.password && <ErrorText>{errors.password?.message}</ErrorText>}
         </Label>
         <ForgotPassword>Esqueci minha senha</ForgotPassword>
         <PrimaryButton type="submit">Entrar</PrimaryButton>

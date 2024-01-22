@@ -1,18 +1,27 @@
 import fastify from "fastify";
 
+import * as dotenv from "dotenv";
+
 import cors from "@fastify/cors";
 
 import { hash, compare } from "bcrypt";
 
-import jwt from "jsonwebtoken";
-
-import { LoginUserType, RegisterUserType } from "../../web/types/UserType";
+import jwt, { Secret } from "jsonwebtoken";
 
 import { prisma } from "../lib/prisma";
 
+import {
+  LoginUserType,
+  RegisterUserType,
+  UserType,
+} from "../../web/types/UserType";
+
 const app = fastify();
 
+dotenv.config();
 app.register(cors);
+
+const secretKey: Secret = process.env.JWT_SECRET_KEY as Secret;
 
 app.get("/category/:slug", async (request, reply) => {
   const { slug }: any = request.params;
@@ -101,23 +110,30 @@ app.post("/login", async (request, reply) => {
     });
 
     if (!existingUser) {
-      return reply
-        .status(400)
-        .send({ success: false, error: "Email not found!" });
+      return reply.status(400).send({
+        success: false,
+        error: "Email ou senha incorretos.",
+        fieldWithError: "email",
+      });
     }
 
     const passwordMatch = await compare(password, existingUser.password);
 
     if (passwordMatch) {
-      const user: any = existingUser;
-      delete user.password;
-      const token = jwt.sign(user, "SENHA", { expiresIn: "1h" });
+      const user: UserType = {
+        id: existingUser.id,
+        name: existingUser.name,
+        email: existingUser.email,
+      };
+      const token = jwt.sign(user, secretKey);
 
       return reply.status(200).send({ success: true, accessToken: token });
     } else {
-      return reply
-        .status(400)
-        .send({ success: false, error: "Invalid passoword!" });
+      return reply.status(400).send({
+        success: false,
+        error: "Email ou senha incorretos.",
+        fieldWithError: "password",
+      });
     }
   } catch (error) {
     reply.status(500).send({ success: false, error: error });

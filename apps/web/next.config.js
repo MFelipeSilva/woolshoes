@@ -1,4 +1,4 @@
-const path = require('path');
+const path = require("path");
 
 module.exports = {
   reactStrictMode: true,
@@ -7,7 +7,7 @@ module.exports = {
   },
   webpack: (config, { isServer }) => {
     if (!isServer) {
-      config.resolve.alias['@'] = path.join(__dirname, '/');
+      config.resolve.alias["@"] = path.join(__dirname, "/");
     }
 
     return config;
