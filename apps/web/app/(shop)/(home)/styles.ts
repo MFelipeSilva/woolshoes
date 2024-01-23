@@ -198,8 +198,7 @@ export const Banner = styled.img`
 `;
 
 export const TitleContainer = styled.div`
-  width: 80vw;
-  margin-left: 15em;
+  width: 70%;
   padding-top: 10em;
 
   @media (max-width: 1200px) {
@@ -218,8 +217,7 @@ export const Title = styled.h1`
 `;
 
 export const CarouselContainer = styled.div`
-  width: 80vw;
-  margin-left: 14em;
+  width: 70%;
   padding-bottom: 10em;
 
   @media (max-width: 1200px) {

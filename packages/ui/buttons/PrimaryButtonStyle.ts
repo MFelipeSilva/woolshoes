@@ -14,7 +14,7 @@ export const PrimaryButtonStyle = styled.button<IPrimaryButtonStyle>`
   color: #ffffff;
   font-weight: 600;
   font-family: "Inter", sans-serif;
-  font-size: clamp(9pt, 1vw, 11pt) !important;
+  font-size: clamp(13px, 1.5vw, 14px) !important;
   text-transform: uppercase;
   box-shadow: none;
   padding: 13px 20px;

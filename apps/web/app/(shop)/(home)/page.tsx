@@ -48,8 +48,13 @@ import {
 } from "./styles";
 
 export default function Home() {
-  const { data: category, isLoading } = useQuery("category", () =>
-    getCategory("men")
+  const { data: category, isLoading } = useQuery(
+    "category",
+    () => getCategory("men"),
+    {
+      enabled: true,
+      cacheTime: 0,
+    }
   ) as { data: CategoryType; isLoading: boolean };
 
   return (
@@ -68,13 +73,13 @@ export default function Home() {
               <CategoriesContent>
                 <CategoriesTitle>Categorias</CategoriesTitle>
                 <Category>
-                  <Link href="/">Calçados Femininos</Link>
+                  <Link href="category/women">Calçados Femininos</Link>
                 </Category>
                 <Category>
-                  <Link href="/category">Calçados Masculinos</Link>
+                  <Link href="category/men">Calçados Masculinos</Link>
                 </Category>
                 <Category>
-                  <Link href="/">Calçados Infantis</Link>
+                  <Link href="category/kids">Calçados Infantis</Link>
                 </Category>
               </CategoriesContent>
             </Categories>

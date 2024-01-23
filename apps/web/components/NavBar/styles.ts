@@ -63,7 +63,7 @@ export const Pages = styled.ul`
 
 export const CartAndLogin = styled.ul`
   display: flex;
-  gap: 0.3em;
+  gap: 0.4em;
   list-style: none;
   align-items: center;
   justify-content: center;
@@ -252,6 +252,7 @@ export const PopoverOptions = styled.button`
   border-radius: 8px;
   align-items: center;
   cursor: pointer;
+  color: #000000;
   font-size: 15px;
   font-weight: 400;
   font-family: "Inter", sans-serif;

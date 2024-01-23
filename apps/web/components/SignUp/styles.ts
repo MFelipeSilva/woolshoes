@@ -21,12 +21,24 @@ export const Title = styled.h1`
 
 export const Form = styled.form`
   display: flex;
+  width: 25em;
   gap: 20px;
   flex-direction: column;
 
   & > button {
     width: 100%;
     height: 4em;
+  }
+
+  @media (max-width: 768px) {
+    & > button {
+      height: 5em;
+      font-size: 13px !important;
+    }
+  }
+
+  @media (max-width: 480px) {
+    width: 90vw;
   }
 `;
 
@@ -37,7 +49,7 @@ export const Label = styled.label`
 `;
 
 export const Input = styled.input<IInput>`
-  width: 25em;
+  width: auto;
   height: 3em;
   border-radius: 5px;
   border: 1px solid ${(props) => (props.error ? "#FF0000" : "#636363")};
