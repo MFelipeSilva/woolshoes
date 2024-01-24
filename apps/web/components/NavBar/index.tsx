@@ -117,9 +117,9 @@ export const Navbar = () => {
             onClose={() => setOpen(false)}
           >
             {cart && cart.length > 0 ? (
-              cart.map((product) => (
-                <CartProduct key={product.id} product={product} />
-              ))
+              cart.map((product) => {
+                return <CartProduct key={product.id} product={product} />;
+              })
             ) : (
               <CartContent>
                 <RiShoppingCartLine />

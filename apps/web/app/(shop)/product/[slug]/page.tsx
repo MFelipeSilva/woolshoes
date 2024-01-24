@@ -1,5 +1,7 @@
 "use client";
 
+import { useState } from "react";
+
 import Link from "next/link";
 
 import { useQuery } from "react-query";
@@ -97,6 +99,8 @@ export default function ProductId({ params: { slug } }: ProductIdParams) {
   const { data: category } = useQuery(["category"], () =>
     getCategory("men")
   ) as { data: CategoryType; isLoading: boolean };
+
+  const [selectedSize, setSelectedSize] = useState<number>(0);
 
   const { addProductToCart } = useCart();
 
@@ -204,6 +208,7 @@ export default function ProductId({ params: { slug } }: ProductIdParams) {
                       type="button"
                       aria-label="product color"
                       key={index}
+                      onClick={() => setSelectedSize(size)}
                     >
                       <Size>{size}</Size>
                     </ButtonSize>
@@ -214,7 +219,9 @@ export default function ProductId({ params: { slug } }: ProductIdParams) {
                 Caso tenha problemas com tamanho de tênis, recomendamos pegar
                 uma <span>numeração maior</span>.
               </SizeAlert>
-              <PrimaryButton onClick={() => addProductToCart(product)}>
+              <PrimaryButton
+                onClick={() => addProductToCart(product, selectedSize)}
+              >
                 Adicionar ao carrinho
               </PrimaryButton>
             </DetailsContainer>

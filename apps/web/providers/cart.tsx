@@ -10,7 +10,7 @@ import { ProductType } from "@/types/ProductType";
 
 const CartContext = createContext<{
   cart: ProductType[];
-  addProductToCart: (product: ProductType) => void;
+  addProductToCart: (product: ProductType, selectedSize: number) => void;
   removeProductFromCart: (product: string) => void;
   decreaseProductQuantity: (productId: string) => void;
   increaseProductQuantity: (productId: string) => void;
@@ -45,15 +45,20 @@ export const CartProvider = ({ children }: CartProviderProps) => {
     localStorage.setItem("@woolshoes/cart", JSON.stringify(cart));
   }, [cart]);
 
-  const addProductToCart = (product: ProductType) => {
+  const addProductToCart = (product: ProductType, selectedSize: number) => {
     const ProductIsAlreadyInTheCart = cart.some(
-      (cartProduct) => cartProduct.id === product.id
+      (cartProduct) =>
+        cartProduct.id === product.id &&
+        cartProduct.sizes?.includes(selectedSize)
     );
 
     if (ProductIsAlreadyInTheCart) {
       setCart((prevCart) =>
         prevCart.map((cartProduct) => {
-          if (cartProduct.id === product.id) {
+          if (
+            cartProduct.id === product.id &&
+            cartProduct.sizes?.includes(selectedSize)
+          ) {
             return {
               ...cartProduct,
               quantity: cartProduct.quantity ? cartProduct.quantity + 1 : 1,
@@ -64,7 +69,15 @@ export const CartProvider = ({ children }: CartProviderProps) => {
       );
       return;
     }
-    setCart((prevCart) => [...prevCart, { ...product, quantity: 1 }]);
+
+    setCart((prevCart) => [
+      ...prevCart,
+      {
+        ...product,
+        quantity: 1,
+        sizes: [selectedSize],
+      },
+    ]);
   };
 
   const removeProductFromCart = (productId: string) => {

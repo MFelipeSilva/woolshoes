@@ -37,11 +37,11 @@ export const CartProduct = ({ product }: CartProduct) => {
 
   return (
     <Container>
-      <Image alt="product image" src={product.imageUrls[0]} />
+      <Image alt="product image" src={product?.imageUrls[0]} />
       <ProductInformation>
         <Title>{product.name}</Title>
-        <Color>Natural Black (Natural Black Sole)</Color>
-        <Size>Tamanho: 42</Size>
+        <Color>{product.color}</Color>
+        <Size>Tamanho: {product.sizes}</Size>
         <Price>{formatPrice(product.price)}</Price>
       </ProductInformation>
       <Buttons>

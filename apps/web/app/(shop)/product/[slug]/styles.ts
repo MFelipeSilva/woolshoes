@@ -369,7 +369,18 @@ export const ButtonSize = styled.button`
   display: inline-block;
   border: none;
   cursor: pointer;
+  border-radius: 5px;
   background: transparent;
+
+  &:active,
+  &:focus {
+    background-color: #2d3142;
+
+    & > span {
+      color: #ffffff;
+      border: none;
+    }
+  }
 `;
 
 export const Size = styled.span`
