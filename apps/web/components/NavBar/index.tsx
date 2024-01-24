@@ -80,11 +80,6 @@ export const Navbar = () => {
             </Page>
           </Pages>
           <CartAndLogin>
-            <Page>
-              <Link href="#">
-                <RiSearchLine />
-              </Link>
-            </Page>
             <Page onClick={() => setOpen(true)}>
               <RiShoppingCartFill />
             </Page>

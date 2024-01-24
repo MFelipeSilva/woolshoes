@@ -1,6 +1,25 @@
 import React from "react";
 
-import { Container, ContentCol, ContentRow, Title, Ul, Li } from "./styles";
+import Link from "next/link";
+
+import {
+  RiFacebookCircleFill,
+  RiInstagramFill,
+  RiTwitterXFill,
+} from "react-icons/ri";
+
+import {
+  Container,
+  ContentCol,
+  ContentRow,
+  Title,
+  Ul,
+  Li,
+  Copyright,
+  CopyrightText,
+  SocialMedia,
+  Img,
+} from "./styles";
 
 export const Footer = () => {
   return (
@@ -43,7 +62,40 @@ export const Footer = () => {
             <Li>Devoluções/Trocas</Li>
           </Ul>
         </ContentCol>
+        <SocialMedia>
+          <Title>Nossas redes sociais</Title>
+          <Ul>
+            <Li>
+              <Link href="https://www.instagram.com/" target="_blank">
+                <RiInstagramFill />
+              </Link>
+            </Li>
+            <Li>
+              <Link href="https://twitter.com/" target="_blank">
+                <RiTwitterXFill />
+              </Link>
+            </Li>
+            <Li>
+              <Link href="https://www.facebook.com/" target="_blank">
+                <RiFacebookCircleFill />
+              </Link>
+            </Li>
+          </Ul>
+        </SocialMedia>
       </ContentRow>
+      <Copyright>
+        <CopyrightText>
+          Brasil
+          <Img
+            src="https://woolshoes.s3.amazonaws.com/brasil.png"
+            alt="brazil flag"
+          />
+        </CopyrightText>
+        <CopyrightText>
+          © 2024 Woolshoes, Inc. Todos os direitos reservados. Termos,
+          privacidade e acessibilidade.
+        </CopyrightText>
+      </Copyright>
     </Container>
   );
 };

@@ -73,8 +73,7 @@ export default function CategoryProducts({
 }: CategoryProductsParams) {
   const [open, setOpen] = useState(false);
 
-  const initialGender = localStorage.getItem("@woolshoes/gender") || "men";
-  const [chosenGender, setChosenGender] = useState(initialGender);
+  const [chosenGender, setChosenGender] = useState(slug);
 
   const { data: category, isLoading } = useQuery(
     ["category", slug],
@@ -245,7 +244,6 @@ export default function CategoryProducts({
           <ContentSidebar display={open} />
         </FilterDrawer>
       </Container>
-      <Advantages />
     </Layout>
   );
 }

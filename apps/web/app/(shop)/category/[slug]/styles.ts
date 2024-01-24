@@ -16,7 +16,7 @@ export const Container = styled.main`
   display: flex;
   width: 100vw;
   gap: 3em;
-  padding-top: 4em;
+  padding: 4em 0 10em 0;
   flex-direction: row;
   align-items: center;
   justify-content: center;
