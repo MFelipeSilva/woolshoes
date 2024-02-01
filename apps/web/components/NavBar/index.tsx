@@ -76,7 +76,7 @@ export const Navbar = () => {
               <Link href="#">Sobre</Link>
             </Page>
             <Page>
-              <Link href="#">Contato</Link>
+              <Link href="/service">Atendimento</Link>
             </Page>
           </Pages>
           <CartAndLogin>
