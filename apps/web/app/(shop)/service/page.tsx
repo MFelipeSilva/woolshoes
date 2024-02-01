@@ -83,8 +83,8 @@ export default function Service() {
               >
                 <FaqCard>
                   <FaqCardTitle>{list.title}</FaqCardTitle>
-                  {list.questions.map((question) => (
-                    <FaqCardText>{question}</FaqCardText>
+                  {list.questions.map((question, index) => (
+                    <FaqCardText key={index}>{question}</FaqCardText>
                   ))}
                 </FaqCard>
               </CardsCol>
