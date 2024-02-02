@@ -32,15 +32,19 @@ export const NavBar = styled.nav`
 
 export const Logo = styled.h2`
   a {
-    color: #ffffff;
-    text-decoration: none;
+    img {
+      width: 45px;
+      height: 45px;
+    }
   }
 `;
 
 export const Pages = styled.ul`
   display: flex;
-  gap: 2em;
+  width: 100%;
+  margin: 0 2em;
   list-style: none;
+  justify-content: space-between;
 
   &:nth-child(2) {
     li {
@@ -59,6 +63,16 @@ export const Pages = styled.ul`
       }
     }
   }
+`;
+
+export const CategoriesLinks = styled.div`
+  display: flex;
+  gap: 1.5em;
+`;
+
+export const InformationsLinks = styled.div`
+  display: flex;
+  gap: 1.5em;
 `;
 
 export const CartAndLogin = styled.ul`
@@ -80,7 +94,7 @@ export const CartAndLogin = styled.ul`
     & > svg {
       display: flex !important;
       color: #ffffff;
-      font-size: 15pt;
+      font-size: 16pt;
       cursor: pointer;
     }
   }
@@ -94,13 +108,45 @@ export const CartAndLogin = styled.ul`
   }
 `;
 
-export const Page = styled.li`
+export const CategoryPage = styled.li`
+  display: flex;
+  color: #ffffff;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  a {
+    display: flex;
+    gap: 0.5em;
+    color: #ffffff;
+    align-items: center;
+    justify-content: center;
+    font-size: 10pt;
+    font-weight: 700;
+    letter-spacing: 1.7px;
+    text-decoration: none;
+    text-transform: uppercase;
+
+    @media (max-width: 1200px) {
+      p {
+        display: none;
+      }
+
+      & > svg {
+        font-size: 15pt;
+      }
+    }
+  }
+`;
+
+export const InfoPage = styled.li`
   display: flex;
   color: #ffffff;
 
   svg {
     width: 38px;
-    font-size: 15pt;
+    font-size: 18pt;
   }
 
   &:hover {
@@ -115,6 +161,7 @@ export const Page = styled.li`
     justify-content: center;
     font-size: 10pt;
     font-weight: 700;
+    letter-spacing: 0.5px;
     text-decoration: none;
     text-transform: uppercase;
 
@@ -124,7 +171,7 @@ export const Page = styled.li`
       }
 
       & > svg {
-        font-size: 15pt;
+        font-size: 16pt;
       }
     }
   }
@@ -224,9 +271,6 @@ export const SearchInput = styled(Input)`
   display: flex;
   height: 2.5em;
   border-radius: 10px;
-
-  .ant-input {
-  }
 `;
 
 export const UserPopover = styled(Popover)``;
@@ -246,7 +290,7 @@ export const PopoverContent = styled.div`
 
 export const PopoverOptions = styled.button`
   display: flex;
-  padding: 10px 10px;
+  padding: 10px;
   gap: 0.5em;
   border: none;
   border-radius: 8px;

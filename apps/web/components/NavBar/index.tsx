@@ -3,14 +3,14 @@
 import { useState } from "react";
 
 import Link from "next/link";
+import Image from "next/image";
 
 import {
   RiUser3Fill,
   RiShoppingCartLine,
   RiShoppingCartFill,
   RiLogoutBoxLine,
-  RiSearchLine,
-  RiMenu5Fill,
+  RiMenu3Fill,
   RiCloseFill,
   RiInboxUnarchiveLine,
 } from "react-icons/ri";
@@ -20,11 +20,16 @@ import { useCart } from "@providers/cart";
 
 import { CartProduct } from "@components/CartProduct";
 
+import logo from "@/public/logo.svg";
+
 import {
   NavBar,
   Logo,
   Pages,
-  Page,
+  CategoryPage,
+  InfoPage,
+  CategoriesLinks,
+  InformationsLinks,
   CartAndLogin,
   CartDrawer,
   Content,
@@ -66,24 +71,36 @@ export const Navbar = () => {
       <NavBar>
         <Content>
           <Logo>
-            <Link href="/">Woolshoes</Link>
+            <Link href="/">
+              <Image src={logo} alt="logo" />
+            </Link>
           </Logo>
           <Pages>
-            <Page>
-              <Link href="/category/men">Produtos</Link>
-            </Page>
-            <Page>
-              <Link href="#">Sobre</Link>
-            </Page>
-            <Page>
-              <Link href="/service">Atendimento</Link>
-            </Page>
+            <CategoriesLinks>
+              <CategoryPage>
+                <Link href="/category/men">Masculino</Link>
+              </CategoryPage>
+              <CategoryPage>
+                <Link href="/category/women">Feminino</Link>
+              </CategoryPage>
+              <CategoryPage>
+                <Link href="/category/kids">Infantis</Link>
+              </CategoryPage>
+            </CategoriesLinks>
+            <InformationsLinks>
+              <InfoPage>
+                <Link href="#">Sobre nós</Link>
+              </InfoPage>
+              <InfoPage>
+                <Link href="/service">Atendimento</Link>
+              </InfoPage>
+            </InformationsLinks>
           </Pages>
           <CartAndLogin>
-            <Page onClick={() => setOpen(true)}>
+            <InfoPage onClick={() => setOpen(true)}>
               <RiShoppingCartFill />
-            </Page>
-            <Page>
+            </InfoPage>
+            <InfoPage>
               {accessToken ? (
                 <UserPopover
                   content={UserContent}
@@ -100,8 +117,8 @@ export const Navbar = () => {
                   <RiUser3Fill />
                 </Link>
               )}
-            </Page>
-            <RiMenu5Fill />
+            </InfoPage>
+            <RiMenu3Fill />
           </CartAndLogin>
           <CartDrawer
             title="Meu carrinho"
