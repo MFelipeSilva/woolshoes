@@ -89,7 +89,7 @@ export const Navbar = () => {
             </CategoriesLinks>
             <InformationsLinks>
               <InfoPage>
-                <Link href="#">Sobre nós</Link>
+                <Link href="/about-us">Sobre nós</Link>
               </InfoPage>
               <InfoPage>
                 <Link href="/service">Atendimento</Link>
