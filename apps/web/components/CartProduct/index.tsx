@@ -12,6 +12,7 @@ import { CloseButton } from "ui";
 
 import {
   Container,
+  ContentImageAndInfo,
   Image,
   Title,
   Color,
@@ -37,13 +38,15 @@ export const CartProduct = ({ product }: CartProduct) => {
 
   return (
     <Container>
-      <Image alt="product image" src={product.imageUrls?.[0]} />
-      <ProductInformation>
-        <Title>{product.name}</Title>
-        <Color>{product.color}</Color>
-        <Size>Tamanho: {product.sizes}</Size>
-        <Price>{formatPrice(product.price)}</Price>
-      </ProductInformation>
+      <ContentImageAndInfo>
+        <Image alt="product image" src={product.imageUrls?.[0]} />
+        <ProductInformation>
+          <Title>{product.name}</Title>
+          <Color>{product.color}</Color>
+          <Size>Tamanho: {product.sizes}</Size>
+          <Price>{formatPrice(product.price)}</Price>
+        </ProductInformation>
+      </ContentImageAndInfo>
       <Buttons>
         <CloseButton
           icon={
@@ -53,6 +56,7 @@ export const CartProduct = ({ product }: CartProduct) => {
             />
           }
         />
+
         <ContentQuantity>
           <IncreaseAndDecreaseButton
             icon={<RiSubtractFill />}

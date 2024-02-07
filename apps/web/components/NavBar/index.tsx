@@ -124,7 +124,7 @@ export const Navbar = () => {
             title="Meu carrinho"
             placement="right"
             open={open}
-            width="510px"
+            contentWrapperStyle={{ width: "510px" }}
             closeIcon={<RiCloseFill />}
             onClose={() => setOpen(false)}
           >

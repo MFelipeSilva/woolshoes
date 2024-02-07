@@ -89,8 +89,6 @@ export const CartAndLogin = styled.ul`
   }
 
   @media (max-width: 1000px) {
-    gap: 1em;
-
     & > svg {
       display: flex !important;
       color: #ffffff;
@@ -102,7 +100,7 @@ export const CartAndLogin = styled.ul`
   @media (max-width: 768px) {
     & > li:nth-child(1) {
       svg {
-        display: none;
+        display: flex;
       }
     }
   }
@@ -174,6 +172,12 @@ export const InfoPage = styled.li`
         font-size: 16pt;
       }
     }
+
+    @media (max-width: 1000px) {
+      & > svg {
+        display: none;
+      }
+    }
   }
 `;
 
@@ -223,10 +227,6 @@ export const Content = styled.div`
   height: 100%;
   align-items: center;
   justify-content: space-between;
-
-  @media (max-width: 1000px) {
-    width: 90vw;
-  }
 `;
 
 export const Text = styled.p`
