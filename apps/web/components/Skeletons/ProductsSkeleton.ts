@@ -2,19 +2,19 @@ import { styled } from "styled-components";
 
 export const ProductCardSkeleton = styled.div`
   display: flex;
-  width: 403px !important;
-  min-height: 524px !important;
-  align-items: flex-end;
+  width: 100%;
+  max-width: 710px;
+  padding-top: 100%;
   background-color: #f5f5f5;
-  box-shadow: rgba(68, 68, 68, 0.2) 0px 8px 20px 2px;
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.11) 2px 8px 20px 2px;
 
   & > div {
     border-radius: 0 0 8px 8px;
   }
 
   @media (max-width: 768px) {
-    width: 320px !important;
-    min-height: 470px !important;
+    box-shadow: rgba(0, 0, 0, 0.11) 2px 4px 15px 2px;
   }
 `;
 
@@ -47,15 +47,15 @@ export const ProductsCardSkeleton = styled.div`
 
 export const CardMetaSkeleton = styled.div`
   display: flex;
-  min-width: 100%;
-  width: 322px;
+  width: 100%;
+  height: 140px;
   gap: 1.5em;
+  padding: 30px 20px;
   flex-direction: column;
   background-color: #ffffff;
-  padding: 24px 15px !important;
 
-  @media (max-width: 480px) {
-    height: 90px;
+  @media (max-width: 320px) {
+    height: 160px;
   }
 `;
 

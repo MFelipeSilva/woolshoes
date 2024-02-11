@@ -242,13 +242,15 @@ export const CarouselContent = styled.div`
 `;
 
 export const ProductCard = styled(Card)`
-  width: 100% !important;
-  min-height: 100% !important;
-  box-shadow: rgba(68, 68, 68, 0.2) 0px 8px 20px 2px;
+  width: 100%;
+  min-height: 100%;
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.11) 2px 8px 20px 2px;
 
   .ant-card-body {
-    height: 120px;
-    padding: 24px 15px !important;
+    height: 140px;
+    overflow: hidden;
+    padding: 30px 20px;
 
     .ant-card-meta > .ant-card-meta-detail {
       display: flex;
@@ -258,10 +260,12 @@ export const ProductCard = styled(Card)`
   }
 
   @media (max-width: 768px) {
-    width: 330px !important;
+    box-shadow: rgba(0, 0, 0, 0.11) 2px 4px 15px 2px;
+  }
 
+  @media (max-width: 320px) {
     .ant-card-body {
-      height: 130px;
+      height: 160px;
     }
   }
 `;

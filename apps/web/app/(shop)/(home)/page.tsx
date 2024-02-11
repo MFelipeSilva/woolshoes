@@ -1,5 +1,7 @@
 "use client";
 
+import { useState } from "react";
+
 import { useQuery } from "react-query";
 
 import Link from "next/link";
@@ -57,6 +59,14 @@ export default function Home() {
     }
   ) as { data: CategoryType; isLoading: boolean };
 
+  const [dragging, setDragging] = useState(false);
+
+  const handleLinkClick = (e: any) => {
+    if (dragging) {
+      e.preventDefault();
+    }
+  };
+
   return (
     <Layout>
       <Container>
@@ -92,7 +102,7 @@ export default function Home() {
           </TitleContainer>
           <CarouselContainer>
             <CarouselContent>
-              <Carousel>
+              <Carousel setDragging={setDragging}>
                 {isLoading || !category.products
                   ? [1, 2, 3, 4, 5, 6, 7, 8].map((_, index) => (
                       <ProductCardSkeleton key={index}>
@@ -107,6 +117,7 @@ export default function Home() {
                       .map((product: ProductType) => (
                         <Link
                           key={product.id}
+                          onClick={handleLinkClick}
                           href={`/product/${product.slug}`}
                         >
                           <ProductCard

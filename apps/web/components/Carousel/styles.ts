@@ -5,6 +5,8 @@ import { Button, Carousel } from "antd";
 export const CardCarousel = styled(Carousel)`
   & > .slick-list > .slick-track {
     display: flex !important;
+    z-index: 99;
+    cursor: -webkit-grab;
   }
 
   & > button {
@@ -16,19 +18,18 @@ export const CardCarousel = styled(Carousel)`
   }
 
   .slick-slide {
-    height: 550px;
-    position: relative;
+    height: max-content;
+    padding: 25px 0;
   }
 
   .slick-slide > div {
-    width: 90%;
+    width: 92%;
     margin-left: 1em;
-    pointer-events: auto;
-  }
+    user-select: none;
+    pointer-events: all;
 
-  @media (min-width: 1200px) {
-    .slick-slide {
-      width: 32em !important;
+    @media (max-width: 768px) {
+      width: 96%;
     }
   }
 
@@ -38,16 +39,11 @@ export const CardCarousel = styled(Carousel)`
     }
   }
 
-  @media (max-width: 991px) and (min-width: 768px) {
+  @media (max-width: 768px) {
     .slick-slide {
-      width: 32em !important;
-    }
-  }
-
-  @media (max-width: 767px) {
-    .slick-slide {
-      width: 100% !important;
-      height: 490px;
+      width: 100%;
+      height: 100%;
+      padding-bottom: 20px;
     }
   }
 `;

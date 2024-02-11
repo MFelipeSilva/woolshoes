@@ -1,4 +1,10 @@
-import React, { ReactNode, useRef, useState } from "react";
+import React, {
+  Dispatch,
+  ReactNode,
+  SetStateAction,
+  useRef,
+  useState,
+} from "react";
 
 import { IoArrowBackOutline, IoArrowForward } from "react-icons/io5";
 
@@ -6,15 +12,17 @@ import { CardCarousel, CarouselButton, CarouselButtonDisabled } from "./styles";
 
 interface CarouselProps {
   children: ReactNode;
+  setDragging: Dispatch<SetStateAction<boolean>>;
 }
 
-export const Carousel: React.FC<CarouselProps> = ({ children }) => {
+export const Carousel: React.FC<CarouselProps> = ({
+  children,
+  setDragging,
+}) => {
   const carouselRef = useRef<any>(null);
 
   const [showNextButton, setShowNextButton] = useState(true);
   const [showPrevButton, setShowPrevButton] = useState(false);
-
-  const numberOfSlides = 4;
 
   const next = () => {
     carouselRef.current.next();
@@ -24,25 +32,22 @@ export const Carousel: React.FC<CarouselProps> = ({ children }) => {
     carouselRef.current.prev();
   };
 
-  const handleCarouselSlide = (current: number) => {
-    if (current === numberOfSlides - 2) {
-      setShowNextButton(false);
-      setShowPrevButton(true);
-    } else if (current === 0) {
-      setShowNextButton(true);
-      setShowPrevButton(false);
-    } else {
-      setShowNextButton(true);
-      setShowPrevButton(true);
-    }
+  const handleCarouselSlide = (currentSlide: number, totalSlides: number) => {
+    setShowNextButton(currentSlide < totalSlides - 1);
+    setShowPrevButton(currentSlide > 0);
+  };
+
+  const handleAfterChange = (currentSlide: number) => {
+    setDragging(false);
+    handleCarouselSlide(currentSlide, 5.5);
   };
 
   const settings = {
     dots: false,
     infinite: false,
-    afterChange: handleCarouselSlide,
-    slidesToShow: 1.5,
-    slidesToScroll: 1,
+    slidesToShow: 3.5,
+    slidesToScroll: 2,
+    speed: 500,
     arrows: true,
     nextArrow: showNextButton ? (
       <CarouselButton
@@ -62,10 +67,53 @@ export const Carousel: React.FC<CarouselProps> = ({ children }) => {
     ) : (
       <CarouselButtonDisabled />
     ),
+    responsive: [
+      {
+        breakpoint: 1600,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 2,
+        },
+      },
+      {
+        breakpoint: 1280,
+        settings: {
+          slidesToShow: 2.5,
+          slidesToScroll: 2,
+        },
+      },
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1.1,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1.1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
 
   return (
-    <CardCarousel ref={carouselRef} {...settings}>
+    <CardCarousel
+      ref={carouselRef}
+      {...settings}
+      draggable
+      beforeChange={() => setDragging(true)}
+      afterChange={handleAfterChange}
+    >
       {React.Children.map(children, (child) => {
         return <>{child}</>;
       })}
