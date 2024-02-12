@@ -59,6 +59,18 @@ export const CardMetaSkeleton = styled.div`
   }
 `;
 
+export const ProductsCardMetaSkeleton = styled(CardMetaSkeleton)`
+  display: flex;
+  min-width: 100%;
+  width: 322px;
+  height: auto;
+  padding: 24px 15px;
+
+  @media (max-width: 480px) {
+    height: 90px;
+  }
+`;
+
 export const TitleSkeleton = styled.div`
   width: 80%;
   height: 1.5em !important;

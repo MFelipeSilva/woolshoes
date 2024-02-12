@@ -19,11 +19,10 @@ import { formatPrice } from "@helpers/formatPrice";
 
 import {
   DescriptionSkeleton,
-  CardMetaSkeleton,
   ProductsCardSkeleton,
   TitleSkeleton,
+  ProductsCardMetaSkeleton,
 } from "@components/Skeletons/ProductsSkeleton";
-import { Advantages } from "@components/Advantages";
 
 import {
   Container,
@@ -197,10 +196,10 @@ export default function CategoryProducts({
                       key={index}
                     >
                       <ProductsCardSkeleton>
-                        <CardMetaSkeleton>
+                        <ProductsCardMetaSkeleton>
                           <TitleSkeleton />
                           <DescriptionSkeleton />
-                        </CardMetaSkeleton>
+                        </ProductsCardMetaSkeleton>
                       </ProductsCardSkeleton>
                     </ProductsCol>
                   ))
