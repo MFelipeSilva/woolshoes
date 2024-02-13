@@ -120,13 +120,13 @@ export const Navbar = () => {
               )}
             </InfoPage>
             {openMenu ? (
-              <RiMenu3Fill
-                className="menu-icon"
+              <RiCloseFill
+                className="close-icon"
                 onClick={() => setOpenMenu(!openMenu)}
               />
             ) : (
-              <RiCloseFill
-                className="close-icon"
+              <RiMenu3Fill
+                className="menu-icon"
                 onClick={() => setOpenMenu(!openMenu)}
               />
             )}
