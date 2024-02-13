@@ -23,9 +23,9 @@ import { CartProduct } from "@components/CartProduct";
 import logo from "@/public/logo.svg";
 
 import {
-  NavBar,
+  NavigationBar,
   Logo,
-  Pages,
+  NavLinks,
   CategoryPage,
   InfoPage,
   CategoriesLinks,
@@ -49,6 +49,7 @@ import {
 
 export const Navbar = () => {
   const [open, setOpen] = useState(false);
+  const [openMenu, setOpenMenu] = useState(false);
 
   const { cart } = useCart();
   const { accessToken, user, handleLeaveAccount } = useAuth();
@@ -68,14 +69,14 @@ export const Navbar = () => {
 
   return (
     <Container>
-      <NavBar>
+      <NavigationBar>
         <Content>
           <Logo>
             <Link href="/">
               <Image src={logo} alt="logo" />
             </Link>
           </Logo>
-          <Pages>
+          <NavLinks openMenu={openMenu} onClick={() => setOpenMenu(false)}>
             <CategoriesLinks>
               <CategoryPage>
                 <Link href="/category/men">Masculino</Link>
@@ -95,7 +96,7 @@ export const Navbar = () => {
                 <Link href="/service">Atendimento</Link>
               </InfoPage>
             </InformationsLinks>
-          </Pages>
+          </NavLinks>
           <CartAndLogin>
             <InfoPage onClick={() => setOpen(true)}>
               <RiShoppingCartFill />
@@ -118,7 +119,17 @@ export const Navbar = () => {
                 </Link>
               )}
             </InfoPage>
-            <RiMenu3Fill />
+            {openMenu ? (
+              <RiMenu3Fill
+                className="menu-icon"
+                onClick={() => setOpenMenu(!openMenu)}
+              />
+            ) : (
+              <RiCloseFill
+                className="close-icon"
+                onClick={() => setOpenMenu(!openMenu)}
+              />
+            )}
           </CartAndLogin>
           <CartDrawer
             title="Meu carrinho"
@@ -141,12 +152,18 @@ export const Navbar = () => {
             )}
           </CartDrawer>
         </Content>
-      </NavBar>
+      </NavigationBar>
       <CategoriesContainer>
         <Categories>
-          <Category>Masculinos</Category>
-          <Category>Femininos</Category>
-          <Category>Infantis</Category>
+          <Link href="/category/men">
+            <Category>Masculinos</Category>
+          </Link>
+          <Link href="/category/women">
+            <Category>Femininos</Category>
+          </Link>
+          <Link href="/category/kids">
+            <Category>Infantis</Category>
+          </Link>
         </Categories>
       </CategoriesContainer>
     </Container>

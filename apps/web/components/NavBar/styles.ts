@@ -2,6 +2,10 @@ import styled from "styled-components";
 
 import { Drawer, Input, Popover } from "antd";
 
+interface INavLinks {
+  openMenu: boolean;
+}
+
 export const overlayStyle = {
   width: "180px",
 };
@@ -12,7 +16,7 @@ export const Container = styled.div`
   box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 24px 0px;
 `;
 
-export const NavBar = styled.nav`
+export const NavigationBar = styled.nav`
   display: flex;
   position: fixed;
   top: 0;
@@ -39,8 +43,9 @@ export const Logo = styled.h2`
   }
 `;
 
-export const Pages = styled.ul`
+export const NavLinks = styled.ul<INavLinks>`
   display: flex;
+  z-index: 1;
   width: 100%;
   margin: 0 2em;
   list-style: none;
@@ -56,11 +61,37 @@ export const Pages = styled.ul`
         border-bottom: 1px solid #ffffff;
       }
 
-      @media (max-width: 1000px) {
+      @media (max-width: 1024px) {
         & {
-          display: none;
+          display: flex;
         }
       }
+    }
+  }
+
+  @media (max-width: 1024px) {
+    position: absolute;
+    z-index: -1;
+    transform: translateY(${({ openMenu }) => (openMenu ? "0" : "-100em")});
+    top: 3.8em;
+    left: 0%;
+    width: 100%;
+    height: 25em;
+    margin: 0;
+    gap: 2.5em;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #2d3142;
+    transition: ${({ openMenu }) =>
+      openMenu
+        ? "transform 0.5s ease-in-out, opacity 0.1s ease-in-out"
+        : "none"};
+
+    & > div {
+      gap: 2.5em;
+      align-items: center;
+      flex-direction: column;
     }
   }
 `;
@@ -77,31 +108,33 @@ export const InformationsLinks = styled.div`
 
 export const CartAndLogin = styled.ul`
   display: flex;
-  gap: 0.4em;
+  gap: 0.5em;
   list-style: none;
   align-items: center;
   justify-content: center;
 
-  &:nth-child(3) {
-    & > svg {
-      display: none;
-    }
+  & > svg {
+    display: none;
   }
 
-  @media (max-width: 1000px) {
-    & > svg {
-      display: flex !important;
+  @media (max-width: 1024px) {
+    .menu-icon {
+      display: flex;
+      width: 35px;
       color: #ffffff;
-      font-size: 16pt;
+      font-size: 25px;
       cursor: pointer;
+      user-select: none;
     }
-  }
 
-  @media (max-width: 768px) {
-    & > li:nth-child(1) {
-      svg {
-        display: flex;
-      }
+    .close-icon {
+      display: flex;
+      width: 35px;
+      color: #ffffff;
+      font-size: 35px;
+      margin-top: 2px;
+      cursor: pointer;
+      user-select: none;
     }
   }
 `;
@@ -241,10 +274,10 @@ export const SubText = styled.span`
 
 export const CategoriesContainer = styled.div`
   display: none;
-  width: 100%;
+  width: 100vw;
   height: 3em;
-  padding: 0 2em;
   margin-top: 3.8em;
+  overflow-x: auto;
   align-items: center;
   justify-content: center;
   background-color: #ffffff;
@@ -252,12 +285,24 @@ export const CategoriesContainer = styled.div`
   @media (max-width: 768px) {
     display: flex;
   }
+
+  @media (max-width: 480px) {
+    padding: 0 3.5em;
+    align-items: normal;
+    justify-content: normal;
+  }
 `;
 
 export const Categories = styled.ul`
   display: flex;
-  width: 100vw;
-  justify-content: space-evenly;
+  gap: 3.5em;
+  align-items: center;
+  justify-content: center;
+
+  & > a {
+    color: #000000;
+    text-decoration: none;
+  }
 `;
 
 export const Category = styled.ul`
