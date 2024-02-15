@@ -12,8 +12,11 @@ export const getProduct = async (slug: string) => {
   return data;
 };
 
-export const getCategory = async (slug: string) => {
-  const { data } = await axios.get(`${apiUrl}/category/${slug}`);
+export const getCategory = async (slug1: string, slug2?: string) => {
+  const url = !slug2
+    ? `${apiUrl}/category/${slug1}`
+    : `${apiUrl}/category/${slug1}/${slug2}`;
+  const { data } = await axios.get(url);
   return data;
 };
 

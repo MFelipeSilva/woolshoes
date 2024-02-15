@@ -108,8 +108,9 @@ export const Filter = styled.div`
 `;
 
 export const FilterTitle = styled.h3`
-  font-size: 17px;
-  letter-spacing: 0.5px;
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 1px;
   text-transform: uppercase;
 `;
 
@@ -122,8 +123,9 @@ export const Categories = styled.div`
 `;
 
 export const CategoryTitle = styled.h4`
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 600;
+  letter-spacing: 0.5px;
 `;
 
 export const SizeGroup = styled.div`
@@ -138,10 +140,10 @@ export const ButtonSize = styled.button`
   width: clamp(3.5em, 3vw, 4em);
   height: clamp(3.5em, 3vw, 4em);
   cursor: pointer;
-  color: #000000;
+  color: rgba(0, 0, 0, 0.6);
   align-items: center;
   justify-content: center;
-  border: 1px solid #000000;
+  border: 1px solid rgba(0, 0, 0, 0.6);
   background-color: transparent;
   font-family: "Inter", sans-serif;
 
@@ -159,6 +161,8 @@ export const Materials = styled.div`
   display: flex;
   gap: 1em;
   flex-direction: column;
+  align-items: start;
+  justify-content: center;
 `;
 
 export const Material = styled.div``;
@@ -167,15 +171,23 @@ export const Genres = styled.div`
   display: flex;
   gap: 1em;
   flex-direction: column;
+  align-items: start;
+  justify-content: center;
 `;
 
 export const Gender = styled.div``;
 
 export const CheckboxAndText = styled(Checkbox)`
-  & > span:nth-child(1) > span {
+  .ant-checkbox > .ant-checkbox-inner {
     width: 17px;
     height: 17px;
   }
+
+  .ant-checkbox-input:checked + .ant-checkbox-inner {
+    background-color: #2d3142 !important;
+    border-color: #2d3142 !important;
+  }
+
   & > span:nth-child(2) {
     font-size: 14px !important;
     font-weight: 400;
@@ -269,6 +281,7 @@ export const ProductsRow = styled(Row)`
   @media (max-width: 992px) {
     row-gap: 2em;
     width: 100vw !important;
+    justify-content: center;
   }
 `;
 
@@ -324,4 +337,11 @@ export const FilterDrawer = styled(Drawer)`
     color: #000000;
     font-size: 28pt;
   }
+`;
+
+export const NotFindText = styled.p`
+  color: #000000;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
 `;

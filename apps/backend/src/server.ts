@@ -23,22 +23,45 @@ app.register(cors);
 
 const secretKey: Secret = process.env.JWT_SECRET_KEY as Secret;
 
-app.get("/category/:slug", async (request, reply) => {
-  const { slug }: any = request.params;
+app.get("/category/:slug1/:slug2?", async (request, reply) => {
+  const { slug1, slug2 }: any = request.params;
+
   try {
-    const category = await prisma.category.findFirst({
+    const category1 = await prisma.category.findFirst({
       where: {
-        slug,
+        slug: slug1,
       },
       include: {
         products: true,
       },
     });
-    if (!category) {
+
+    if (!category1) {
       reply.status(404).send({ error: "Category not found." });
       return;
     }
-    reply.send(category);
+
+    if (slug2) {
+      const category2 = await prisma.category.findFirst({
+        where: {
+          slug: slug2,
+        },
+        include: {
+          products: true,
+        },
+      });
+
+      if (!category1 || !category2) {
+        reply.status(404).send({ error: "Category not found." });
+        return;
+      }
+
+      category1.products = [...category1.products, ...category2.products];
+
+      reply.send(category1);
+    } else {
+      return reply.send(category1);
+    }
   } catch (error) {
     reply.status(500).send({ error: "Error when finding category." });
   }
