@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useQuery } from "react-query";
 
 import Link from "next/link";
+import Image from "next/image";
 
 import { Layout } from "@layout";
 
@@ -18,6 +19,10 @@ import { Advantages } from "@components/Advantages";
 
 import { PrimaryButton } from "ui";
 
+import banner_home_01 from "@public/banner-home-01.png";
+import banner_home_02 from "@public/banner-home-02.png";
+import banner_home_03 from "@public/banner-home-03.png";
+
 import {
   ProductCardSkeleton,
   CardMetaSkeleton,
@@ -29,7 +34,7 @@ import {
   Content,
   Section,
   Title,
-  Image,
+  Img,
   ProductCard,
   CardMeta,
   CarouselContainer,
@@ -37,9 +42,6 @@ import {
   Category,
   Categories,
   CategoriesTitle,
-  MainAnnouncement,
-  OtherAnnouncement,
-  Banner,
   SecondaryBannerContent,
   BannerTitle,
   BannerHeader,
@@ -72,7 +74,11 @@ export default function Home() {
       <Container>
         <Content>
           <BannerContent>
-            <MainAnnouncement src="https://uploaddeimagens.com.br/images/004/647/123/full/1d461901-923e-462c-a9e9-b4166e76e1b1.jpg?1698244824" />
+            <Image
+              className="banner-01"
+              src={banner_home_01}
+              alt="banner home"
+            />
             <BannerHeader>
               <BannerTitle>Tênis confortaveis e de alta qualidade.</BannerTitle>
               <Link href="/category/men">
@@ -93,7 +99,11 @@ export default function Home() {
                 </Category>
               </CategoriesContent>
             </Categories>
-            <OtherAnnouncement src="https://i5.walmartimages.com/asr/9e444317-e0d6-4719-a3b0-bb693bce266b.5396b002879f4167c1f93a7710fa259d.jpeg?odnHeight=768&odnWidth=768&odnBg=FFFFFF" />
+            <Image
+              className="banner-02"
+              src={banner_home_02}
+              alt="banner home"
+            />
           </BannerContent>
         </Content>
         <Section $page={1}>
@@ -122,7 +132,7 @@ export default function Home() {
                         >
                           <ProductCard
                             cover={
-                              <Image
+                              <Img
                                 src={product.imageUrls[0]}
                                 alt="product images"
                               />
@@ -142,7 +152,11 @@ export default function Home() {
         <Section $page={2}>
           <Title>Produtos relevantes</Title>
           <SecondaryBannerContent>
-            <Banner src="https://cdn.allbirds.com/image/upload/f_auto,q_auto,w_2048/cms/5fpkfzYQ5cQnhuIz1VFU67/1266845421d7e9876b6375fbf91a4280/23Q4-ZombiePack-Secondary-Hero-Desktop.jpg" />
+            <Image
+              className="banner-03"
+              src={banner_home_03}
+              alt="banner home"
+            />
           </SecondaryBannerContent>
         </Section>
       </Container>

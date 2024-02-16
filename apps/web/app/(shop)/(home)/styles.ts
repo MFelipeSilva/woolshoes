@@ -34,6 +34,35 @@ export const BannerContent = styled.section`
   align-items: center;
   justify-content: center;
 
+  & > .banner-01 {
+    max-width: 100%;
+    max-height: 100%;
+    width: 70%;
+    height: 100%;
+    z-index: 1;
+    border-radius: 5px;
+    object-fit: cover;
+    object-position: center;
+
+    @media (max-width: 1000px) {
+      width: 100%;
+      height: 100%;
+      border-radius: 0;
+    }
+  }
+
+  & > .banner-02 {
+    width: 30%;
+    height: 100%;
+    border-radius: 5px;
+    background-color: #f2f4f5;
+    object-fit: cover;
+
+    @media (max-width: 1000px) {
+      display: none;
+    }
+  }
+
   @media (max-width: 768px) {
     width: 100vw;
     height: 60vh;
@@ -137,35 +166,6 @@ export const Category = styled.li`
   }
 `;
 
-export const MainAnnouncement = styled.img`
-  max-width: 100%;
-  max-height: 100%;
-  width: 70%;
-  height: 100%;
-  z-index: 1;
-  border-radius: 5px;
-  object-fit: cover;
-  object-position: center;
-
-  @media (max-width: 1000px) {
-    width: 100%;
-    height: 100%;
-    border-radius: 0;
-  }
-`;
-
-export const OtherAnnouncement = styled.img`
-  width: 30%;
-  height: 100%;
-  border-radius: 5px;
-  background-color: #f2f4f5;
-  object-fit: cover;
-
-  @media (max-width: 1000px) {
-    display: none;
-  }
-`;
-
 export const Section = styled.section<SectionProps>`
   display: flex;
   width: 100vw;
@@ -182,20 +182,22 @@ export const SecondaryBannerContent = styled.section`
   align-items: start;
   justify-content: start;
 
+  & > .banner-03 {
+    max-width: 100%;
+    max-height: 100%;
+    width: 90vw;
+    height: 80vh;
+    border-radius: 0px 5px 5px 0;
+    object-fit: cover;
+    object-position: center;
+  }
+
   @media (max-width: 768px) {
     height: 60vh;
   }
 `;
 
-export const Banner = styled.img`
-  max-width: 100%;
-  max-height: 100%;
-  width: 90vw;
-  height: 80vh;
-  border-radius: 0px 5px 5px 0;
-  object-fit: cover;
-  object-position: center;
-`;
+export const Banner = styled.img``;
 
 export const TitleContainer = styled.div`
   width: 70%;
@@ -287,7 +289,7 @@ export const CardMeta = styled(Meta)`
   }
 `;
 
-export const Image = styled.img`
+export const Img = styled.img`
   max-width: 100%;
   max-height: 100%;
   object-fit: cover;

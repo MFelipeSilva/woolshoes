@@ -22,6 +22,10 @@ export const Title = styled.h1`
   font-size: clamp(22pt, 2vw, 25pt);
   font-weight: 700;
   text-align: start;
+
+  @media (max-width: 768px) {
+    text-align: center;
+  }
 `;
 
 export const Content = styled.div`
@@ -31,21 +35,35 @@ export const Content = styled.div`
   align-items: start;
   flex-direction: column;
 
-  @media (max-width: 768px) {
-    width: 80%;
+  @media (max-width: 1007px) {
+    width: 90%;
+    align-items: center;
   }
 `;
 
 export const AdvantageContainer = styled.div`
   display: flex;
   gap: clamp(2em, 2vw, 3em);
-  flex-wrap: wrap;
   align-items: center;
+
+  @media (max-width: 1200px) {
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 1007px) {
+    justify-content: center;
+  }
 `;
 
 export const AdvantageContent = styled.div`
   display: flex;
   gap: 1em;
+
+  @media (max-width: 1007px) {
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
 `;
 
 export const AdvantageIcon = styled.div`
@@ -59,8 +77,11 @@ export const AdvantageIcon = styled.div`
 `;
 
 export const Icon = styled.img`
-  width: 45px;
-  height: 45px;
+  width: 100%;
+  height: 100%;
+  max-width: 45px;
+  max-height: 45px;
+  object-fit: cover;
 `;
 
 export const AdvantageTexts = styled.div`
@@ -71,6 +92,15 @@ export const AdvantageTexts = styled.div`
 
   @media (max-width: 1200px) {
     width: clamp(15em, 17vw, 24em);
+  }
+
+  @media (max-width: 1007px) {
+    text-align: center;
+  }
+
+  @media (max-width: 768px) {
+    width: 70vw;
+    text-align: center;
   }
 `;
 
