@@ -1,5 +1,7 @@
 import React from "react";
 
+import Image from "next/image";
+
 import { purchaseAdvantages } from "@helpers/purchaseAdvantages";
 
 import {
@@ -12,7 +14,6 @@ import {
   AdvantageIcon,
   AdvantageTexts,
   AdvantageTitle,
-  Icon,
 } from "./styles";
 
 export const Advantages = () => {
@@ -24,7 +25,7 @@ export const Advantages = () => {
           {purchaseAdvantages.map((advantage) => (
             <AdvantageContent key={advantage.id}>
               <AdvantageIcon>
-                <Icon src={advantage.icon} />
+                <Image src={advantage.icon} alt="advantage icon" />
               </AdvantageIcon>
               <AdvantageTexts>
                 <AdvantageTitle>{advantage.title}</AdvantageTitle>

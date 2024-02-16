@@ -74,14 +74,14 @@ export const AdvantageIcon = styled.div`
   align-items: center;
   justify-content: center;
   background-color: #f2f4f5;
-`;
 
-export const Icon = styled.img`
-  width: 100%;
-  height: 100%;
-  max-width: 45px;
-  max-height: 45px;
-  object-fit: cover;
+  & > img {
+    width: 100%;
+    height: 100%;
+    max-width: 45px;
+    max-height: 45px;
+    object-fit: contain;
+  }
 `;
 
 export const AdvantageTexts = styled.div`
