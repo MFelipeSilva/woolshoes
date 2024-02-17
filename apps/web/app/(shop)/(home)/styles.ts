@@ -11,7 +11,7 @@ interface SectionProps {
 export const Container = styled.main`
   width: 100vw;
   height: 100%;
-  padding-top: 4em;
+  padding-top:4em;
 
   @media (max-width: 768px) {
     padding-top: 0;
@@ -37,7 +37,7 @@ export const BannerContent = styled.section`
   & > .banner-01 {
     max-width: 100%;
     max-height: 100%;
-    width: 70%;
+    width: 100%;
     height: 100%;
     z-index: 1;
     border-radius: 5px;
@@ -48,18 +48,6 @@ export const BannerContent = styled.section`
       width: 100%;
       height: 100%;
       border-radius: 0;
-    }
-  }
-
-  & > .banner-02 {
-    width: 30%;
-    height: 100%;
-    border-radius: 5px;
-    background-color: #f2f4f5;
-    object-fit: cover;
-
-    @media (max-width: 1000px) {
-      display: none;
     }
   }
 
@@ -75,7 +63,7 @@ export const BannerHeader = styled.div`
   left: 0;
   gap: 2em;
   z-index: 1;
-  margin-left: clamp(1vw, 5vw, 5em);
+  margin-left: clamp(1vw, 5vw, 6em);
   flex-direction: column;
 
   a {
@@ -85,16 +73,12 @@ export const BannerHeader = styled.div`
 
     button {
       width: max-content;
+      height: 4em;
     }
 
     @media (max-width: 768px) {
       & {
         width: max-content;
-
-        button {
-          width: max-content;
-          height: 4em;
-        }
       }
     }
   }
@@ -103,23 +87,29 @@ export const BannerHeader = styled.div`
 export const BannerTitle = styled.h1`
   color: #ffffff;
   width: 11em;
+  font-weight: 800;
+  letter-spacing: 1.5px;
   text-transform: uppercase;
-  font-size: clamp(21pt, 3vw, 34pt);
+  font-size: clamp(23pt, 5vw, 38pt);
+
+  @media (max-width: 768px) {
+    width: 58vw;
+  }
+
+  @media (max-width: 280px) {
+    width: 50vw;
+    font-size: 20pt;
+  }
 `;
 
 export const Categories = styled.div`
   display: flex;
-  width: 70%;
+  width: 100%;
   height: 100%;
   left: 0;
-  margin-top: 6em;
   position: absolute;
   align-items: center;
   background-color: transparent;
-
-  @media (max-width: 1500px) {
-    width: 72%;
-  }
 `;
 
 export const CategoriesContent = styled.div`
@@ -130,14 +120,12 @@ export const CategoriesContent = styled.div`
   right: 0;
   gap: 0.7em;
   padding: 0 1em;
-  border: 1px solid black;
+  z-index: 1;
   background-color: #ffffff;
   flex-direction: column;
   align-items: start;
   justify-content: center;
   border-left: 0;
-  z-index: 1;
-  border-radius: 5px !important;
 
   @media (max-width: 1200px) {
     display: none;
@@ -182,10 +170,10 @@ export const SecondaryBannerContent = styled.section`
   align-items: start;
   justify-content: start;
 
-  & > .banner-03 {
+  & > .banner-02 {
     max-width: 100%;
     max-height: 100%;
-    width: 90vw;
+    width: 95vw;
     height: 80vh;
     border-radius: 0px 5px 5px 0;
     object-fit: cover;

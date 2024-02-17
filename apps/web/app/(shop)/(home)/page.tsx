@@ -21,7 +21,6 @@ import { PrimaryButton } from "ui";
 
 import banner_home_01 from "@public/banner-home-01.png";
 import banner_home_02 from "@public/banner-home-02.png";
-import banner_home_03 from "@public/banner-home-03.png";
 
 import {
   ProductCardSkeleton,
@@ -99,11 +98,6 @@ export default function Home() {
                 </Category>
               </CategoriesContent>
             </Categories>
-            <Image
-              className="banner-02"
-              src={banner_home_02}
-              alt="banner home"
-            />
           </BannerContent>
         </Content>
         <Section $page={1}>
@@ -150,11 +144,11 @@ export default function Home() {
           </CarouselContainer>
         </Section>
         <Section $page={2}>
-          <Title>Produtos relevantes</Title>
+          <Title>Modelos esportivos</Title>
           <SecondaryBannerContent>
             <Image
-              className="banner-03"
-              src={banner_home_03}
+              className="banner-02"
+              src={banner_home_02}
               alt="banner home"
             />
           </SecondaryBannerContent>
