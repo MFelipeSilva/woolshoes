@@ -28,7 +28,7 @@ const userFormSchema = z.object({
     .string()
     .min(1, "O email é obrigatório.")
     .email("Formato de email inválido."),
-  password: z.string().min(7, "A senha precisa de no mínimo 7 caracteres."),
+  password: z.string().min(8, "A senha precisa de no mínimo 8 caracteres."),
 });
 
 type UserFormData = z.infer<typeof userFormSchema>;
