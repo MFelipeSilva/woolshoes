@@ -81,7 +81,6 @@ export const Price = styled.p`
 export const Buttons = styled.div`
   display: flex;
   height: 100%;
-  width: 30%;
   z-index: 1;
   background-color: #ffffff;
   flex-direction: column;

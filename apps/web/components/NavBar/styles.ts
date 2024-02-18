@@ -47,7 +47,7 @@ export const NavLinks = styled.ul<INavLinks>`
   display: flex;
   z-index: 1;
   width: 100%;
-  margin: 0 2em;
+  margin: 0 1.5em;
   list-style: none;
   justify-content: space-between;
 

@@ -11,7 +11,7 @@ interface SectionProps {
 export const Container = styled.main`
   width: 100vw;
   height: 100%;
-  padding-top:4em;
+  padding-top: 4em;
 
   @media (max-width: 768px) {
     padding-top: 0;
@@ -90,7 +90,7 @@ export const BannerTitle = styled.h1`
   font-weight: 800;
   letter-spacing: 1.5px;
   text-transform: uppercase;
-  font-size: clamp(23pt, 5vw, 38pt);
+  font-size: clamp(23pt, 3vw, 38pt);
 
   @media (max-width: 768px) {
     width: 58vw;
@@ -150,6 +150,7 @@ export const Category = styled.li`
 
     &:hover {
       text-decoration: underline;
+      text-underline-offset: 4px;
     }
   }
 `;

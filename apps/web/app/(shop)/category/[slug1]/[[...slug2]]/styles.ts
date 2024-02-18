@@ -139,9 +139,10 @@ export const ButtonSize = styled.button`
   color: rgba(0, 0, 0, 0.6);
   align-items: center;
   justify-content: center;
-  border: 1px solid rgba(0, 0, 0, 0.6);
   background-color: transparent;
   font-family: "Inter", sans-serif;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.4);
 
   &:hover {
     border: 1px solid #2d3142;
