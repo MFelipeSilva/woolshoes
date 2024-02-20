@@ -2,7 +2,11 @@ import fastify from "fastify";
 
 import * as dotenv from "dotenv";
 
+import axios from "axios";
+
 import cors from "@fastify/cors";
+
+import cron from "node-cron";
 
 import { hash, compare } from "bcrypt";
 
@@ -17,7 +21,6 @@ import {
 } from "../../web/types/UserType";
 
 const app = fastify();
-
 dotenv.config();
 app.register(cors);
 
@@ -160,6 +163,18 @@ app.post("/login", async (request, reply) => {
     }
   } catch (error) {
     reply.status(500).send({ success: false, error: error });
+  }
+});
+
+app.get("/keep-alive", async (request, reply) => {
+  reply.send("Server is alive");
+});
+
+cron.schedule("*/5 * * * *", async () => {
+  try {
+    await axios.get("https://woolshoes-api.onrender.com/keep-alive");
+  } catch (error) {
+    console.error("Error sending keep-alive request:", error);
   }
 });
 
