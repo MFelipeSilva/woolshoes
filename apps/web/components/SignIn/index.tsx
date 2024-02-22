@@ -90,7 +90,7 @@ export const SignIn = () => {
           {errors.email && <ErrorText>{errors.email?.message}</ErrorText>}
         </Label>
         <Label>
-          Senhas
+          Senha
           <Input
             type="password"
             {...register("password")}
