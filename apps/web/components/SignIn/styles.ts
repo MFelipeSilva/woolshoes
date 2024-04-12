@@ -83,36 +83,6 @@ export const ErrorText = styled.span`
   font-size: 10pt;
 `;
 
-export const Separator = styled.div`
-  display: flex;
-  width: 100%;
-  padding: 30px 0;
-  position: relative;
-  align-items: center;
-  justify-content: center;
-
-  &::before {
-    content: "";
-    display: block;
-    width: 11em;
-    height: 1px;
-    left: 0;
-    top: 50%;
-    position: absolute;
-    background-color: #000000;
-  }
-  &::after {
-    content: "";
-    display: block;
-    width: 11em;
-    height: 1px;
-    right: 0;
-    top: 50%;
-    position: absolute;
-    background-color: #000000;
-  }
-`;
-
 export const ForgotPassword = styled.p`
   margin-bottom: 1.5em;
   font-size: 15px;

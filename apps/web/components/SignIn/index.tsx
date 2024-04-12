@@ -6,8 +6,6 @@ import { z } from "zod";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import { FcGoogle } from "react-icons/fc";
-
 import { PrimaryButton } from "ui";
 
 import { postLoginUser } from "@lib/api";
@@ -19,7 +17,6 @@ import {
   Form,
   Input,
   Label,
-  Separator,
   Title,
 } from "./styles";
 
@@ -101,10 +98,6 @@ export const SignIn = () => {
         <ForgotPassword>Esqueci minha senha</ForgotPassword>
         <PrimaryButton type="submit">Entrar</PrimaryButton>
       </Form>
-      <Separator>ou</Separator>
-      <PrimaryButton color="#FFFFFF" border="#636363">
-        <FcGoogle fontSize={23} />
-      </PrimaryButton>
     </Container>
   );
 };
