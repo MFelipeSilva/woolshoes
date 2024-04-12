@@ -17,14 +17,9 @@ import { Container } from "./styles";
 export const Layout = ({ children }: { children: ReactNode }) => {
   return (
     <Container>
-      <QueryClientProvider client={queryClient}>
-        <GlobalStyle />
-        <CartProvider>
-          <Navbar />
-          {children}
-          <Footer />
-        </CartProvider>
-      </QueryClientProvider>
+      <Navbar />
+      {children}
+      <Footer />
     </Container>
   );
 };

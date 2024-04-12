@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import { Layout } from "@layout";
+import LayoutWrapper from "@layout/layoutWrapper";
 
 export const metadata: Metadata = {
   title: "Woolshoes",
@@ -21,7 +21,7 @@ export default function RootLayout({
         ></link>
       </head>
       <body>
-        <Layout>{children}</Layout>
+        <LayoutWrapper>{children}</LayoutWrapper>
       </body>
     </html>
   );
