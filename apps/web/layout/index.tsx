@@ -1,20 +1,30 @@
-import React, { ReactNode } from "react";
+"use client";
+
+import type { ReactNode } from "react";
+
+import { QueryClientProvider } from "react-query";
+import { queryClient } from "@lib/queryClient";
+
+import { CartProvider } from "@providers/cart";
 
 import { Navbar } from "@/components/NavBar";
 import { Footer } from "@/components/Footer";
 
-import { Container as LayoutContainer } from "./styles";
+import GlobalStyle from "@styles/global";
 
-interface LayoutProps {
-  children: ReactNode;
-}
+import { Container } from "./styles";
 
-export function Layout({ children }: LayoutProps) {
+export const Layout = ({ children }: { children: ReactNode }) => {
   return (
-    <LayoutContainer>
-      <Navbar />
-      {children}
-      <Footer />
-    </LayoutContainer>
+    <Container>
+      <QueryClientProvider client={queryClient}>
+        <GlobalStyle />
+        <CartProvider>
+          <Navbar />
+          {children}
+          <Footer />
+        </CartProvider>
+      </QueryClientProvider>
+    </Container>
   );
-}
+};
