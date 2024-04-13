@@ -209,14 +209,14 @@ export const ContactCardContainer = styled.div`
 export const ContactCard = styled.div`
   display: flex;
   width: 230px;
-  height: 136px;
+  height: 200px;
   gap: 0.5em;
   align-items: center;
   justify-content: center;
   flex-direction: column;
 
   svg {
-    font-size: 50px;
+    font-size: 40px;
   }
 `;
 

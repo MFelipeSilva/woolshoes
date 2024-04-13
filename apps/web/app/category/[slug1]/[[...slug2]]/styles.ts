@@ -140,7 +140,6 @@ export const ButtonSize = styled.button`
   align-items: center;
   justify-content: center;
   background-color: transparent;
-  font-family: "Inter", sans-serif;
   border-radius: 5px;
   border: 1px solid rgba(0, 0, 0, 0.4);
 
@@ -188,7 +187,6 @@ export const CheckboxAndText = styled(Checkbox)`
   & > span:nth-child(2) {
     font-size: 14px !important;
     font-weight: 400;
-    font-family: "Inter", sans-serif;
   }
 `;
 
@@ -227,7 +225,6 @@ export const FilterButton = styled.button`
   font-weight: 700;
   text-decoration: none;
   text-transform: uppercase;
-  font-family: "Inter", sans-serif;
   border-radius: 25px;
   border: 1px solid rgb(211, 212, 213);
   align-items: center;
@@ -310,8 +307,6 @@ export const ProductsCard = styled(Card)`
 `;
 
 export const MetaProducts = styled(Meta)`
-  font-family: "Inter", sans-serif;
-
   .ant-card-meta-title {
     font-size: clamp(10pt, 2vw, 12pt) !important;
     font-weight: 700;

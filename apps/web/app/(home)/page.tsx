@@ -144,7 +144,7 @@ export default function Home() {
           </CarouselContainer>
         </Section>
         <Section $page={2}>
-          <Title>Modelos esportivos</Title>
+          <Title>Variações de modelos</Title>
           <SecondaryBannerContent>
             <Image
               className="banner-02"

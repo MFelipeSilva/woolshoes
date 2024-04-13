@@ -86,11 +86,11 @@ export const BannerHeader = styled.div`
 
 export const BannerTitle = styled.h1`
   color: #ffffff;
-  width: 11em;
+  width: 12em;
   font-weight: 800;
   letter-spacing: 1.5px;
   text-transform: uppercase;
-  font-size: clamp(23pt, 3vw, 38pt);
+  font-size: clamp(23pt, 3vw, 35pt);
 
   @media (max-width: 768px) {
     width: 58vw;
@@ -262,11 +262,9 @@ export const ProductCard = styled(Card)`
 `;
 
 export const CardMeta = styled(Meta)`
-  font-family: "Inter", sans-serif;
-
   .ant-card-meta-title {
     font-size: clamp(13pt, 2vw, 14pt);
-    font-weight: 800;
+    font-weight: 700;
     overflow: auto;
     line-height: 1.3em;
     white-space: normal;

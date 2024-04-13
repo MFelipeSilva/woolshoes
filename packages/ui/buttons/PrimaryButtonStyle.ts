@@ -13,7 +13,6 @@ export const PrimaryButtonStyle = styled.button<IPrimaryButtonStyle>`
   letter-spacing: 1px;
   color: #ffffff;
   font-weight: 600;
-  font-family: "Inter", sans-serif;
   font-size: clamp(13px, 1.5vw, 14px) !important;
   text-transform: uppercase;
   box-shadow: none;
@@ -21,7 +20,7 @@ export const PrimaryButtonStyle = styled.button<IPrimaryButtonStyle>`
   border-radius: 5px;
   align-items: center;
   justify-content: center;
-  border: 1px solid ${(props) => props.border ? props.border : "rgba(0, 0, 0, 0)"};
+  border: 1px solid ${(props) => (props.border ? props.border : "#2d3142")};
   outline: none;
   cursor: pointer;
   transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);

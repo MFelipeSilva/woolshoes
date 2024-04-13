@@ -394,7 +394,6 @@ export const Size = styled.span`
   justify-content: center;
   border: 1px solid #000000;
   background-color: transparent;
-  font-family: "Inter", sans-serif;
 
   &:hover {
     border: 1px solid #2d3142;
@@ -501,8 +500,6 @@ export const CardProducts = styled(Card)`
 `;
 
 export const MetaProducts = styled(Meta)`
-  font-family: "Inter", sans-serif;
-
   .ant-card-meta-title {
     font-size: 15px !important;
     font-weight: 600;

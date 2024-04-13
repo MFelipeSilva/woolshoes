@@ -217,8 +217,6 @@ export const InfoPage = styled.li`
 export const CartDrawer = styled(Drawer)`
   .ant-drawer-header {
     .ant-drawer-header-title {
-      font-family: "Inter", sans-serif;
-
       button {
         display: flex;
         color: #000000;
@@ -232,7 +230,6 @@ export const CartDrawer = styled(Drawer)`
     gap: 3em;
     padding: 40px 24px;
     flex-direction: column;
-    font-family: "Inter", sans-serif;
 
     span {
       font-weight: 200;
@@ -323,7 +320,6 @@ export const UserPopover = styled(Popover)``;
 export const PopoverTitle = styled.h3`
   display: flex;
   font-size: 15px;
-  font-family: "Inter", sans-serif;
   align-items: center;
 `;
 
@@ -344,7 +340,6 @@ export const PopoverOptions = styled.button`
   color: #000000;
   font-size: 15px;
   font-weight: 400;
-  font-family: "Inter", sans-serif;
   background-color: transparent;
 
   svg {

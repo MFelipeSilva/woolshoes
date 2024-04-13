@@ -71,7 +71,6 @@ export const Input = styled.input<IInput>`
   outline: none;
   padding: 0 1em;
   font-size: 12pt;
-  font-family: "Inter", sans-serif;
 
   &:focus {
     border: 1px solid ${(props) => (props.error ? "#FF0000" : "#000000")};

@@ -15,7 +15,7 @@ export const Container = styled.footer`
 export const ContentRow = styled.div`
   display: flex;
   width: 70%;
-  gap: 5em 13em;
+  gap: 5em 12.5em;
   flex-wrap: wrap;
   align-items: start;
   justify-content: start;
