@@ -119,7 +119,6 @@ export const IncreaseAndDecreaseButton = styled(Button)`
   background-color: transparent;
 
   span > svg {
-    font-size: 15pt;
     color: rgba(0, 0, 0, 0.2);
   }
 

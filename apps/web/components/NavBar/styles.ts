@@ -108,33 +108,31 @@ export const InformationsLinks = styled.div`
 
 export const CartAndLogin = styled.ul`
   display: flex;
-  gap: 0.5em;
+  gap: 1.5em;
   list-style: none;
   align-items: center;
   justify-content: center;
 
-  & > svg {
+  span:nth-child(3) > svg {
     display: none;
   }
 
   @media (max-width: 1024px) {
-    .menu-icon {
-      display: flex;
-      width: 35px;
+    gap: 1em;
+
+    span > svg {
+      display: flex !important;
+      width: 25px;
       color: #ffffff;
-      font-size: 25px;
       cursor: pointer;
-      user-select: none;
     }
 
-    .close-icon {
+    .menu-icon > svg {
       display: flex;
-      width: 35px;
+      width: 29px;
+      height: 29px;
       color: #ffffff;
-      font-size: 35px;
-      margin-top: 2px;
       cursor: pointer;
-      user-select: none;
     }
   }
 `;
@@ -175,13 +173,31 @@ export const InfoPage = styled.li`
   display: flex;
   color: #ffffff;
 
-  svg {
-    width: 38px;
-    font-size: 18pt;
-  }
-
   &:hover {
     cursor: pointer;
+  }
+
+  span {
+    position: relative;
+
+    & > svg:nth-child(1) {
+      display: flex;
+    }
+
+    & > span {
+      display: flex;
+      position: absolute;
+      top: -5px;
+      right: -10px;
+      width: 20px;
+      height: 20px;
+      font-size: 13px;
+      font-weight: 500;
+      border-radius: 50%;
+      background-color: #008000;
+      align-items: center;
+      justify-content: center;
+    }
   }
 
   a {
@@ -199,10 +215,6 @@ export const InfoPage = styled.li`
     @media (max-width: 1200px) {
       p {
         display: none;
-      }
-
-      & > svg {
-        font-size: 16pt;
       }
     }
 
@@ -315,7 +327,9 @@ export const SearchInput = styled(Input)`
   border-radius: 10px;
 `;
 
-export const UserPopover = styled(Popover)``;
+export const UserPopover = styled(Popover)`
+  display: flex;
+`;
 
 export const PopoverTitle = styled.h3`
   display: flex;

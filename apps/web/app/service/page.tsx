@@ -3,14 +3,14 @@
 import React from "react";
 
 import {
-  MdOutlineShoppingBag,
-  MdOutlineCached,
-  MdPersonOutline,
-  MdLockOutline,
-  MdOutlineEmail,
-} from "react-icons/md";
-
-import { TbMessageCircle, TbPhone } from "react-icons/tb";
+  IconBox,
+  IconEmail,
+  IconExchanges,
+  IconLock,
+  IconMessage,
+  IconPersonOutline,
+  IconPhone,
+} from "@components/Icons";
 
 import { Layout } from "@layout";
 
@@ -49,19 +49,19 @@ export default function Service() {
           <HelpTitle>Central de ajuda</HelpTitle>
           <HelpCardContainer>
             <HelpCard>
-              <MdOutlineShoppingBag />
+              <IconBox />
               <CardText>Meus pedidos</CardText>
             </HelpCard>
             <HelpCard>
-              <MdOutlineCached />
+              <IconExchanges />
               <CardText>Trocas e cancelamento</CardText>
             </HelpCard>
             <HelpCard>
-              <MdPersonOutline />
+              <IconPersonOutline />
               <CardText>Meu cadastro</CardText>
             </HelpCard>
             <HelpCard>
-              <MdLockOutline />
+              <IconLock />
               <CardText>Segurança e privacidade</CardText>
             </HelpCard>
           </HelpCardContainer>
@@ -101,14 +101,14 @@ export default function Service() {
           </ContactHeader>
           <ContactCardContainer>
             <ContactCard>
-              <MdOutlineEmail />
+              <IconEmail />
               <ContactCardTitle>E-mail</ContactCardTitle>
               <ContactCardText>
                 Envie uma mensagem para o nosso time de atendimento.
               </ContactCardText>
             </ContactCard>
             <ContactCard>
-              <TbMessageCircle />
+              <IconMessage />
               <ContactCardTitle>Assistente virtual</ContactCardTitle>
               <ContactCardText>
                 Tire dúvidas, consulte seus pedidos e veja o status do
@@ -116,7 +116,7 @@ export default function Service() {
               </ContactCardText>
             </ContactCard>
             <ContactCard>
-              <TbPhone />
+              <IconPhone />
               <ContactCardTitle>(11) 11111-1111</ContactCardTitle>
               <ContactCardText>
                 Faça uma ligação para o nosso time de atendimento.

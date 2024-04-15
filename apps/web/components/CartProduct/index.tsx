@@ -1,6 +1,6 @@
 import React from "react";
 
-import { RiDeleteBin7Line, RiAddFill, RiSubtractFill } from "react-icons/ri";
+import { IconBin, IconMinus, IconPlus } from "@components/Icons";
 
 import { useCart } from "@providers/cart";
 
@@ -50,22 +50,21 @@ export const CartProduct = ({ product }: CartProduct) => {
       <Buttons>
         <CloseButton
           icon={
-            <RiDeleteBin7Line
-              fontSize={18}
-              onClick={() => removeProductFromCart(product.id)}
-            />
+            <span onClick={() => removeProductFromCart(product.id)}>
+              <IconBin />
+            </span>
           }
         />
 
         <ContentQuantity>
           <IncreaseAndDecreaseButton
-            icon={<RiSubtractFill />}
+            icon={<IconMinus />}
             type="link"
             onClick={() => decreaseProductQuantity(product.id)}
           />
           <Quantity>{product.quantity}</Quantity>
           <IncreaseAndDecreaseButton
-            icon={<RiAddFill />}
+            icon={<IconPlus />}
             type="link"
             onClick={() => increaseProductQuantity(product.id)}
           />

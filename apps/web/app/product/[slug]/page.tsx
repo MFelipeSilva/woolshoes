@@ -6,7 +6,7 @@ import Link from "next/link";
 
 import { useQuery } from "react-query";
 
-import { IoAlertCircleOutline } from "react-icons/io5";
+import { IconAlert } from "@components/Icons";
 
 import { Layout } from "@layout";
 
@@ -226,7 +226,7 @@ export default function ProductId({ params: { slug } }: ProductIdParams) {
               </PrimaryButton>
             </DetailsContainer>
             <FreeShippingContainer>
-              <IoAlertCircleOutline />
+              <IconAlert />
               <TextFreeShipping>
                 Todas as compras acima de R$299 são elegíveis para frete grátis.
               </TextFreeShipping>

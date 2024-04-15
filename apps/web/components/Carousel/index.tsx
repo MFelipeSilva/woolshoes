@@ -6,7 +6,7 @@ import React, {
   useState,
 } from "react";
 
-import { IoArrowBackOutline, IoArrowForward } from "react-icons/io5";
+import { IconLeftArrow, IconRightArrow } from "@components/Icons";
 
 import { CardCarousel, CarouselButton, CarouselButtonDisabled } from "./styles";
 
@@ -50,20 +50,12 @@ export const Carousel: React.FC<CarouselProps> = ({
     speed: 500,
     arrows: true,
     nextArrow: showNextButton ? (
-      <CarouselButton
-        onClick={next}
-        shape="circle"
-        icon={<IoArrowForward fontSize="16pt" />}
-      />
+      <CarouselButton onClick={next} shape="circle" icon={<IconRightArrow />} />
     ) : (
       <CarouselButtonDisabled />
     ),
     prevArrow: showPrevButton ? (
-      <CarouselButton
-        onClick={prev}
-        shape="circle"
-        icon={<IoArrowBackOutline fontSize="16pt" />}
-      />
+      <CarouselButton onClick={prev} shape="circle" icon={<IconLeftArrow />} />
     ) : (
       <CarouselButtonDisabled />
     ),

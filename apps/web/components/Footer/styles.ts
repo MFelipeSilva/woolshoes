@@ -65,9 +65,14 @@ export const SocialMedia = styled.div`
   flex-direction: column;
 
   & > ul {
+    display: flex;
     gap: 1.5em;
     flex-direction: row;
+    align-items: center;
+    justify-content: center;
 
+    li > a > {
+    }
     li > a > svg {
       color: #ffffff;
       font-size: 45px;

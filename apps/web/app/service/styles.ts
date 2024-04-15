@@ -90,7 +90,8 @@ export const HelpCard = styled.div`
   justify-content: center;
 
   svg {
-    font-size: clamp(50px, 4vw, 60px);
+    width: 60px;
+    height: 60px;
   }
 
   @media (max-width: 515px) {
@@ -211,12 +212,14 @@ export const ContactCard = styled.div`
   width: 230px;
   height: 200px;
   gap: 0.5em;
+  cursor: pointer;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
 
   svg {
-    font-size: 40px;
+    width: 40px;
+    height: 40px;
   }
 `;
 

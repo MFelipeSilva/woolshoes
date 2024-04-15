@@ -2,11 +2,7 @@ import React from "react";
 
 import Link from "next/link";
 
-import {
-  RiFacebookCircleFill,
-  RiInstagramFill,
-  RiTwitterXFill,
-} from "react-icons/ri";
+import { IconFacebook, IconInstagram, IconTwitter } from "@components/Icons";
 
 import {
   Container,
@@ -67,17 +63,17 @@ export const Footer = () => {
           <Ul>
             <Li>
               <Link href="https://www.instagram.com/" target="_blank">
-                <RiInstagramFill />
+                <IconInstagram />
               </Link>
             </Li>
             <Li>
               <Link href="https://twitter.com/" target="_blank">
-                <RiTwitterXFill />
+                <IconTwitter />
               </Link>
             </Li>
             <Li>
               <Link href="https://www.facebook.com/" target="_blank">
-                <RiFacebookCircleFill />
+                <IconFacebook />
               </Link>
             </Li>
           </Ul>

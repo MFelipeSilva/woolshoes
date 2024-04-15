@@ -6,14 +6,14 @@ import Link from "next/link";
 import Image from "next/image";
 
 import {
-  RiUser3Fill,
-  RiShoppingCartLine,
-  RiShoppingCartFill,
-  RiLogoutBoxLine,
-  RiMenu3Fill,
-  RiCloseFill,
-  RiInboxUnarchiveLine,
-} from "react-icons/ri";
+  IconCartFill,
+  IconBox,
+  IconCartOutline,
+  IconClose,
+  IconLogout,
+  IconMenu,
+  IconPersonFill,
+} from "@components/Icons";
 
 import { useAuth } from "@lib/auth";
 import { useCart } from "@providers/cart";
@@ -46,6 +46,7 @@ import {
   CartContent,
   overlayStyle,
 } from "./styles";
+import { ProductType } from "@/types/ProductType";
 
 export const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -54,14 +55,19 @@ export const Navbar = () => {
   const { cart } = useCart();
   const { accessToken, user, handleLeaveAccount } = useAuth();
 
+  const totalQuantity = cart.reduce(
+    (total, item) => total + (item.quantity || 0),
+    0
+  );
+
   const UserContent = (
     <PopoverContent>
       <PopoverOptions>
-        <RiInboxUnarchiveLine />
+        <IconBox />
         Meus pedidos
       </PopoverOptions>
       <PopoverOptions onClick={handleLeaveAccount}>
-        <RiLogoutBoxLine />
+        <IconLogout />
         Sair
       </PopoverOptions>
     </PopoverContent>
@@ -99,7 +105,10 @@ export const Navbar = () => {
           </NavLinks>
           <CartAndLogin>
             <InfoPage onClick={() => setOpen(true)}>
-              <RiShoppingCartFill />
+              <span>
+                <IconCartFill />
+                <span>{totalQuantity}</span>
+              </span>
             </InfoPage>
             <InfoPage>
               {accessToken ? (
@@ -111,24 +120,30 @@ export const Navbar = () => {
                     <PopoverTitle>Olá, {user?.name} &#x1F590;</PopoverTitle>
                   }
                 >
-                  <RiUser3Fill />
+                  <span>
+                    <IconPersonFill />
+                  </span>
                 </UserPopover>
               ) : (
                 <Link href="/account">
-                  <RiUser3Fill />
+                  <IconPersonFill />
                 </Link>
               )}
             </InfoPage>
             {openMenu ? (
-              <RiCloseFill
-                className="close-icon"
-                onClick={() => setOpenMenu(!openMenu)}
-              />
-            ) : (
-              <RiMenu3Fill
+              <span
                 className="menu-icon"
                 onClick={() => setOpenMenu(!openMenu)}
-              />
+              >
+                <IconClose />
+              </span>
+            ) : (
+              <span
+                className="menu-icon"
+                onClick={() => setOpenMenu(!openMenu)}
+              >
+                <IconMenu />
+              </span>
             )}
           </CartAndLogin>
           <CartDrawer
@@ -136,7 +151,7 @@ export const Navbar = () => {
             placement="right"
             open={open}
             contentWrapperStyle={{ width: "510px" }}
-            closeIcon={<RiCloseFill />}
+            closeIcon={<IconClose />}
             onClose={() => setOpen(false)}
           >
             {cart && cart.length > 0 ? (
@@ -145,7 +160,7 @@ export const Navbar = () => {
               })
             ) : (
               <CartContent>
-                <RiShoppingCartLine />
+                <IconCartOutline />
                 <Text>Carrinho vazio!</Text>
                 <SubText>Adicione produtos no seu carrinho.</SubText>
               </CartContent>

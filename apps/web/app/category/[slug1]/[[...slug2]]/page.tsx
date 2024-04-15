@@ -8,7 +8,7 @@ import { useRouter, usePathname } from "next/navigation";
 
 import Link from "next/link";
 
-import { LuSettings2, LuChevronLeft } from "react-icons/lu";
+import { IconCloseArrow, IconSettings } from "@components/Icons";
 
 import { Layout } from "@layout";
 
@@ -206,7 +206,7 @@ export default function CategoryProducts({
           <ProductsContent>
             <ProductsHeader>
               <FilterButton onClick={() => setOpen(true)}>
-                Filtro <LuSettings2 />
+                Filtro <IconSettings />
               </FilterButton>
               <SwitchContainer>
                 <SwitchLink
@@ -310,7 +310,7 @@ export default function CategoryProducts({
           </ProductsContent>
         </Content>
         <FilterDrawer
-          closeIcon={<LuChevronLeft />}
+          closeIcon={<IconCloseArrow />}
           placement="left"
           width="300px"
           onClose={() => setOpen(false)}
