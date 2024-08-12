@@ -4,16 +4,11 @@ export const Container = styled.main`
   display: flex;
   width: 100vw;
   height: 100%;
-  margin: 10em 0;
-  gap: 10em;
+  margin: 5em 0;
+  gap: 5em;
   align-items: center;
   flex-direction: column;
   justify-content: center;
-
-  @media (max-width: 1000px) {
-    gap: 5em;
-    margin: 5em 0;
-  }
 `;
 
 export const Header = styled.header`

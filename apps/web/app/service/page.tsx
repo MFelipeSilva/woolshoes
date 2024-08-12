@@ -30,7 +30,6 @@ import {
   Container,
   HelpCard,
   HelpContent,
-  HelpTitle,
   FaqCard,
   FaqCardText,
   FaqCardTitle,
@@ -39,6 +38,9 @@ import {
   FaqTitle,
   ContactCardTitle,
   ContactCardText,
+  Header,
+  SubTitle,
+  Title,
 } from "./styles";
 
 export default function Service() {
@@ -46,7 +48,10 @@ export default function Service() {
     <Layout>
       <Container>
         <HelpContent>
-          <HelpTitle>Central de ajuda</HelpTitle>
+          <Header>
+            <SubTitle>Atendimento</SubTitle>
+            <Title>Central de ajudas</Title>
+          </Header>
           <HelpCardContainer>
             <HelpCard>
               <IconBox />

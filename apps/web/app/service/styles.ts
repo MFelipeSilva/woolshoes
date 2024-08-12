@@ -21,11 +21,43 @@ export const HelpContent = styled.section`
   justify-content: center;
 `;
 
-export const HelpTitle = styled.h2`
-  font-size: 30px;
-  font-weight: 700;
+export const Header = styled.header`
+  display: flex;
+  width: 35vw;
+  gap: 0.5em;
+  max-width: 664px;
+  text-align: center;
+  align-items: center;
+  flex-direction: column;
+
+  @media (max-width: 1000px) {
+    width: 90vw;
+  }
 `;
 
+export const SubTitle = styled.h2`
+  position: relative;
+  color: #191b24;
+  font-size: clamp(14px, 2vw, 18px);
+  font-weight: 700;
+  justify-content: center;
+  text-transform: uppercase;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 100%;
+    border-bottom: 3px solid #1d3557;
+  }
+`;
+
+export const Title = styled.h1`
+  color: #191b24;
+  font-size: clamp(33px, 4vw, 48px);
+  font-weight: 700;
+`;
 export const HelpCardContainer = styled.div`
   display: flex;
   gap: 7.1em;
