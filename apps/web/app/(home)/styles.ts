@@ -11,7 +11,7 @@ interface SectionProps {
 export const Container = styled.main`
   width: 100vw;
   height: 100%;
-  padding-top: 4em;
+  padding-top: 5em;
 
   @media (max-width: 768px) {
     padding-top: 0;
@@ -63,7 +63,7 @@ export const BannerHeader = styled.div`
   left: 0;
   gap: 2em;
   z-index: 1;
-  margin-left: clamp(1vw, 5vw, 6em);
+  margin-left: clamp(1vw, 10vw, 13em);
   flex-direction: column;
 
   a {
@@ -75,11 +75,14 @@ export const BannerHeader = styled.div`
       width: max-content;
       height: 4em;
     }
+  }
 
-    @media (max-width: 768px) {
-      & {
-        width: max-content;
-      }
+  @media (max-width: 768px) {
+    width: 90%;
+    margin-left: 5vw;
+
+    & > a {
+      width: max-content;
     }
   }
 `;
@@ -160,6 +163,7 @@ export const Section = styled.section<SectionProps>`
   width: 100vw;
   height: 100%;
   gap: 3em;
+  padding: ${({ $page }) => ($page === 1 ? "5em 0" : "0")};
   align-items: center;
   justify-content: center;
   flex-direction: column;
@@ -190,7 +194,6 @@ export const Banner = styled.img``;
 
 export const TitleContainer = styled.div`
   width: 70%;
-  padding-top: 10em;
 
   @media (max-width: 1200px) {
     margin-left: 0em;
@@ -209,7 +212,6 @@ export const Title = styled.h1`
 
 export const CarouselContainer = styled.div`
   width: 70%;
-  padding-bottom: 10em;
 
   @media (max-width: 1200px) {
     margin-left: 0;
